@@ -16,37 +16,37 @@ def train(bot):
     chatbot = bot
 
     chatbot.train([
-        'Kako se zovu riječi koje zamjenjuju druge riječi?',
+        'What exactly do you want from us?',
         '01'
     ])
     chatbot.train([
-        'Koje riječi zamjenjuju druge riječi?',
+        'Why come to Earth now?',
         '01'
     ])
     chatbot.train([
-        'Koje su riječi koje zamjenjuju druge riječi?',
+        'What do you want from us?',
         '01'
     ])
     chatbot.train([
-        'Kako se zovu riječi koje zamjenjuju riječi?',
+        'Why did you come to Earth now?',
         '01'
     ])
 
 
     chatbot.train([
-        'Koje su osobne zamjenice?',
+        'Who are you?',
         '02'
     ])
     chatbot.train([
-        'Nabroji osobne zamjenice?',
+        'What is your name?',
         '02'
     ])
     chatbot.train([
-        'Koje osobne zamjenice postoje?',
+        'Who are you?',
         '02'
     ])
     chatbot.train([
-        'Navedi osobne zamjenice?',
+        'What is your name?',
         '02'
     ])
 

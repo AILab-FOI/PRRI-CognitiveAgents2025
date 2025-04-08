@@ -53,29 +53,25 @@ story.appendChild( addAgent( 'agent-jura' ) );
 </tw-passage>
 
 
-
 :: Start [Start] {"position":"725,475","size":"100,100"}
 <tw-passage data-passage="Start" class="start-bg">
 [
+  <h1>Edge of Extinction</h1>
+  <div>
+    [[<button id="btnNewGame">NEW GAME</button> ->Intro1]]
+    [[<button id="btnOptions">OPTIONS</button> ->b]]
+    [[<button id="btnExit">EXIT</button> ->c]]
+     <button id="btnSound">🔇</button>
+  </div>
  
-  <body>
-    <h1>Edge of Extinction</h1>
-    <div>
-      [[<button id="btnNewGame">NEW GAME</button> ->Intro1]]
-      [[<button id="btnOptions">OPTIONS</button> ->b]]
-      [[<button id="btnExit">EXIT</button> ->c]]
-    </div>
-  </body>
-  
-  <audio>
-  <source src="/static/media/Main_Theme.mp3"; type="audio/mp3" autoplay>
-</audio>
 
-
+  <audio loop id="mainTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 ]
-
-
 </tw-passage>
+
 
 
 :: b {"position":"1000,475","size":"100,100"}
@@ -84,7 +80,6 @@ Opcije
 
 :: c {"position":"900,750","size":"100,100"}
 exit skripta
-
 
 
 :: StoryScript [script]
@@ -112,22 +107,38 @@ function typeWriter(elementId, text, speed) {
   writeText();
 }
 
-const observer = new MutationObserver((mutationsList, observer) => {
-  const element = document.getElementById("typing");
+const element = document.getElementById("typing");
+if (element) {
+  console.log("Element 'typing' je odmah dostupan.");
+  typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+} else {
+  const observer = new MutationObserver((mutationsList, observer) => {
+    const element = document.getElementById("typing");
 
-  if (element) {
-    console.log("Element 'typing' je sada dostupan.");
-    observer.disconnect();
-    typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
-  }
-  const soundEarth = document.getElementById("soundEarth");
-	if (soundEarth) {
-    soundEarth.volume = 0.1; 
-  }
-});
+    if (element) {
+      console.log("Element 'typing' je sada dostupan.");
+      typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+      observer.disconnect();  
+    }
 
-observer.observe(document.body, { childList: true, subtree: true });
+    const soundEarth = document.getElementById("soundEarth");
+    if (soundEarth) {
+      soundEarth.volume = 0.1; 
+    }
+    const btnSound = document.getElementById("btnSound");
+    const mainTheme = document.getElementById("mainTheme");
+    if (btnSound && mainTheme) {
+      btnSound.addEventListener("click", function () {
+        mainTheme.play();
+        this.disabled = true;
+        this.innerText = "🔊";
+      });
+      mainTheme.volume = 1;
+    }
+  });
 
+  observer.observe(document.body, { childList: true, subtree: true });
+}
 
 
 :: StoryStylesheet [stylesheet]
@@ -174,7 +185,6 @@ div {
   padding: 12px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
   margin-top: auto;
-  margin-bottom: 4em;
   width: auto;  
   align-items: center;
 }
@@ -198,6 +208,7 @@ h1 {
   color: black;
   opacity: 1;
   animation: shadowGrow 2s ease-out;
+  margin: 2em 0 2em 0;
 }
 
 @keyframes shadowGrow {
@@ -231,4 +242,12 @@ p{
   width: 90%;
   text-align: center;
 }
-
+#btnSound{
+  padding: 5px 10px;
+  align-self: center;
+}
+#btnSound:hover{
+  box-shadow: none;
+  padding: 5px 10px;
+  transform: scale(1.5);
+}

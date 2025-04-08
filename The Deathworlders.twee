@@ -4,26 +4,39 @@ The Deathworlders
 
 :: StoryData
 {
-  "ifid": "E0CAAF59-1572-4BC1-90B0-3DC4E5124F34",
+  "ifid": "7AA88246-E759-4671-8415-13C23FFA31FC",
   "format": "Harlowe",
   "format-version": "3.3.9",
-  "start": "Intro",
+  "start": "Start",
+  "tag-colors": {
+    "Start": "red"
+  },
   "zoom": 1
 }
 
 
-:: Classroom {"position":"675,400","size":"100,100"}
-What are you doing here? Go [[back->Intro]]!!!
+:: \ Intro2 {"position":"1175,225","size":"100,100"}
+<tw-passage data-passage="Intro2" class="intro2-bg">
+
+</tw-passage>
 
 
-:: Intro {"position":"675,275","size":"100,100"}
-You are in a [[classroom->Classroom]]. It looks quite dull. A wild cognitive agent appears ...
+:: Intro1 {"position":"925,225","size":"100,100"}
+<tw-passage data-passage="Intro1" class="intro-bg">
+<audio autoplay>
+	<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
+" type="audio/mp3">
+Vaš preglednik ne podržava HTML5 audio element.
+</audio>
 
+<audio loop autoplay id="soundEarth">
+<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroSoundOfEarth.mp3
+" type="audio/mp3">
+</audio>
+  <p id="typing"></p>
+  [[<button id="btnNext">Next</button> -> Intro2]]
 <script>
-
 var story = document.getElementsByTagName( "tw-story" )[ 0 ];
-story.style.color = "lime";
-
 
 function addAgent(name) {
     const iframe = document.createElement('iframe');
@@ -35,21 +48,187 @@ function addAgent(name) {
 
 
 story.appendChild( addAgent( 'agent-jura' ) );
-
-
-setTimeout( () => {
-	var elem = document.getElementsByTagName( "tw-story" );
-	elem[ 0 ].style.color  = "white";
-}, "1000" );
-
-setTimeout( () => {
-	var elem = document.getElementsByTagName( "tw-story" );
-	elem[ 0 ].style.color  = "red";
-}, "2000" );
-
-setTimeout( () => {
-	var elem = document.getElementsByTagName( "tw-story" );
-	elem[ 0 ].style.color  = "white";
-}, "3000" );
-
 </script>
+
+</tw-passage>
+
+
+
+:: Start [Start] {"position":"725,475","size":"100,100"}
+<tw-passage data-passage="Start" class="start-bg">
+[
+ 
+  <body>
+    <h1>Edge of Extinction</h1>
+    <div>
+      [[<button id="btnNewGame">NEW GAME</button> ->Intro1]]
+      [[<button id="btnOptions">OPTIONS</button> ->b]]
+      [[<button id="btnExit">EXIT</button> ->c]]
+    </div>
+  </body>
+  
+  <audio>
+  <source src="/static/media/Main_Theme.mp3"; type="audio/mp3" autoplay>
+</audio>
+
+
+]
+
+
+</tw-passage>
+
+
+:: b {"position":"1000,475","size":"100,100"}
+Opcije
+
+
+:: c {"position":"900,750","size":"100,100"}
+exit skripta
+
+
+
+:: StoryScript [script]
+console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
+
+function typeWriter(elementId, text, speed) {
+  let i = 0;
+  let element = document.getElementById(elementId);
+
+  if (!element) {
+    console.error(`Element s ID-jem "${elementId}" nije pronađen.`);
+    return; 
+  }
+
+  element.innerHTML = ""; 
+
+  function writeText() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(writeText, speed);
+    }
+  }
+
+  writeText();
+}
+
+const observer = new MutationObserver((mutationsList, observer) => {
+  const element = document.getElementById("typing");
+
+  if (element) {
+    console.log("Element 'typing' je sada dostupan.");
+    observer.disconnect();
+    typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+  }
+  const soundEarth = document.getElementById("soundEarth");
+	if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+
+.start-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/probna_slika2.jpg") 
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.intro-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Flux_Dev_A_breathtaking_view_of_Earth_from_space_showcasing_ou_1.jpeg") 
+  no-repeat center center;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+tw-passage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.494); 
+  padding: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 2);
+  margin-top: auto;
+  margin-bottom: 4em;
+  width: auto;  
+  align-items: center;
+}
+
+button {
+  font-family: "Iceland", sans-serif;
+  background-color: transparent;
+  border: transparent;
+  color: #c0fbff;
+  font-size: 1em;
+  padding: 10px 60px;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+h1 {
+  margin-top: 0.5em;
+  font-family: "Iceberg", sans-serif;
+  font-size: 3em;
+  text-shadow: 2px 2px 5px #94f4fa;
+  color: black;
+  opacity: 1;
+  animation: shadowGrow 2s ease-out;
+}
+
+@keyframes shadowGrow {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 10px #94f3fa6b;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 5px #94f4fa;
+  }
+}
+
+button:hover {
+  color: #c3f3ef;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.76);
+  cursor: pointer;
+}
+p{
+  font-family: "Iceland", sans-serif;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.394);
+  letter-spacing: 2px;
+  margin-top: auto;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+}
+

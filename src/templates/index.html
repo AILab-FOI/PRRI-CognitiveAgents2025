@@ -9,59 +9,69 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Edge of Extinction.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Edge of Extinction" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story {
-  padding-top: 2em;
+<tw-storydata name="Edge of Extinction" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+
+.start-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/probna_slika2.jpg") 
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-
-tw-passage[data-passage="Start"]{
-  margin: 0;
-  padding: 0;
+.intro-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Flux_Dev_A_breathtaking_view_of_Earth_from_space_showcasing_ou_1.jpeg") 
+  no-repeat center center;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/probna_slika2.jpg") no-repeat center center/cover;;
   flex-direction: column;
+  height: 100vh;
 }
 
-
-tw-passage[data-passage="Intro1"] {
-  margin: 0;
-  padding: 0;
+tw-passage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: bottom;
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/zemlja.webp") no-repeat center center/center;;
-  flex-direction: column;
+  min-height: 100vh;
 }
 
 div {
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.494);
-  margin-top: auto;
-  margin-bottom: 4em;
+  background-color: rgba(0, 0, 0, 0.494); 
   padding: 12px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 2);
+  margin-top: auto;
+  margin-bottom: 4em;
+  width: auto;  
+  align-items: center;
 }
+
 button {
   font-family: "Iceland", sans-serif;
   background-color: transparent;
   border: transparent;
   color: #c0fbff;
-  font-size: 1.8em;
-  line-height: 140%;
-  padding: 0 60px 0 60px;
+  font-size: 1em;
+  padding: 10px 60px;
   letter-spacing: 2px;
   transition: all 0.3s ease;
 }
 
 h1 {
-  margin-top: 1.8em;
+  margin-top: 0.5em;
   font-family: "Iceberg", sans-serif;
-  font-size: 4.5em;
+  font-size: 3em;
   text-shadow: 2px 2px 5px #94f4fa;
   color: black;
   opacity: 1;
@@ -78,12 +88,69 @@ h1 {
     text-shadow: 2px 2px 5px #94f4fa;
   }
 }
+
 button:hover {
   color: #c3f3ef;
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.76);
   cursor: pointer;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="Start" position="725,475" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot;&gt;
+}
+p{
+  font-family: "Iceland", sans-serif;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.394);
+  letter-spacing: 2px;
+  margin-top: auto;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+}
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
+
+function typeWriter(elementId, text, speed) {
+  let i = 0;
+  let element = document.getElementById(elementId);
+
+  if (!element) {
+    console.error(`Element s ID-jem "${elementId}" nije pronađen.`);
+    return; 
+  }
+
+  element.innerHTML = ""; 
+
+  function writeText() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(writeText, speed);
+    }
+  }
+
+  writeText();
+}
+
+const observer = new MutationObserver((mutationsList, observer) => {
+  const element = document.getElementById("typing");
+
+  if (element) {
+    console.log("Element 'typing' je sada dostupan.");
+    observer.disconnect();
+    typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+  }
+  const soundEarth = document.getElementById("soundEarth");
+	if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="Start" position="725,475" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
 [
  
   &lt;body&gt;
@@ -96,7 +163,7 @@ button:hover {
   &lt;/body&gt;
   
   &lt;audio&gt;
-  &lt;source src="/static/media/Main_Theme.mp3"; type=&quot;audio/mp3&quot; autoplay&gt;
+  &lt;source src=&quot;/static/media/Main_Theme.mp3&quot;; type=&quot;audio/mp3&quot; autoplay&gt;
 &lt;/audio&gt;
 
 
@@ -104,14 +171,20 @@ button:hover {
 
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name="b" tags="" position="975,500" size="100,100">Opcije</tw-passagedata><tw-passagedata pid="3" name="c" tags="" position="900,750" size="100,100">exit skripta
-</tw-passagedata><tw-passagedata pid="4" name="Intro1" tags="" position="950,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot;&gt;
+</tw-passagedata><tw-passagedata pid="4" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
+&lt;audio autoplay&gt;
+	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+Vaš preglednik ne podržava HTML5 audio element.
+&lt;/audio&gt;
 
-[“The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space. Yet on Earth… the same problems remain.”]
-
+&lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
+&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroSoundOfEarth.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;
+  &lt;p id=&quot;typing&quot;&gt;&lt;/p&gt;
 &lt;script&gt;
 var story = document.getElementsByTagName( &quot;tw-story&quot; )[ 0 ];
-story.style.color = &quot;lime&quot;;
-
 
 function addAgent(name) {
     const iframe = document.createElement(&#39;iframe&#39;);

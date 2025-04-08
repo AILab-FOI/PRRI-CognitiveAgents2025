@@ -1,5 +1,5 @@
 :: StoryTitle
-Edge of Extinction
+The Deathworlders
 
 
 :: StoryData
@@ -15,6 +15,12 @@ Edge of Extinction
 }
 
 
+:: \ Intro2 {"position":"1175,225","size":"100,100"}
+<tw-passage data-passage="Intro2" class="intro2-bg">
+
+</tw-passage>
+
+
 :: Intro1 {"position":"925,225","size":"100,100"}
 <tw-passage data-passage="Intro1" class="intro-bg">
 <audio autoplay>
@@ -28,6 +34,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 " type="audio/mp3">
 </audio>
   <p id="typing"></p>
+  [[<button id="btnNext">Next</button> -> Intro2]]
 <script>
 var story = document.getElementsByTagName( "tw-story" )[ 0 ];
 
@@ -71,7 +78,7 @@ story.appendChild( addAgent( 'agent-jura' ) );
 </tw-passage>
 
 
-:: b {"position":"975,500","size":"100,100"}
+:: b {"position":"1000,475","size":"100,100"}
 Opcije
 
 

@@ -63,6 +63,10 @@ story.appendChild( addAgent( 'agent-jura' ) );
     [[<button id="btnExit">EXIT</button> ->c]]
      <button id="btnSound">🔇</button>
   </div>
+  
+  <audio id="buttonSelect">
+  	<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav" type="audio/wav">
+  </audio>
  
 
   <audio loop id="mainTheme" >
@@ -71,7 +75,6 @@ story.appendChild( addAgent( 'agent-jura' ) );
   </audio>
 ]
 </tw-passage>
-
 
 
 :: b {"position":"1000,475","size":"100,100"}
@@ -121,25 +124,38 @@ if (element) {
       observer.disconnect();  
     }
 
+	const buttons = document.getElementsByTagName("button");
+    const originalAudio = document.getElementById("buttonSelect");
+    
+    for (let button of Array.from(buttons)) {
+       if (button.id !== "btnSound") { 
+    	button.addEventListener("click", () => {
+      	const clickAudio = originalAudio.cloneNode(true);
+      	clickAudio.volume = 0.4;
+      	clickAudio.play();
+    });
+  }
+	 } 
+
     const soundEarth = document.getElementById("soundEarth");
     if (soundEarth) {
       soundEarth.volume = 0.1; 
     }
     const btnSound = document.getElementById("btnSound");
     const mainTheme = document.getElementById("mainTheme");
+    const buttonSelect = document.getElementById("buttonSelect");
     if (btnSound && mainTheme) {
       btnSound.addEventListener("click", function () {
         mainTheme.play();
         this.disabled = true;
         this.innerText = "🔊";
       });
-      mainTheme.volume = 1;
+      mainTheme.volume = 0.85;
     }
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
 }
-
 
 :: StoryStylesheet [stylesheet]
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');

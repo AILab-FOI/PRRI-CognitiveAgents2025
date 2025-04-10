@@ -64,10 +64,6 @@ story.appendChild( addAgent( 'agent-jura' ) );
      <button id="btnSound">🔇</button>
   </div>
   
-  <audio id="buttonSelect">
-  	<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav" type="audio/wav">
-  </audio>
- 
 
   <audio loop id="mainTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3" type="audio/mp3">
@@ -86,6 +82,7 @@ exit skripta
 
 
 :: StoryScript [script]
+//Postavljanje zvuka tipkanja
 console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
 
 function typeWriter(elementId, text, speed) {
@@ -124,26 +121,30 @@ if (element) {
       observer.disconnect();  
     }
 
+//Postavljanje zvuka gumbova
+
 	const buttons = document.getElementsByTagName("button");
-    const originalAudio = document.getElementById("buttonSelect");
+    const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav")
     
     for (let button of Array.from(buttons)) {
        if (button.id !== "btnSound") { 
-    	button.addEventListener("click", () => {
-      	const clickAudio = originalAudio.cloneNode(true);
-      	clickAudio.volume = 0.4;
-      	clickAudio.play();
-    });
-  }
-	 } 
-
+        button.addEventListener("click", () => {
+          const clickAudio = buttonSelect.cloneNode(true);
+          clickAudio.volume = 0.4;
+          clickAudio.play();
+    	});
+  	  }
+	}
+    
+//Uključivanje glavne teme
+    
     const soundEarth = document.getElementById("soundEarth");
     if (soundEarth) {
       soundEarth.volume = 0.1; 
     }
     const btnSound = document.getElementById("btnSound");
     const mainTheme = document.getElementById("mainTheme");
-    const buttonSelect = document.getElementById("buttonSelect");
+    
     if (btnSound && mainTheme) {
       btnSound.addEventListener("click", function () {
         mainTheme.play();

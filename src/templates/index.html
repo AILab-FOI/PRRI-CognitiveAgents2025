@@ -117,7 +117,8 @@ p{
   box-shadow: none;
   padding: 5px 10px;
   transform: scale(1.5);
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">//Postavljanje zvuka tipkanja
+console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
 
 function typeWriter(elementId, text, speed) {
   let i = 0;
@@ -155,26 +156,30 @@ if (element) {
       observer.disconnect();  
     }
 
+//Postavljanje zvuka gumbova
+
 	const buttons = document.getElementsByTagName("button");
-    const originalAudio = document.getElementById("buttonSelect");
+    const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav")
     
     for (let button of Array.from(buttons)) {
        if (button.id !== "btnSound") { 
-    	button.addEventListener("click", () => {
-      	const clickAudio = originalAudio.cloneNode(true);
-      	clickAudio.volume = 0.4;
-      	clickAudio.play();
-    });
-  }
-	 } 
-
+        button.addEventListener("click", () => {
+          const clickAudio = buttonSelect.cloneNode(true);
+          clickAudio.volume = 0.4;
+          clickAudio.play();
+    	});
+  	  }
+	}
+    
+//Uključivanje glavne teme
+    
     const soundEarth = document.getElementById("soundEarth");
     if (soundEarth) {
       soundEarth.volume = 0.1; 
     }
     const btnSound = document.getElementById("btnSound");
     const mainTheme = document.getElementById("mainTheme");
-    const buttonSelect = document.getElementById("buttonSelect");
+    
     if (btnSound && mainTheme) {
       btnSound.addEventListener("click", function () {
         mainTheme.play();
@@ -226,10 +231,6 @@ story.appendChild( addAgent( &#39;agent-jura&#39; ) );
      &lt;button id=&quot;btnSound&quot;&gt;🔇&lt;/button&gt;
   &lt;/div&gt;
   
-  &lt;audio id=&quot;buttonSelect&quot;&gt;
-  	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav&quot; type=&quot;audio/wav&quot;&gt;
-  &lt;/audio&gt;
- 
 
   &lt;audio loop id=&quot;mainTheme&quot; &gt;
     &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;

@@ -16,9 +16,20 @@ The Deathworlders
 
 
 :: \ Intro2 {"position":"1175,225","size":"100,100"}
-<tw-passage data-passage="Intro2" class="intro2-bg">
+<script>
+var story = document.getElementsByTagName( "tw-story" )[ 0 ];
 
-</tw-passage>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '50%';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+
+story.appendChild( addAgent( 'agenti' ) );
+</script>
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -35,20 +46,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 </audio>
   <p id="typing"></p>
   [[<button id="btnNext">Next</button> -> Intro2]]
-<script>
-var story = document.getElementsByTagName( "tw-story" )[ 0 ];
 
-function addAgent(name) {
-    const iframe = document.createElement('iframe');
-    iframe.width = '400';
-    iframe.height = '600';
-    iframe.src = `/${name}`;
-    return iframe;
-}
-
-
-story.appendChild( addAgent( 'agent-jura' ) );
-</script>
 
 </tw-passage>
 
@@ -192,7 +190,7 @@ tw-passage {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /*min-height: 100vh; zašto?*/
 }
 
 div {

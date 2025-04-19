@@ -17,19 +17,22 @@ The Deathworlders
 
 :: \ Intro2 {"position":"1175,225","size":"100,100"}
 <script>
-var story = document.getElementsByTagName( "tw-story" )[ 0 ];
-
 function addAgent(name) {
     const iframe = document.createElement('iframe');
-    iframe.width = '50%';
+    iframe.width = '500px';
     iframe.height = '500px';
     iframe.src = `/${name}`;
     return iframe;
 }
 
-
-story.appendChild( addAgent( 'agenti' ) );
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
+
+<div id="agent-container"></div>
+
+Who are you?
+Where are you from?
+Why come here?
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -191,6 +194,17 @@ tw-passage {
   justify-content: center;
   align-items: center;
   /*min-height: 100vh; zašto?*/
+  margin: 0;
+  padding: 0;
+}
+
+tw-story {
+  margin: 0;
+  padding: 0;
+}
+
+#agent-container + br {
+    display: none;
 }
 
 div {

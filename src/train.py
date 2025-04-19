@@ -48,7 +48,7 @@ def train(bot):
         '02'
     ])
     chatbot.train([
-        'Why did you come to Earth now?',
+        'Where are you from?',
         '02'
     ])
 
@@ -69,6 +69,10 @@ def train(bot):
     ])
     chatbot.train([
         'What does your king want?',
+        '03'
+    ])
+    chatbot.train([
+        'Why come here?',
         '03'
     ])
 

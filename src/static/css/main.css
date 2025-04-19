@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("https://dragon.foi.hr/jura/media/school.jpg");
+    /*background-image: url("https://dragon.foi.hr/jura/media/school.jpg");*/
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -12,7 +12,7 @@ body {
     justify-content: center;
     font-size: 100%;
     font-family: Permanent Marker;
-    background-color: #bbb4ab; /*#bbb4ab;*/
+    background-color: transparent; /*#bbb4ab;*/
 }
 
 #paper {

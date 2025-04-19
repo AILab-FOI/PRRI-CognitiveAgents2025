@@ -43,6 +43,17 @@ tw-passage {
   justify-content: center;
   align-items: center;
   /*min-height: 100vh; zašto?*/
+  margin: 0;
+  padding: 0;
+}
+
+tw-story {
+  margin: 0;
+  padding: 0;
+}
+
+#agent-container + br {
+    display: none;
 }
 
 div {
@@ -192,19 +203,22 @@ if (element) {
 
   observer.observe(document.body, { childList: true, subtree: true });
 }</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name=" Intro2" tags="" position="1175,225" size="100,100">&lt;script&gt;
-var story = document.getElementsByTagName( &quot;tw-story&quot; )[ 0 ];
-
 function addAgent(name) {
     const iframe = document.createElement(&#39;iframe&#39;);
-    iframe.width = &#39;50%&#39;;
+    iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;
     iframe.src = `/${name}`;
     return iframe;
 }
 
+document.getElementById(&#39;agent-container&#39;).appendChild( addAgent( &#39;agenti&#39; ) );
+&lt;/script&gt;
 
-story.appendChild( addAgent( &#39;agenti&#39; ) );
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
+&lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
+
+Who are you?
+Where are you from?
+Why come here?</tw-passagedata><tw-passagedata pid="2" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
 &lt;audio autoplay&gt;
 	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;

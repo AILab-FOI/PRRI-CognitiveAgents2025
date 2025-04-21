@@ -50,7 +50,7 @@ $(window).on('load', function () {
 		}
 		init();
 
-		button.onclick = () => {
+		
 			/* Ovo je dio za fullscreen
 			if (document.documentElement.requestFullscreen) {
 				document.documentElement.requestFullscreen();
@@ -71,7 +71,7 @@ $(window).on('load', function () {
 			if (isMobileBrowser()) {
 				document.getElementById('record').style.display = 'block';
 			}
-		};
+		
 	}
 
 	record.onclick = () => {
@@ -106,7 +106,8 @@ function connect() {
 		play_part('tisina');
 	};
 
-	//Nisam siguran ako nam ovo treba?!
+	//Q: Nisam siguran ako nam ovo treba?! 
+	//A:mozda bude korisno tokom debugiranja, nek zasad ostane
 	ws.onmessage = function (msg) {
 		console.log(msg.data);
 		console.log(msg.data.toString());

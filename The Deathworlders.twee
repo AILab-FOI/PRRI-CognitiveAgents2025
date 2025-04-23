@@ -15,10 +15,13 @@ The Deathworlders
 }
 
 
+
 :: \ Intro2 {"position":"1525,200","size":"100,100"}
+
 <tw-passage data-passage="Intro2" class="intro2-bg">
 
 <div id="agent-container"></div>
+
 
 <script>
 function addAgent(name) {
@@ -49,6 +52,7 @@ Why come here?
 
 <div id="agent-container"></div>
 
+
 <script>
 function addAgent(name) {
     const iframe = document.createElement('iframe');
@@ -69,10 +73,13 @@ We are suspicious of you.
 
  [[<button id="btnNextPassage">➤</button> -> Intro4]]
 
+
 </tw-passage>
 
 
+
 :: \ Intro4 {"position":"1950,200","size":"100,100"}
+
 <tw-passage data-passage="Intro3" class="intro2-bg">
 
 <div id="agent-container"></div>
@@ -90,6 +97,7 @@ document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
 
 
+
 <div class="options" id="op4">
 Who are you?
 Where are you from?
@@ -100,6 +108,7 @@ Are you friendly?
  [[<button id="btnNextPassage">➤</button> -> Intro4]]
 
 </tw-passage>
+
 
 
 :: \ IntroA {"position":"1100,225","size":"100,100"}
@@ -132,6 +141,7 @@ Vaš preglednik ne podržava HTML5 audio element.
   <p id="typingIntro3"></p>
   [[<button id="btnNextPassage">➤</button> -> Intro2]]
 </tw-passage>
+
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -353,6 +363,7 @@ mainObserver.observe(document.body, {
   height: 100%;
   position: fixed;
 }
+
 .introA-bg {
   background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/NewEurope.jpg") 
   no-repeat center center;
@@ -373,6 +384,7 @@ mainObserver.observe(document.body, {
   top: 0;
   left: 0;
 }
+
 
 tw-passage {
   display: flex;
@@ -519,4 +531,6 @@ p{
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 5px;
+
 }
+

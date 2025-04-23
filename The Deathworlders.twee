@@ -15,9 +15,7 @@ The Deathworlders
 }
 
 
-
 :: \ Intro2 {"position":"1525,200","size":"100,100"}
-
 <tw-passage data-passage="Intro2" class="intro2-bg">
 
 <div id="agent-container"></div>
@@ -77,9 +75,7 @@ We are suspicious of you.
 </tw-passage>
 
 
-
 :: \ Intro4 {"position":"1950,200","size":"100,100"}
-
 <tw-passage data-passage="Intro3" class="intro2-bg">
 
 <div id="agent-container"></div>
@@ -108,7 +104,6 @@ Are you friendly?
  [[<button id="btnNextPassage">➤</button> -> Intro4]]
 
 </tw-passage>
-
 
 
 :: \ IntroA {"position":"1100,225","size":"100,100"}
@@ -141,7 +136,6 @@ Vaš preglednik ne podržava HTML5 audio element.
   <p id="typingIntro3"></p>
   [[<button id="btnNextPassage">➤</button> -> Intro2]]
 </tw-passage>
-
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -223,18 +217,17 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
     soundEarth.volume = 0.1; 
   }
 
-  const buttons = document.getElementsByTagName("button");
+  const button = document.querySelector("button");
   const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
   
-  for (let button of Array.from(buttons)) {
-    if (button.id !== "btnSound") { 
+    if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
       button.addEventListener("click", () => {
         const clickAudio = buttonSelect.cloneNode(true);
-        clickAudio.volume = 0.4;
+        clickAudio.volume = 0.3;
         clickAudio.play();
       });
+      button.dataset.listenerAttached = "true";
     }
-  }
 
   const btnSound = document.getElementById("btnSound");
   const mainTheme = document.getElementById("mainTheme");
@@ -293,30 +286,6 @@ if (initialElement) {
   const soundEarth = document.getElementById("soundEarth");
   if (soundEarth) {
     soundEarth.volume = 0.1; 
-  }
-  
-  const buttons = document.getElementsByTagName("button");
-  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
-  
-  for (let button of Array.from(buttons)) {
-    if (button.id !== "btnSound") { 
-      button.addEventListener("click", () => {
-        const clickAudio = buttonSelect.cloneNode(true);
-        clickAudio.volume = 0.4;
-        clickAudio.play();
-      });
-    }
-  }
-  
-  const btnSound = document.getElementById("btnSound");
-  const mainTheme = document.getElementById("mainTheme");
-  if (btnSound && mainTheme) {
-    btnSound.addEventListener("click", function () {
-      mainTheme.play();
-      this.disabled = true;
-      this.innerText = "🔊";
-    });
-    mainTheme.volume = 0.85;
   }
 }
 
@@ -533,4 +502,3 @@ p{
   border-radius: 5px;
 
 }
-

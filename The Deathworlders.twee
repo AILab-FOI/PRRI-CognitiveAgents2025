@@ -15,9 +15,126 @@ The Deathworlders
 }
 
 
-:: \ Intro2 {"position":"1175,225","size":"100,100"}
+:: \ Intro2 {"position":"1525,200","size":"100,100"}
 <tw-passage data-passage="Intro2" class="intro2-bg">
 
+<div id="agent-container"></div>
+
+
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+
+<div class="options" id="op3">
+Who are you?
+Where are you from?
+Why come here?
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro3]]
+
+</tw-passage>
+
+
+:: \ Intro3 {"position":"1700,200","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+
+<div class="options" id="op2">
+Let's work together.
+We are suspicious of you.
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro4]]
+
+
+</tw-passage>
+
+
+:: \ Intro4 {"position":"1950,200","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+
+
+<div class="options" id="op4">
+Who are you?
+Where are you from?
+Why come here?
+Are you friendly?
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro4]]
+
+</tw-passage>
+
+
+:: \ IntroA {"position":"1100,225","size":"100,100"}
+<tw-passage data-passage="IntroA" class="introA-bg">
+<audio autoplay>
+	<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro2Naration.mp3
+" type="audio/mp3">
+Vaš preglednik ne podržava HTML5 audio element.
+</audio>
+
+<audio loop autoplay id="soundEarth">
+<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro2CitySounds.mp3" type="audio/mp3">
+</audio>
+  <p id="typingIntro2"></p>
+    [[<button id="btnNextPassage">➤</button> -> IntroB]]
+</tw-passage>
+
+
+:: \ IntroB {"position":"1300,225","size":"100,100"}
+<tw-passage data-passage="IntroB" class="introB-bg">
+<audio autoplay>
+	<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3.mp3
+" type="audio/mp3">
+Vaš preglednik ne podržava HTML5 audio element.
+</audio>
+
+<audio loop autoplay id="soundCorti">
+<source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3CortiShip.mp3" type="audio/mp3">
+</audio>
+  <p id="typingIntro3"></p>
+  [[<button id="btnNextPassage">➤</button> -> Intro2]]
 </tw-passage>
 
 
@@ -34,26 +151,13 @@ Vaš preglednik ne podržava HTML5 audio element.
 " type="audio/mp3">
 </audio>
   <p id="typing"></p>
-  [[<button id="btnNext">Next</button> -> Intro2]]
-<script>
-var story = document.getElementsByTagName( "tw-story" )[ 0 ];
+  [[<button id="btnNextPassage">➤</button> -> IntroA]]
 
-function addAgent(name) {
-    const iframe = document.createElement('iframe');
-    iframe.width = '400';
-    iframe.height = '600';
-    iframe.src = `/${name}`;
-    return iframe;
-}
-
-
-story.appendChild( addAgent( 'agent-jura' ) );
-</script>
 
 </tw-passage>
 
 
-:: Start [Start] {"position":"725,475","size":"100,100"}
+:: Start [Start] {"position":"675,425","size":"100,100"}
 <tw-passage data-passage="Start" class="start-bg">
 [
   <h1>Edge of Extinction</h1>
@@ -82,10 +186,7 @@ exit skripta
 
 
 :: StoryScript [script]
-//Postavljanje zvuka tipkanja
-console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
-
-function typeWriter(elementId, text, speed) {
+function typeWriter(elementId, text, speed, callback) {
   let i = 0;
   let element = document.getElementById(elementId);
 
@@ -94,69 +195,104 @@ function typeWriter(elementId, text, speed) {
     return; 
   }
 
-  element.innerHTML = ""; 
+  element.innerHTML = "";
 
   function writeText() {
     if (i < text.length) {
       element.innerHTML += text.charAt(i);
       i++;
       setTimeout(writeText, speed);
+    } else if (callback) {
+      callback();
     }
   }
 
   writeText();
 }
 
-const element = document.getElementById("typing");
-if (element) {
+const mainObserver = new MutationObserver((mutationsList, observer) => {
+ 
+  const soundEarth = document.getElementById("soundEarth");
+  if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
+
+  const button = document.querySelector("button");
+  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
+  
+    if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
+      button.addEventListener("click", () => {
+        const clickAudio = buttonSelect.cloneNode(true);
+        clickAudio.volume = 0.3;
+        clickAudio.play();
+      });
+      button.dataset.listenerAttached = "true";
+    }
+
+  const btnSound = document.getElementById("btnSound");
+  const mainTheme = document.getElementById("mainTheme");
+  if (btnSound && mainTheme) {
+    btnSound.addEventListener("click", function () {
+      mainTheme.play();
+      this.disabled = true;
+      this.innerText = "🔊";
+    });
+    mainTheme.volume = 0.85; 
+  }
+
+  const typingElement = document.getElementById("typing");
+  if (typingElement && !typingElement.dataset.typed) {
+    typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+    typingElement.dataset.typed = "true";
+  }
+
+  const typingIntro2Element = document.getElementById("typingIntro2");
+  if (typingIntro2Element && !typingIntro2Element.dataset.typed) {
+    const firstText = "The old nations no longer exist. After centuries of wars, economic collapses, and climate disasters, humanity is now united under a single government - the Global Federation. But true unity remains a distant dream.";
+    const secondText = "The Federation controls global politics, but not the hearts of its people. While the elite rule from their glass towers, resistance movements grow in the shadows. The world may have changed… but power still belongs to those who know how to wield it. In the heart of this new world stands 'New Europe' – a city of glass and steel, a symbol of progress and control.";
+    
+    typeWriter("typingIntro2", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingIntro2", secondText, 70);
+      }, 1000);
+    });
+    typingIntro2Element.dataset.typed = "true";
+  }
+
+  const typingIntro3Element = document.getElementById("typingIntro3");
+  if(typingIntro3Element && !typingIntro3Element.dataset.typed) {
+    const soundSpaceship = document.getElementById("soundCorti");
+    if (soundSpaceship) {
+      soundSpaceship.volume = 0.3;
+    }
+    
+    const firstText = "The Corti. Beings from the planet Mentis. Fragile, yet brilliant. Their technology far surpasses our own. They came in peace… or so they claim.";
+    const secondText = "To some, they are the key to survival. To others, potential conquerors.";
+    
+    typeWriter("typingIntro3", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingIntro3", secondText, 70);
+      }, 1000);
+    });
+    typingIntro3Element.dataset.typed = "true";
+  }
+});
+
+const initialElement = document.getElementById("typing");
+if (initialElement) {
   console.log("Element 'typing' je odmah dostupan.");
   typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
-} else {
-  const observer = new MutationObserver((mutationsList, observer) => {
-    const element = document.getElementById("typing");
 
-    if (element) {
-      console.log("Element 'typing' je sada dostupan.");
-      typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
-      observer.disconnect();  
-    }
-
-//Postavljanje zvuka gumbova
-
-	const buttons = document.getElementsByTagName("button");
-    const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav")
-    
-    for (let button of Array.from(buttons)) {
-       if (button.id !== "btnSound") { 
-        button.addEventListener("click", () => {
-          const clickAudio = buttonSelect.cloneNode(true);
-          clickAudio.volume = 0.4;
-          clickAudio.play();
-    	});
-  	  }
-	}
-    
-//Uključivanje glavne teme
-    
-    const soundEarth = document.getElementById("soundEarth");
-    if (soundEarth) {
-      soundEarth.volume = 0.1; 
-    }
-    const btnSound = document.getElementById("btnSound");
-    const mainTheme = document.getElementById("mainTheme");
-    
-    if (btnSound && mainTheme) {
-      btnSound.addEventListener("click", function () {
-        mainTheme.play();
-        this.disabled = true;
-        this.innerText = "🔊";
-      });
-      mainTheme.volume = 0.85;
-    }
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
+  const soundEarth = document.getElementById("soundEarth");
+  if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
 }
+
+mainObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});
 
 :: StoryStylesheet [stylesheet]
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
@@ -187,12 +323,51 @@ if (element) {
   height: 100vh;
 }
 
+.intro2-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor1.1.png") no-repeat center center;
+  background-size: 100% 100%; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.introA-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/NewEurope.jpg") 
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.introB-bg {
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/CortiShip.jpg')
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
 tw-passage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /*min-height: 100vh; zašto?*/
+  margin: 0;
+  padding: 0;
+}
+
+tw-story {
+  margin: 0;
+  padding: 0;
 }
 
 div {
@@ -267,4 +442,63 @@ p{
   box-shadow: none;
   padding: 5px 10px;
   transform: scale(1.5);
+}
+
+#agent-container {
+  width: 842px;
+  height: 595px;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+#agent-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.options {
+  position: absolute;
+  bottom: 2%;
+  left: 12.5%;
+  right: 12.5%;
+  width: 75%;
+  height: 22%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  color: white;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#op2 {
+  padding-bottom: 2.5em;
+  line-height: 2.2;
+}
+
+#op3 {
+  padding-bottom: 2.5em;
+  line-height: 1.8;
+}
+
+#op4 {
+  padding-bottom: 2em;
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+#btnNextPassage {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
+
 }

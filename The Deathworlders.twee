@@ -1,5 +1,5 @@
 :: StoryTitle
-The Deathworlders
+The Deathworlders OLD
 
 
 :: StoryData
@@ -15,7 +15,11 @@ The Deathworlders
 }
 
 
-:: \ Intro2 {"position":"1175,225","size":"100,100"}
+:: \ Intro2 {"position":"1125,225","size":"100,100"}
+<tw-passage data-passage="Intro2" class="intro2-bg">
+
+<div id="agent-container"></div>
+
 <script>
 function addAgent(name) {
     const iframe = document.createElement('iframe');
@@ -28,11 +32,74 @@ function addAgent(name) {
 document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
 
-<div id="agent-container"></div>
 
+<div class="options" id="op3">
 Who are you?
 Where are you from?
 Why come here?
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro3]]
+
+</tw-passage>
+
+
+:: \ Intro3 {"position":"1300,225","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+
+<div class="options" id="op2">
+Let's work together.
+We are suspicious of you.
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro4]]
+
+</tw-passage>
+
+
+:: \ Intro4 {"position":"1550,225","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+
+<div class="options" id="op4">
+Who are you?
+Where are you from?
+Why come here?
+Are you friendly?
+</div>
+
+ [[<button id="btnNextPassage">➤</button> -> Intro4]]
+
+</tw-passage>
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -54,7 +121,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 </tw-passage>
 
 
-:: Start [Start] {"position":"725,475","size":"100,100"}
+:: Start [Start] {"position":"675,425","size":"100,100"}
 <tw-passage data-passage="Start" class="start-bg">
 [
   <h1>Edge of Extinction</h1>
@@ -188,6 +255,16 @@ if (element) {
   height: 100vh;
 }
 
+.intro2-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor1.1.png") no-repeat center center;
+  background-size: 100% 100%; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
 tw-passage {
   display: flex;
   flex-direction: column;
@@ -201,10 +278,6 @@ tw-passage {
 tw-story {
   margin: 0;
   padding: 0;
-}
-
-#agent-container + br {
-    display: none;
 }
 
 div {
@@ -279,4 +352,62 @@ p{
   box-shadow: none;
   padding: 5px 10px;
   transform: scale(1.5);
+}
+
+#agent-container {
+  width: 842px;
+  height: 595px;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+#agent-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.options {
+  position: absolute;
+  bottom: 2%;
+  left: 12.5%;
+  right: 12.5%;
+  width: 75%;
+  height: 22%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  color: white;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#op2 {
+  padding-bottom: 2.5em;
+  line-height: 2.2;
+}
+
+#op3 {
+  padding-bottom: 2.5em;
+  line-height: 1.8;
+}
+
+#op4 {
+  padding-bottom: 2em;
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+#btnNextPassage {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
 }

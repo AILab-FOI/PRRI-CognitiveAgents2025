@@ -16,9 +16,23 @@ The Deathworlders
 
 
 :: \ Intro2 {"position":"1175,225","size":"100,100"}
-<tw-passage data-passage="Intro2" class="intro2-bg">
+<script>
+function addAgent(name) {
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    return iframe;
+}
 
-</tw-passage>
+document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
+</script>
+
+<div id="agent-container"></div>
+
+Who are you?
+Where are you from?
+Why come here?
 
 
 :: Intro1 {"position":"925,225","size":"100,100"}
@@ -35,20 +49,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 </audio>
   <p id="typing"></p>
   [[<button id="btnNext">Next</button> -> Intro2]]
-<script>
-var story = document.getElementsByTagName( "tw-story" )[ 0 ];
 
-function addAgent(name) {
-    const iframe = document.createElement('iframe');
-    iframe.width = '400';
-    iframe.height = '600';
-    iframe.src = `/${name}`;
-    return iframe;
-}
-
-
-story.appendChild( addAgent( 'agent-jura' ) );
-</script>
 
 </tw-passage>
 
@@ -63,7 +64,7 @@ story.appendChild( addAgent( 'agent-jura' ) );
     [[<button id="btnExit">EXIT</button> ->c]]
      <button id="btnSound">🔇</button>
   </div>
- 
+  
 
   <audio loop id="mainTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3" type="audio/mp3">
@@ -71,7 +72,6 @@ story.appendChild( addAgent( 'agent-jura' ) );
   </audio>
 ]
 </tw-passage>
-
 
 
 :: b {"position":"1000,475","size":"100,100"}
@@ -83,6 +83,7 @@ exit skripta
 
 
 :: StoryScript [script]
+//Postavljanje zvuka tipkanja
 console.log("Pokušavam pronaći element typing:", document.getElementById("typing"));
 
 function typeWriter(elementId, text, speed) {
@@ -121,25 +122,42 @@ if (element) {
       observer.disconnect();  
     }
 
+//Postavljanje zvuka gumbova
+
+	const buttons = document.getElementsByTagName("button");
+    const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav")
+    
+    for (let button of Array.from(buttons)) {
+       if (button.id !== "btnSound") { 
+        button.addEventListener("click", () => {
+          const clickAudio = buttonSelect.cloneNode(true);
+          clickAudio.volume = 0.4;
+          clickAudio.play();
+    	});
+  	  }
+	}
+    
+//Uključivanje glavne teme
+    
     const soundEarth = document.getElementById("soundEarth");
     if (soundEarth) {
       soundEarth.volume = 0.1; 
     }
     const btnSound = document.getElementById("btnSound");
     const mainTheme = document.getElementById("mainTheme");
+    
     if (btnSound && mainTheme) {
       btnSound.addEventListener("click", function () {
         mainTheme.play();
         this.disabled = true;
         this.innerText = "🔊";
       });
-      mainTheme.volume = 1;
+      mainTheme.volume = 0.85;
     }
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
 }
-
 
 :: StoryStylesheet [stylesheet]
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
@@ -175,7 +193,18 @@ tw-passage {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /*min-height: 100vh; zašto?*/
+  margin: 0;
+  padding: 0;
+}
+
+tw-story {
+  margin: 0;
+  padding: 0;
+}
+
+#agent-container + br {
+    display: none;
 }
 
 div {

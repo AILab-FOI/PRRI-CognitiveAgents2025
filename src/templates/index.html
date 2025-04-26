@@ -394,10 +394,27 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
       }, 1000);
     });
     typingFederation4Element.dataset.typed = "true";
+  }  
+  
+   const newEuropeTheme = document.getElementById("newEuropeTheme");
+    if (newEuropeTheme) {
+      newEuropeTheme.volume = 0.7;
+
+      newEuropeTheme.addEventListener("loadedmetadata", () => {
+      if (typingFederation1Element) {
+        newEuropeTheme.currentTime = 0;
+      } else if (typingFederation2Element) {
+        newEuropeTheme.currentTime = 28;
+      } else if (typingFederation3Element) {
+        newEuropeTheme.currentTime = 50;
+      } else if (typingFederation4Element) {
+        newEuropeTheme.currentTime = 70;
+      }
+
+      newEuropeTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
+    });
   }
 
-
-  
 });
 
 const initialElement = document.getElementById("typing");
@@ -416,9 +433,14 @@ mainObserver.observe(document.body, {
   subtree: true
 });</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name=" Federacija1" tags="" position="1225,550" size="100,100">&lt;tw-passage data-passage=&quot;Federacija1&quot; class=&quot;federacija1-bg&quot;&gt;
 
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
   &lt;p id=&quot;typingFederation1&quot;&gt;&lt;/p&gt;
-  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Federacija2]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name=" Federacija2" tags="" position="1400,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija2&quot; class=&quot;federacija1-bg&quot;&gt;
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Federacija2]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name="Federacija2" tags="" position="1400,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija2&quot; class=&quot;federacija1-bg&quot;&gt;
 
   [[&lt;button class=&quot;gumbiOdabir1&quot; id=&quot;prviOdabir&quot;&gt;(Skeptical) “I don’t trust their intentions. They’re hiding too much.”&lt;/button&gt; -&gt; Odabir1]]
   [[&lt;button class=&quot;gumbiOdabir1&quot;&gt;(Neutral) “They haven’t shown hostility, but they’re not being fully open either. We need to be cautious.”&lt;/button&gt; -&gt; Odabir2]]
@@ -527,13 +549,28 @@ Vaš preglednik ne podržava HTML5 audio element.
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Federacija1]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="8" name=" Odabir1" tags="" position="1550,425" size="100,100">&lt;tw-passage data-passage=&quot;federacija3&quot; class=&quot;federacija1-bg&quot;&gt;
 
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
   &lt;p id=&quot;typingFederation2&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="9" name=" Odabir2" tags="" position="1650,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
 
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
   &lt;p id=&quot;typingFederation3&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="10" name=" Odabir3" tags="" position="1550,700" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
 
   &lt;p id=&quot;typingFederation4&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]

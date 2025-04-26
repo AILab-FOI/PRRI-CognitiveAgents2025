@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+ <html>
+ 
+ <head>
+   <title>Kognitivni agent</title>
+   {% include 'header.html' %}
+   <script src="{{ url_for('static', filename='js/agent.js') }}"></script>
+ </head>
+ 
+ <body>
+   <div id="paper">
+     <div id="notSupported" style="display:none">
+       Sorry, Firefox is not supported. Please use Chrome, Edge, Opera, Safari or Samsung browser.
+     </div>
+ 
+     <div class="video-container">
+       <video class="video" id="agent" preload="true">
+         <source src="{{ url_for('static', filename='media/video.mp4') }}" type="video/mp4">
+       </video>
+     </div>
+ 
+     <center>
+       <div id="output"> </div>
+     </center>
+     <br />
+     <center>
+       <button class="button" id="record" style="display:none">Snimi pitanje!</button>
+       <br />
+     </center>
+     <br />
+     <div id="startupute">
+       <center>
+         <button class="button" id="start">Pokreni!</button>
+         <br />
+         <br />
+         <br />
+       </center>
+     </div>
+ 
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <div id="upute">
+     </div>
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+ 
+     {% include 'footer.html' %}
+   </div>
+ </body>
+ 
+ </html>

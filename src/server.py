@@ -13,9 +13,9 @@ app = Flask( __name__, static_folder='static' )
 def home():
     return render_template( 'index.html' )
 
-@app.route( '/agent-jura' )
-def agent_jura():
-    return render_template( 'jura.html' )
+@app.route( '/agenti' )
+def agenti():
+    return render_template( 'agenti.html' )
 
 @app.errorhandler( 404 )
 def page_not_found( e ):

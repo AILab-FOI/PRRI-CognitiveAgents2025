@@ -9,42 +9,453 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Deathworlders.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Deathworlders" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="E0CAAF59-1572-4BC1-90B0-3DC4E5124F34" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Intro" tags="" position="675,275" size="100,100">You are in a [[classroom-&gt;Classroom]]. It looks quite dull. A wild cognitive agent appears ...
+<tw-storydata name="The Deathworlders" startnode="7" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+
+.start-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/probna_slika2.jpg") 
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.intro-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Flux_Dev_A_breathtaking_view_of_Earth_from_space_showcasing_ou_1.jpeg") 
+  no-repeat center center;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.intro2-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor1.1.png") no-repeat center center;
+  background-size: 100% 100%; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.introA-bg {
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/NewEurope.jpg") 
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.introB-bg {
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/CortiShip.jpg')
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+tw-passage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*min-height: 100vh; zašto?*/
+  margin: 0;
+  padding: 0;
+}
+
+tw-story {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.494); 
+  padding: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 2);
+  margin-top: auto;
+  width: auto;  
+  align-items: center;
+}
+
+button {
+  font-family: "Iceland", sans-serif;
+  background-color: transparent;
+  border: transparent;
+  color: #c0fbff;
+  font-size: 1em;
+  padding: 10px 60px;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+h1 {
+  margin-top: 0.5em;
+  font-family: "Iceberg", sans-serif;
+  font-size: 3em;
+  text-shadow: 2px 2px 5px #94f4fa;
+  color: black;
+  opacity: 1;
+  animation: shadowGrow 2s ease-out;
+  margin: 2em 0 2em 0;
+}
+
+@keyframes shadowGrow {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 10px #94f3fa6b;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 5px #94f4fa;
+  }
+}
+
+button:hover {
+  color: #c3f3ef;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.76);
+  cursor: pointer;
+}
+p{
+  font-family: "Iceland", sans-serif;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.394);
+  letter-spacing: 2px;
+  margin-top: auto;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+}
+#btnSound{
+  padding: 5px 10px;
+  align-self: center;
+}
+#btnSound:hover{
+  box-shadow: none;
+  padding: 5px 10px;
+  transform: scale(1.5);
+}
+
+#agent-container {
+  width: 842px;
+  height: 595px;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+#agent-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.options {
+  position: absolute;
+  bottom: 2%;
+  left: 12.5%;
+  right: 12.5%;
+  width: 75%;
+  height: 22%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  color: white;
+  font-size: 1.2em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#op2 {
+  padding-bottom: 2.5em;
+  line-height: 2.2;
+}
+
+#op3 {
+  padding-bottom: 2.5em;
+  line-height: 1.8;
+}
+
+#op4 {
+  padding-bottom: 2em;
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+#btnNextPassage {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
+
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">function typeWriter(elementId, text, speed, callback) {
+  let i = 0;
+  let element = document.getElementById(elementId);
+
+  if (!element) {
+    console.error(`Element s ID-jem "${elementId}" nije pronađen.`);
+    return; 
+  }
+
+  element.innerHTML = "";
+
+  function writeText() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(writeText, speed);
+    } else if (callback) {
+      callback();
+    }
+  }
+
+  writeText();
+}
+
+const mainObserver = new MutationObserver((mutationsList, observer) => {
+ 
+  const soundEarth = document.getElementById("soundEarth");
+  if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
+
+  const button = document.querySelector("button");
+  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
+  
+    if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
+      button.addEventListener("click", () => {
+        const clickAudio = buttonSelect.cloneNode(true);
+        clickAudio.volume = 0.3;
+        clickAudio.play();
+      });
+      button.dataset.listenerAttached = "true";
+    }
+
+  const btnSound = document.getElementById("btnSound");
+  const mainTheme = document.getElementById("mainTheme");
+  if (btnSound && mainTheme) {
+    btnSound.addEventListener("click", function () {
+      mainTheme.play();
+      this.disabled = true;
+      this.innerText = "🔊";
+    });
+    mainTheme.volume = 0.85; 
+  }
+
+  const typingElement = document.getElementById("typing");
+  if (typingElement && !typingElement.dataset.typed) {
+    typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+    typingElement.dataset.typed = "true";
+  }
+
+  const typingIntro2Element = document.getElementById("typingIntro2");
+  if (typingIntro2Element && !typingIntro2Element.dataset.typed) {
+    const firstText = "The old nations no longer exist. After centuries of wars, economic collapses, and climate disasters, humanity is now united under a single government - the Global Federation. But true unity remains a distant dream.";
+    const secondText = "The Federation controls global politics, but not the hearts of its people. While the elite rule from their glass towers, resistance movements grow in the shadows. The world may have changed… but power still belongs to those who know how to wield it. In the heart of this new world stands 'New Europe' – a city of glass and steel, a symbol of progress and control.";
+    
+    typeWriter("typingIntro2", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingIntro2", secondText, 70);
+      }, 1000);
+    });
+    typingIntro2Element.dataset.typed = "true";
+  }
+
+  const typingIntro3Element = document.getElementById("typingIntro3");
+  if(typingIntro3Element && !typingIntro3Element.dataset.typed) {
+    const soundSpaceship = document.getElementById("soundCorti");
+    if (soundSpaceship) {
+      soundSpaceship.volume = 0.3;
+    }
+    
+    const firstText = "The Corti. Beings from the planet Mentis. Fragile, yet brilliant. Their technology far surpasses our own. They came in peace… or so they claim.";
+    const secondText = "To some, they are the key to survival. To others, potential conquerors.";
+    
+    typeWriter("typingIntro3", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingIntro3", secondText, 70);
+      }, 1000);
+    });
+    typingIntro3Element.dataset.typed = "true";
+  }
+});
+
+const initialElement = document.getElementById("typing");
+if (initialElement) {
+  console.log("Element 'typing' je odmah dostupan.");
+  typeWriter("typing", "The year is 2367. The twenty-fourth century has brought humanity technological advancements once thought impossible. We colonized the Moon. Built orbital cities. Established artificial ecosystems in space.Yet on Earth… the same problems remain.", 70);
+
+  const soundEarth = document.getElementById("soundEarth");
+  if (soundEarth) {
+    soundEarth.volume = 0.1; 
+  }
+}
+
+mainObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name=" Intro2" tags="" position="1525,200" size="100,100">&lt;tw-passage data-passage=&quot;Intro2&quot; class=&quot;intro2-bg&quot;&gt;
+
+&lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
+
 
 &lt;script&gt;
-
-var story = document.getElementsByTagName( &quot;tw-story&quot; )[ 0 ];
-story.style.color = &quot;lime&quot;;
-
-
 function addAgent(name) {
     const iframe = document.createElement(&#39;iframe&#39;);
-    iframe.width = &#39;400&#39;;
-    iframe.height = &#39;600&#39;;
+    iframe.width = &#39;500px&#39;;
+    iframe.height = &#39;500px&#39;;
     iframe.src = `/${name}`;
     return iframe;
 }
 
+document.getElementById(&#39;agent-container&#39;).appendChild( addAgent( &#39;agenti&#39; ) );
+&lt;/script&gt;
 
-story.appendChild( addAgent( &#39;agent-jura&#39; ) );
+
+&lt;div class=&quot;options&quot; id=&quot;op3&quot;&gt;
+Who are you?
+Where are you from?
+Why come here?
+&lt;/div&gt;
+
+ [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro3]]
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name=" Intro3" tags="" position="1700,200" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
+
+&lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-setTimeout( () =&gt; {
-	var elem = document.getElementsByTagName( &quot;tw-story&quot; );
-	elem[ 0 ].style.color  = &quot;white&quot;;
-}, &quot;1000&quot; );
+&lt;script&gt;
+function addAgent(name) {
+    const iframe = document.createElement(&#39;iframe&#39;);
+    iframe.width = &#39;500px&#39;;
+    iframe.height = &#39;500px&#39;;
+    iframe.src = `/${name}`;
+    return iframe;
+}
 
-setTimeout( () =&gt; {
-	var elem = document.getElementsByTagName( &quot;tw-story&quot; );
-	elem[ 0 ].style.color  = &quot;red&quot;;
-}, &quot;2000&quot; );
+document.getElementById(&#39;agent-container&#39;).appendChild( addAgent( &#39;agenti&#39; ) );
+&lt;/script&gt;
 
-setTimeout( () =&gt; {
-	var elem = document.getElementsByTagName( &quot;tw-story&quot; );
-	elem[ 0 ].style.color  = &quot;white&quot;;
-}, &quot;3000&quot; );
 
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="Classroom" tags="" position="675,400" size="100,100">What are you doing here? Go [[back-&gt;Intro]]!!!</tw-passagedata></tw-storydata>
+&lt;div class=&quot;options&quot; id=&quot;op2&quot;&gt;
+Let&#39;s work together.
+We are suspicious of you.
+&lt;/div&gt;
+
+ [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro4]]
+
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="3" name=" Intro4" tags="" position="1950,200" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
+
+&lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+function addAgent(name) {
+    const iframe = document.createElement(&#39;iframe&#39;);
+    iframe.width = &#39;500px&#39;;
+    iframe.height = &#39;500px&#39;;
+    iframe.src = `/${name}`;
+    return iframe;
+}
+
+document.getElementById(&#39;agent-container&#39;).appendChild( addAgent( &#39;agenti&#39; ) );
+&lt;/script&gt;
+
+
+
+&lt;div class=&quot;options&quot; id=&quot;op4&quot;&gt;
+Who are you?
+Where are you from?
+Why come here?
+Are you friendly?
+&lt;/div&gt;
+
+ [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro4]]
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="4" name=" IntroA" tags="" position="1100,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroA&quot; class=&quot;introA-bg&quot;&gt;
+&lt;audio autoplay&gt;
+	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro2Naration.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+Vaš preglednik ne podržava HTML5 audio element.
+&lt;/audio&gt;
+
+&lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
+&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro2CitySounds.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;
+  &lt;p id=&quot;typingIntro2&quot;&gt;&lt;/p&gt;
+    [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroB]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="5" name=" IntroB" tags="" position="1300,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroB&quot; class=&quot;introB-bg&quot;&gt;
+&lt;audio autoplay&gt;
+	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+Vaš preglednik ne podržava HTML5 audio element.
+&lt;/audio&gt;
+
+&lt;audio loop autoplay id=&quot;soundCorti&quot;&gt;
+&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3CortiShip.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;
+  &lt;p id=&quot;typingIntro3&quot;&gt;&lt;/p&gt;
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="6" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
+&lt;audio autoplay&gt;
+	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+Vaš preglednik ne podržava HTML5 audio element.
+&lt;/audio&gt;
+
+&lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
+&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroSoundOfEarth.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;
+  &lt;p id=&quot;typing&quot;&gt;&lt;/p&gt;
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroA]]
+
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="7" name="Start" tags="Start" position="675,425" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
+[
+  &lt;h1&gt;Edge of Extinction&lt;/h1&gt;
+  &lt;div&gt;
+    [[&lt;button id=&quot;btnNewGame&quot;&gt;NEW GAME&lt;/button&gt; -&gt;Intro1]]
+    [[&lt;button id=&quot;btnOptions&quot;&gt;OPTIONS&lt;/button&gt; -&gt;b]]
+    [[&lt;button id=&quot;btnExit&quot;&gt;EXIT&lt;/button&gt; -&gt;c]]
+     &lt;button id=&quot;btnSound&quot;&gt;🔇&lt;/button&gt;
+  &lt;/div&gt;
+  
+
+  &lt;audio loop id=&quot;mainTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="8" name="b" tags="" position="1000,475" size="100,100">Opcije</tw-passagedata><tw-passagedata pid="9" name="c" tags="" position="900,750" size="100,100">exit skripta</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

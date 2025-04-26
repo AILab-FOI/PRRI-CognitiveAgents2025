@@ -15,11 +15,27 @@ The Deathworlders
 }
 
 
-:: \ Intro2 {"position":"1525,200","size":"100,100"}
+:: \ Federacija1 {"position":"1225,550","size":"100,100"}
+<tw-passage data-passage="Federacija1" class="federacija1-bg">
+
+  <p id="typingFederation1"></p>
+  [[<button id="btnNextPassage">➤</button> -> Federacija2]]
+</tw-passage>
+
+
+:: \ Federacija2 {"position":"1400,550","size":"100,100"}
+<tw-passage data-passage="federacija2" class="federacija1-bg">
+
+  [[<button class="gumbiOdabir1" id="prviOdabir">(Skeptical) “I don’t trust their intentions. They’re hiding too much.”</button> -> Odabir1]]
+  [[<button class="gumbiOdabir1">(Neutral) “They haven’t shown hostility, but they’re not being fully open either. We need to be cautious.”</button> -> Odabir2]]
+  [[<button class="gumbiOdabir1">(Optimistic) “Maybe they genuinely don’t seek domination. They could be allies.”</button> -> Odabir3]]
+</tw-passage>
+
+
+:: \ Intro2 {"position":"1550,225","size":"100,100"}
 <tw-passage data-passage="Intro2" class="intro2-bg">
 
 <div id="agent-container"></div>
-
 
 <script>
 function addAgent(name) {
@@ -45,11 +61,11 @@ Why come here?
 </tw-passage>
 
 
-:: \ Intro3 {"position":"1700,200","size":"100,100"}
+:: \ Intro3 {"position":"1725,225","size":"100,100"}
 <tw-passage data-passage="Intro3" class="intro2-bg">
 
-<div id="agent-container"></div>
 
+<div id="agent-container"></div>
 
 <script>
 function addAgent(name) {
@@ -71,12 +87,12 @@ We are suspicious of you.
 
  [[<button id="btnNextPassage">➤</button> -> Intro4]]
 
-
 </tw-passage>
 
 
 :: \ Intro4 {"position":"1950,200","size":"100,100"}
 <tw-passage data-passage="Intro3" class="intro2-bg">
+
 
 <div id="agent-container"></div>
 
@@ -93,7 +109,6 @@ document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
 
 
-
 <div class="options" id="op4">
 Who are you?
 Where are you from?
@@ -102,6 +117,7 @@ Are you friendly?
 </div>
 
  [[<button id="btnNextPassage">➤</button> -> Intro4]]
+
 
 </tw-passage>
 
@@ -134,6 +150,30 @@ Vaš preglednik ne podržava HTML5 audio element.
 <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3CortiShip.mp3" type="audio/mp3">
 </audio>
   <p id="typingIntro3"></p>
+  [[<button id="btnNextPassage">➤</button> -> Federacija1]]
+</tw-passage>
+
+
+:: \ Odabir1 {"position":"1550,425","size":"100,100"}
+<tw-passage data-passage="federacija3" class="federacija1-bg">
+
+  <p id="typingFederation2"></p>
+  [[<button id="btnNextPassage">➤</button> -> Intro2]]
+</tw-passage>
+
+
+:: \ Odabir2 {"position":"1650,550","size":"100,100"}
+<tw-passage data-passage="federacija4" class="federacija1-bg">
+
+  <p id="typingFederation3"></p>
+  [[<button id="btnNextPassage">➤</button> -> Intro2]]
+</tw-passage>
+
+
+:: \ Odabir3 {"position":"1550,700","size":"100,100"}
+<tw-passage data-passage="federacija4" class="federacija1-bg">
+
+  <p id="typingFederation4"></p>
   [[<button id="btnNextPassage">➤</button> -> Intro2]]
 </tw-passage>
 
@@ -217,17 +257,18 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
     soundEarth.volume = 0.1; 
   }
 
-  const button = document.querySelector("button");
+  const buttons = document.getElementsByTagName("button");
   const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
   
-    if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
+  for (let button of Array.from(buttons)) {
+    if (button.id !== "btnSound") { 
       button.addEventListener("click", () => {
         const clickAudio = buttonSelect.cloneNode(true);
-        clickAudio.volume = 0.3;
+        clickAudio.volume = 0.4;
         clickAudio.play();
       });
-      button.dataset.listenerAttached = "true";
     }
+  }
 
   const btnSound = document.getElementById("btnSound");
   const mainTheme = document.getElementById("mainTheme");
@@ -276,6 +317,77 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
     });
     typingIntro3Element.dataset.typed = "true";
   }
+  
+  const typingFederation1Element = document.getElementById("typingFederation1");
+
+  if (typingFederation1Element && !typingFederation1Element.dataset.typed) {
+    const prviTekst = 'PRESIDENT HALE:\n“Three months. And we still don’t know what the Corti really want.”';
+    const drugiTekst = 'GENERAL SMITH:\n“They could have attacked us, but they haven’t. That means something.”';
+    const treciTekst = 'DR. JOHNSON:\n“Or they’re just waiting for the right moment.”';
+    const cetvrtiTekst = 'PRESIDENT HALE:\n“What’s your take?”';
+
+    const dialogues = [prviTekst, drugiTekst, treciTekst, cetvrtiTekst];
+
+    const typeWriters = (elementId, index, speed) => {
+      if (index >= dialogues.length) return;
+
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      element.innerText = ""; // Clear previous text
+
+      typeWriter(elementId, dialogues[index], speed, () => {
+        setTimeout(() => {
+          typeWriters(elementId, index + 1, speed);
+        }, 1500); // Pauza prije sljedećeg govornika
+      });
+    };
+
+    typeWriters("typingFederation1", 0, 70);
+    typingFederation1Element.dataset.typed = "true";
+  }
+
+  const typingFederation2Element = document.getElementById("typingFederation2");
+  if(typingFederation2Element && !typingFederation2Element.dataset.typed) {
+    const firstText = 'DR. JOHNSON: “Exactly. We have to assume the worst until they prove otherwise.”';
+    const secondText = 'PRESIDENT HALE: “Even so, we need more information. We’ll arrange a meeting with them.”';
+    
+    typeWriter("typingFederation2", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation2", secondText, 70);
+      }, 1000);
+    });
+    typingFederation2Element.dataset.typed = "true";
+  }
+  
+  const typingFederation3Element = document.getElementById("typingFederation3");
+  if(typingFederation3Element && !typingFederation3Element.dataset.typed) {
+    const firstText = 'GENERAL SMITH: “Caution is key. We can’t push them away, but we can’t blindly trust them either.”';
+    const secondText = 'PRESIDENT HALE: “Agreed. We need to monitor every move they make.”';
+    
+    typeWriter("typingFederation3", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation3", secondText, 70);
+      }, 1000);
+    });
+    typingFederation3Element.dataset.typed = "true";
+  }
+  
+  const typingFederation4Element = document.getElementById("typingFederation4");
+  if(typingFederation4Element && !typingFederation4Element.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “That’s possible. But we need proof, not assumptions.”';
+    const secondText = 'DR. JOHNSON: “Which is why we’ll continue analyzing their technology.”';
+    
+    typeWriter("typingFederation4", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation4", secondText, 70);
+      }, 1000);
+    });
+    typingFederation4Element.dataset.typed = "true";
+  }
+
+
+  
 });
 
 const initialElement = document.getElementById("typing");
@@ -286,6 +398,30 @@ if (initialElement) {
   const soundEarth = document.getElementById("soundEarth");
   if (soundEarth) {
     soundEarth.volume = 0.1; 
+  }
+  
+  const buttons = document.getElementsByTagName("button");
+  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
+  
+  for (let button of Array.from(buttons)) {
+    if (button.id !== "btnSound") { 
+      button.addEventListener("click", () => {
+        const clickAudio = buttonSelect.cloneNode(true);
+        clickAudio.volume = 0.4;
+        clickAudio.play();
+      });
+    }
+  }
+  
+  const btnSound = document.getElementById("btnSound");
+  const mainTheme = document.getElementById("mainTheme");
+  if (btnSound && mainTheme) {
+    btnSound.addEventListener("click", function () {
+      mainTheme.play();
+      this.disabled = true;
+      this.innerText = "🔊";
+    });
+    mainTheme.volume = 0.85;
   }
 }
 
@@ -352,6 +488,24 @@ mainObserver.observe(document.body, {
   position: fixed;
   top: 0;
   left: 0;
+}
+.federacija1-bg {
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/roundTableFederation.jpg')
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.gumbiOdabir1 {
+  font-family: "Iceland", sans-serif;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -500,5 +654,8 @@ p{
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 5px;
+}
 
+#prviOdabir {
+  margin-top:80%;
 }

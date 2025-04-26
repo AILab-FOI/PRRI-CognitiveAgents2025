@@ -20,7 +20,7 @@ $(window).on('load', function () {
 		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 		var init = function () {
-			recognition = new SpeechRecognition();
+			recognition = new SpeechRecognition(); 
 
 			window.recognition = recognition;
 
@@ -49,29 +49,6 @@ $(window).on('load', function () {
 			};
 		}
 		init();
-
-		button.onclick = () => {
-			/* Ovo je dio za fullscreen
-			if (document.documentElement.requestFullscreen) {
-				document.documentElement.requestFullscreen();
-			} else if (document.documentElement.mozRequestFullScreen) { // Firefox
-				document.documentElement.mozRequestFullScreen();
-			} else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
-				document.documentElement.webkitRequestFullscreen();
-			} else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-				document.documentElement.msRequestFullscreen();
-			}*/
-			document.querySelector('.video-container').style.display = 'block';
-			if (!isMobileBrowser())
-				recognition.start();
-			document.getElementById('startupute').style.display = 'none';
-			document.getElementById('questions').style.display = 'block';
-			play_part('tisina');
-			question('bok');
-			if (isMobileBrowser()) {
-				document.getElementById('record').style.display = 'block';
-			}
-		};
 	}
 
 	record.onclick = () => {
@@ -94,6 +71,28 @@ $(window).on('load', function () {
 	$('#agent')[0].loadedmetadata = function () {
 		DONT = false;
 		play_part('tisina');
+	}
+	//AUTo PLAY
+
+	/* Ovo je dio za fullscreen
+	if (document.documentElement.requestFullscreen) {
+		document.documentElement.requestFullscreen();
+	} else if (document.documentElement.mozRequestFullScreen) { // Firefox
+		document.documentElement.mozRequestFullScreen();
+	} else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+		document.documentElement.webkitRequestFullscreen();
+	} else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+		document.documentElement.msRequestFullscreen();
+	}*/
+	document.querySelector('.video-container').style.display = 'block';
+	if (!isMobileBrowser())
+		recognition.start();
+	document.getElementById('startupute').style.display = 'none';
+	document.getElementById('questions').style.display = 'block';
+	play_part('tisina');
+	question('bok');
+	if (isMobileBrowser()) {
+		document.getElementById('record').style.display = 'block';
 	}
 });
 

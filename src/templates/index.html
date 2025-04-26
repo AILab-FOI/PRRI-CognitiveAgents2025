@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Deathworlders.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Deathworlders" startnode="3" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+<tw-storydata name="The Deathworlders" startnode="12" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
 
 .start-bg {
@@ -236,9 +236,7 @@ p{
 
 #prviOdabir {
   margin-top:80%;
-}
-
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">function typeWriter(elementId, text, speed, callback) {
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">function typeWriter(elementId, text, speed, callback) {
   let i = 0;
   let element = document.getElementById(elementId);
 
@@ -269,18 +267,18 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
     soundEarth.volume = 0.1; 
   }
 
-  const buttons = document.getElementsByTagName("button");
+  const button = document.querySelector("button");
   const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
   
-  for (let button of Array.from(buttons)) {
-    if (button.id !== "btnSound") { 
-      button.addEventListener("click", () => {
-        const clickAudio = buttonSelect.cloneNode(true);
-        clickAudio.volume = 0.4;
-        clickAudio.play();
-      });
-    }
-  }
+   if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
+     button.addEventListener("click", () => {
+       const clickAudio = buttonSelect.cloneNode(true);
+       clickAudio.volume = 0.3;
+       clickAudio.play();
+     });
+     button.dataset.listenerAttached = "true";
+   }
+
 
   const btnSound = document.getElementById("btnSound");
   const mainTheme = document.getElementById("mainTheme");
@@ -396,10 +394,27 @@ const mainObserver = new MutationObserver((mutationsList, observer) => {
       }, 1000);
     });
     typingFederation4Element.dataset.typed = "true";
+  }  
+  
+   const newEuropeTheme = document.getElementById("newEuropeTheme");
+    if (newEuropeTheme) {
+      newEuropeTheme.volume = 0.7;
+
+      newEuropeTheme.addEventListener("loadedmetadata", () => {
+      if (typingFederation1Element) {
+        newEuropeTheme.currentTime = 0;
+      } else if (typingFederation2Element) {
+        newEuropeTheme.currentTime = 28;
+      } else if (typingFederation3Element) {
+        newEuropeTheme.currentTime = 50;
+      } else if (typingFederation4Element) {
+        newEuropeTheme.currentTime = 70;
+      }
+
+      newEuropeTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
+    });
   }
 
-
-  
 });
 
 const initialElement = document.getElementById("typing");
@@ -411,36 +426,26 @@ if (initialElement) {
   if (soundEarth) {
     soundEarth.volume = 0.1; 
   }
-  
-  const buttons = document.getElementsByTagName("button");
-  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
-  
-  for (let button of Array.from(buttons)) {
-    if (button.id !== "btnSound") { 
-      button.addEventListener("click", () => {
-        const clickAudio = buttonSelect.cloneNode(true);
-        clickAudio.volume = 0.4;
-        clickAudio.play();
-      });
-    }
-  }
-  
-  const btnSound = document.getElementById("btnSound");
-  const mainTheme = document.getElementById("mainTheme");
-  if (btnSound && mainTheme) {
-    btnSound.addEventListener("click", function () {
-      mainTheme.play();
-      this.disabled = true;
-      this.innerText = "🔊";
-    });
-    mainTheme.volume = 0.85;
-  }
 }
 
 mainObserver.observe(document.body, {
   childList: true,
   subtree: true
-});</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name=" Intro2" tags="" position="1550,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro2&quot; class=&quot;intro2-bg&quot;&gt;
+});</script><tw-tag name="Start" color="red"></tw-tag><tw-passagedata pid="1" name=" Federacija1" tags="" position="1225,550" size="100,100">&lt;tw-passage data-passage=&quot;Federacija1&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation1&quot;&gt;&lt;/p&gt;
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Federacija2]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name="Federacija2" tags="" position="1400,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija2&quot; class=&quot;federacija1-bg&quot;&gt;
+
+  [[&lt;button class=&quot;gumbiOdabir1&quot; id=&quot;prviOdabir&quot;&gt;(Skeptical) “I don’t trust their intentions. They’re hiding too much.”&lt;/button&gt; -&gt; Odabir1]]
+  [[&lt;button class=&quot;gumbiOdabir1&quot;&gt;(Neutral) “They haven’t shown hostility, but they’re not being fully open either. We need to be cautious.”&lt;/button&gt; -&gt; Odabir2]]
+  [[&lt;button class=&quot;gumbiOdabir1&quot;&gt;(Optimistic) “Maybe they genuinely don’t seek domination. They could be allies.”&lt;/button&gt; -&gt; Odabir3]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="3" name=" Intro2" tags="" position="1550,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro2&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
@@ -465,38 +470,7 @@ Why come here?
 
  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro3]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
-&lt;audio autoplay&gt;
-	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
-&quot; type=&quot;audio/mp3&quot;&gt;
-Vaš preglednik ne podržava HTML5 audio element.
-&lt;/audio&gt;
-
-&lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
-&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroSoundOfEarth.mp3
-&quot; type=&quot;audio/mp3&quot;&gt;
-&lt;/audio&gt;
-  &lt;p id=&quot;typing&quot;&gt;&lt;/p&gt;
-  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroA]]
-
-
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="3" name="Start" tags="Start" position="675,425" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
-[
-  &lt;h1&gt;Edge of Extinction&lt;/h1&gt;
-  &lt;div&gt;
-    [[&lt;button id=&quot;btnNewGame&quot;&gt;NEW GAME&lt;/button&gt; -&gt;Intro1]]
-    [[&lt;button id=&quot;btnOptions&quot;&gt;OPTIONS&lt;/button&gt; -&gt;b]]
-    [[&lt;button id=&quot;btnExit&quot;&gt;EXIT&lt;/button&gt; -&gt;c]]
-     &lt;button id=&quot;btnSound&quot;&gt;🔇&lt;/button&gt;
-  &lt;/div&gt;
-  
-
-  &lt;audio loop id=&quot;mainTheme&quot; &gt;
-    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
-    Your browser does not support the audio element.
-  &lt;/audio&gt;
-]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="4" name="b" tags="" position="1000,475" size="100,100">Opcije</tw-passagedata><tw-passagedata pid="5" name="c" tags="" position="900,750" size="100,100">exit skripta</tw-passagedata><tw-passagedata pid="6" name=" Intro3" tags="" position="1725,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="4" name=" Intro3" tags="" position="1725,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
 
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
@@ -521,7 +495,7 @@ We are suspicious of you.
 
  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro4]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="7" name=" Intro4" tags="" position="1950,200" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="5" name=" Intro4" tags="" position="1950,200" size="100,100">&lt;tw-passage data-passage=&quot;Intro3&quot; class=&quot;intro2-bg&quot;&gt;
 
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
@@ -549,7 +523,7 @@ Are you friendly?
  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro4]]
 
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="8" name=" IntroA" tags="" position="1100,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroA&quot; class=&quot;introA-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="6" name=" IntroA" tags="" position="1100,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroA&quot; class=&quot;introA-bg&quot;&gt;
 &lt;audio autoplay&gt;
 	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro2Naration.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
@@ -561,7 +535,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 &lt;/audio&gt;
   &lt;p id=&quot;typingIntro2&quot;&gt;&lt;/p&gt;
     [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroB]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="9" name=" IntroB" tags="" position="1300,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroB&quot; class=&quot;introB-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="7" name=" IntroB" tags="" position="1300,225" size="100,100">&lt;tw-passage data-passage=&quot;IntroB&quot; class=&quot;introB-bg&quot;&gt;
 &lt;audio autoplay&gt;
 	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Intro3.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
@@ -573,28 +547,65 @@ Vaš preglednik ne podržava HTML5 audio element.
 &lt;/audio&gt;
   &lt;p id=&quot;typingIntro3&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Federacija1]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="10" name=" Federacija1" tags="" position="1225,550" size="100,100">&lt;tw-passage data-passage=&quot;Federacija1&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="8" name=" Odabir1" tags="" position="1550,425" size="100,100">&lt;tw-passage data-passage=&quot;federacija3&quot; class=&quot;federacija1-bg&quot;&gt;
 
-  &lt;p id=&quot;typingFederation1&quot;&gt;&lt;/p&gt;
-  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Federacija2]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="11" name=" Federacija2" tags="" position="1400,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija2&quot; class=&quot;federacija1-bg&quot;&gt;
-
-  [[&lt;button class=&quot;gumbiOdabir1&quot; id=&quot;prviOdabir&quot;&gt;(Skeptical) “I don’t trust their intentions. They’re hiding too much.”&lt;/button&gt; -&gt; Odabir1]]
-  [[&lt;button class=&quot;gumbiOdabir1&quot;&gt;(Neutral) “They haven’t shown hostility, but they’re not being fully open either. We need to be cautious.”&lt;/button&gt; -&gt; Odabir2]]
-  [[&lt;button class=&quot;gumbiOdabir1&quot;&gt;(Optimistic) “Maybe they genuinely don’t seek domination. They could be allies.”&lt;/button&gt; -&gt; Odabir3]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="12" name=" Odabir1" tags="" position="1550,425" size="100,100">&lt;tw-passage data-passage=&quot;federacija3&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
 
   &lt;p id=&quot;typingFederation2&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="13" name=" Odabir2" tags="" position="1650,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="9" name=" Odabir2" tags="" position="1650,550" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
 
   &lt;p id=&quot;typingFederation3&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="14" name=" Odabir3" tags="" position="1550,700" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="10" name=" Odabir3" tags="" position="1550,700" size="100,100">&lt;tw-passage data-passage=&quot;federacija4&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
 
   &lt;p id=&quot;typingFederation4&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Intro2]]
-&lt;/tw-passage&gt;</tw-passagedata></tw-storydata>
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="11" name="Intro1" tags="" position="925,225" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
+&lt;audio autoplay&gt;
+	&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroNaration.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+Vaš preglednik ne podržava HTML5 audio element.
+&lt;/audio&gt;
+
+&lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
+&lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/IntroSoundOfEarth.mp3
+&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;
+  &lt;p id=&quot;typing&quot;&gt;&lt;/p&gt;
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroA]]
+
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="12" name="Start" tags="Start" position="675,425" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
+[
+  &lt;h1&gt;Edge of Extinction&lt;/h1&gt;
+  &lt;div&gt;
+    [[&lt;button id=&quot;btnNewGame&quot;&gt;NEW GAME&lt;/button&gt; -&gt;Intro1]]
+    [[&lt;button id=&quot;btnOptions&quot;&gt;OPTIONS&lt;/button&gt; -&gt;b]]
+    [[&lt;button id=&quot;btnExit&quot;&gt;EXIT&lt;/button&gt; -&gt;c]]
+     &lt;button id=&quot;btnSound&quot;&gt;🔇&lt;/button&gt;
+  &lt;/div&gt;
+  
+
+  &lt;audio loop id=&quot;mainTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="13" name="b" tags="" position="1000,475" size="100,100">Opcije</tw-passagedata><tw-passagedata pid="14" name="c" tags="" position="900,750" size="100,100">exit skripta</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

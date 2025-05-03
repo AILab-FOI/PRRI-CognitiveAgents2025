@@ -2,6 +2,19 @@ var DONT = false;
 var FIRST = true;
 var STOP = false;
 
+// Na početak agent.js dodajte
+var RECONNECT_DELAY = 1000;
+var MAX_RETRIES = 5;
+var retryCount = 0;
+
+function safeGetElement(id) {
+    var el = document.getElementById(id);
+    if (!el) {
+        console.warn("Element not found:", id);
+    }
+    return el;
+}
+
 $(window).on('load', function () {
 	counter = 0;
 
@@ -97,33 +110,38 @@ $(window).on('load', function () {
 });
 
 function connect() {
-	ws = new WebSocket('ws://localhost:8009');
-	window.ws = ws;
-	ws.onopen = function () {
-		ws.send('connect');
-		DONT = false;
-		play_part('tisina');
-	};
+    try {
+        ws = new WebSocket('ws://localhost:8009');
+        window.ws = ws;
+        
+        ws.onopen = function() {
+            console.log("WebSocket connected");
+            retryCount = 0;
+            ws.send('connect');
+            DONT = false;
+            play_part('tisina');
+        };
 
-	//Nisam siguran ako nam ovo treba?!
-	ws.onmessage = function (msg) {
-		console.log(msg.data);
-		console.log(msg.data.toString());
-		play_part(msg.data.toString());
-		//Tu je bilo ono sve dugo zakomentirano
-	};
+        ws.onmessage = function(msg) {
+            console.log('Received:', msg.data);
+            play_part(msg.data.toString());
+        };
 
-	ws.onclose = function (e) {
-		console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-		setTimeout(function () {
-			connect();
-		}, 1000);
-	};
+        ws.onclose = function(e) {
+            console.log('WebSocket closed:', e.reason);
+            if (retryCount < MAX_RETRIES) {
+                retryCount++;
+                setTimeout(connect, RECONNECT_DELAY);
+            }
+        };
 
-	ws.onerror = function (err) {
-		console.error('Socket encountered error: ', err.message, 'Closing socket');
-		ws.close();
-	};
+        ws.onerror = function(err) {
+            console.error('WebSocket error:', err.message);
+            ws.close();
+        };
+    } catch (e) {
+        console.error("Connection error:", e);
+    }
 }
 
 connect();

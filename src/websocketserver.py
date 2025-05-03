@@ -31,16 +31,25 @@ class NLPController( WebSocket ) :
             except Exception as e:
                 print( 'NLPController: There was an error!', e )
 
-    def handleMessage( self ):
-        print( 'DATA:', self.data )
+    def handleMessage(self):
+        print('RAW DATA:', self.data)
+
+        if self.data.startswith('Intro'):
+            print(f"PASSAGE DETECTED: {self.data}")
+            self.sendMessage(f"ACK:{self.data}")
+            return
+
         if self.data != 'connect':
-            print( 'ASKING CHATBOT' )
-            result = self.chatbot.get_response( self.data )
-            print( 'RESULT', result )
+            if self.data.startswith('Intro'):
+                print(f"Received passage name: {self.data}")
+                return
+                
+            print('ASKING CHATBOT')
+            result = self.chatbot.get_response(self.data)
+            print('RESULT', result)
             if result != self.LAST:
-                print( self.data, result )
-                self.BUFFER.append( str( result ) )
-                #self.sendMessage( self.data )
+                print(self.data, result)
+                self.BUFFER.append(str(result))
                 self.LAST = result
         
     def handleConnected(self):

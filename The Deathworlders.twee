@@ -612,11 +612,8 @@ p{
 }
 
 #agent-container {
-  width: 842px;
-  height: 595px;
-  margin: 0 auto;
-  margin-top: 1.5%;
-  margin-bottom: 5%;
+  width: 60%;
+  height: 90%;
   position: relative;
 }
 
@@ -626,6 +623,7 @@ p{
   border: none;
   display: block;
 }
+
 .options {
   position: absolute;
   bottom: 2%;

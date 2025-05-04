@@ -7,6 +7,11 @@ var RECONNECT_DELAY = 1000;
 var MAX_RETRIES = 5;
 var retryCount = 0;
 
+function safeStyleSet(id, property, value) {
+    const el = document.getElementById(id);
+    if (el) el.style[property] = value;
+}
+
 function safeGetElement(id) {
     var el = document.getElementById(id);
     if (!el) {
@@ -16,6 +21,9 @@ function safeGetElement(id) {
 }
 
 $(window).on('load', function () {
+	safeStyleSet('notSupported', 'display', 'none');
+    safeStyleSet('startupute', 'display', 'none');
+
 	counter = 0;
 
 	if (navigator.userAgent.indexOf('Firefox') > -1) {
@@ -157,43 +165,48 @@ CUR_PART = 'tisina';
 END = 278;
 
 function play_part(part) {
-	LAST_PART = CUR_PART;
-	CUR_PART = part;
-	var agent = $('#agent')[0];
-	var end = 0;
+    LAST_PART = CUR_PART;
+    CUR_PART = part;
+    var agent = $('#agent')[0];
+    var end = 0;
 
-	agent.play()
+    agent.play()
 
-	DONT = (part !== 'tisina') ? true : false;
-	if (part === 'tisina') FIRST = !FIRST
+    DONT = (part !== 'tisina') ? true : false;
+    if (part === 'tisina') FIRST = !FIRST
 
-	recognition.stop();
+    recognition.stop();
 
-	switch (part) {
+    switch (part) {
+        // In play_part function, case '01':
 		case '01':
 			agent.currentTime = 0;
 			end = 1;
-			break;
-		case '02':
-			agent.currentTime = 1;
-			end = 4;
-			break;
-		case '03':
-			agent.currentTime = 4;
-			end = 6;
-			break;
-		default: // 'tisina'
-			agent.currentTime = 6;
-			end = 12;
-			try {
-				if (!isMobileBrowser())
-					window.recognition.start();
+			// Send a very specific command
+			if (window.ws && window.ws.readyState === WebSocket.OPEN) {
+				window.ws.send("TWINE_NEXT");
 			}
-			catch (e) { }
 			break;
-	}
+        case '02':
+            agent.currentTime = 1;
+            end = 4;
+            break;
+        case '03':
+            agent.currentTime = 4;
+            end = 6;
+            break;
+        default: // 'tisina'
+            agent.currentTime = 6;
+            end = 12;
+            try {
+                if (!isMobileBrowser())
+                    window.recognition.start();
+            }
+            catch (e) { }
+            break;
+    }
 
-	END = end;
+    END = end;
 }
 
 

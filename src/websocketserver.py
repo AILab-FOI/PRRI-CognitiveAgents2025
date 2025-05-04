@@ -32,23 +32,37 @@ class NLPController( WebSocket ) :
                 print( 'NLPController: There was an error!', e )
 
     def handleMessage(self):
+        if self.data == 'NEXT_PASSAGE':
+            print("Triggering passage transition")
+            self.sendMessage("DO_TRANSITION:Intro3")  # More explicit command
+            return
+        
+        if self.data.startswith('TWINE_COMMAND:'):
+            print(f"Forwarding Twine command: {self.data}")
+            self.sendMessage(self.data)  # Forward exactly as received
+            return
+
         if self.data.startswith('Intro'):
             print(f"PASSAGE DETECTED: {self.data}")
             self.sendMessage(f"ACK:{self.data}")
             return
 
-        if self.data != 'connect':
-            if self.data.startswith('Intro'):
-                print(f"Received passage name: {self.data}")
-                return
-                
-            print('ASKING CHATBOT')
-            result = self.chatbot.get_response(self.data)
-            print('RESULT', result)
-            if result != self.LAST:
-                print(self.data, result)
-                self.BUFFER.append(str(result))
-                self.LAST = result
+        if self.data == 'connect':
+            return
+            
+        if self.data == 'NEXT_PASSAGE':
+            print("Received NEXT_PASSAGE command - sending to all clients")
+            # Šaljemo posebnu poruku koja će jasno identificirati akciju
+            self.sendMessage("ACTION:NEXT_PASSAGE")
+            return
+            
+        print('ASKING CHATBOT')
+        result = self.chatbot.get_response(self.data)
+        print('RESULT', result)
+        if result != self.LAST:
+            print(self.data, result)
+            self.BUFFER.append(str(result))
+            self.LAST = result
         
     def handleConnected(self):
         print( self.address, 'connected' )

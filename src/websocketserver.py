@@ -32,8 +32,6 @@ class NLPController( WebSocket ) :
                 print( 'NLPController: There was an error!', e )
 
     def handleMessage(self):
-        print('RAW DATA:', self.data)
-
         if self.data.startswith('Intro'):
             print(f"PASSAGE DETECTED: {self.data}")
             self.sendMessage(f"ACK:{self.data}")

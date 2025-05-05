@@ -182,11 +182,11 @@ function play_part(part) {
 		case '01':
 			agent.currentTime = 0;
 			end = 1;
-			// Send a very specific command
 			if (window.ws && window.ws.readyState === WebSocket.OPEN) {
-				window.ws.send("TWINE_NEXT");
+				window.ws.send("TWINE_COMMAND:DO_TRANSITION:Intro3");
 			}
 			break;
+
         case '02':
             agent.currentTime = 1;
             end = 4;

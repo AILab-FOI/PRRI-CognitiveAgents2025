@@ -24,6 +24,12 @@ class NLPController(WebSocket):
         global clients
         print(f"RECEIVED: {self.data}")
 
+        if self.data.startswith('Intro'):
+            print(f"PASSAGE DETECTED: {self.data}")
+            self.broadcast(f"PASSAGE:{self.data}")  # <-- broadcast umjesto sendMessage
+            return
+
+
         if self.data.startswith('TWINE_COMMAND:DO_TRANSITION:'):
             passage = self.data.split(':')[-1]
             self.broadcast(f'DO_TRANSITION:{passage}')

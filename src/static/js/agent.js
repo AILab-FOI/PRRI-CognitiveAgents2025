@@ -131,9 +131,18 @@ function connect() {
         };
 
         ws.onmessage = function(msg) {
-            console.log('Received:', msg.data);
-            play_part(msg.data.toString());
-        };
+			console.log('#Received:', msg.data);
+			console.log('$: ', msg.data.toString());
+		
+			if (msg.data.startsWith('PASSAGE:')) {
+				const passageName = msg.data.split(':')[1];
+				console.log("Trenutni passage:", passageName); // ← korisno za debug
+				return;
+			}
+		
+			play_part(msg.data.toString());
+		};
+		
 
         ws.onclose = function(e) {
             console.log('WebSocket closed:', e.reason);

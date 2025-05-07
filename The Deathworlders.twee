@@ -640,7 +640,7 @@ Are you using us for something?
 :: Start [Start] {"position":"275,450","size":"100,100"}
 <tw-passage data-passage="Start" class="start-bg">
 [
-  <h1>Edge of Extinction</h1>
+  <h1  id="edgeOfExtinction">Edge of Extinction</h1>
   <div>
     [[<button id="btnNewGame">NEW GAME</button> ->Intro1]]
     [[<button id="btnOptions">OPTIONS</button> ->b]]
@@ -658,7 +658,32 @@ Are you using us for something?
 
 
 :: b {"position":"600,500","size":"100,100"}
-Opcije
+<tw-passage data-passage="Opcije" class="settings-bg">
+  <div class="settings-panel">
+    <h1 class="title">Options</h1>
+
+      <div class="setting-row">
+        <label class="settingName">Music</label>
+        <input type="range" min="0" max="100" value="50" step="5">
+        <span class="value">50%</span>
+      </div>
+
+      <div class="setting-row">
+        <label class="settingName">Sound Effects</label>
+        <input type="range" min="0" max="100" value="30" step="5">
+        <span class="value">30%</span>
+      </div>
+
+
+      <div class="setting-row">
+        <label class="settingName" >Voice Over</label>
+        <input type="range" min="0" max="100" value="40" step="5">
+        <span class="value">40%</span>
+    </div>
+
+    [[<button class="btnBack">⮌ BACK</button> ->Start]]
+  </div>
+</tw-passage>
 
 
 :: c {"position":"500,775","size":"100,100"}
@@ -690,7 +715,23 @@ function typeWriter(elementId, text, speed, callback) {
   writeText();
 }
 
+function updateSlider(slider) {
+  const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+  slider.style.background = `linear-gradient(to right, #89FBFB ${value}%, #222 ${value}%)`;
+
+  const output = slider.parentElement.querySelector(".value");
+  if(output) {
+    output.textContent = `${slider.value}%`;
+  }
+}
+
 const mainObserver = new MutationObserver((mutationsList, observer) => {
+  const sliders = 	document.querySelectorAll('input[type="range"]:not([data-initialized])');
+  sliders.forEach(slider => {
+    updateSlider(slider);
+    slider.addEventListener("input", () => updateSlider(slider));
+    slider.dataset.initialized = "true";
+  });
 
  const btnNextPassage = document.getElementById("btnNextPassage");
 if (btnNextPassage && !btnNextPassage.dataset.shown) {
@@ -902,7 +943,7 @@ mainObserver.observe(document.body, {
 }
 
 .intro2-bg {
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor1.1.png") no-repeat center center;
+  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor3.png") no-repeat center center;
   background-size: 100% 100%; 
   top: 0;
   left: 0;
@@ -988,7 +1029,7 @@ button {
   transition: all 0.3s ease;
 }
 
-h1 {
+#edgeOfExtinction {
   margin-top: 0.5em;
   font-family: "Iceberg", sans-serif;
   font-size: 3em;
@@ -1099,4 +1140,103 @@ p{
 
 #prviOdabir {
   margin-top:80%;
+}
+
+.settings-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/OptionsBackground.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+    flex-direction: column;
+  z-index: 1000;
+}
+
+.setting-row{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  width: 75%;
+  border: transparent;
+}
+
+.title{
+  font-size: 1.8em;
+  margin: 10px 0 10px 0;
+  font-family: "Iceland", sans-serif;
+  color: #c0fbff;
+  letter-spacing: 2px;
+}
+
+.settings-panel{
+  width: 50%;
+  background-color: rgb(4, 0, 0, 0.85);
+  margin: 20px 0 20px 0;
+
+}
+.settingName{
+  letter-spacing: 2px;
+  font-family: "Iceland", sans-serif;
+  margin-right: 60px;
+  color: #c0fbff;
+}
+input{
+  width: 200px;
+}
+
+input[type="range"] {
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  background: #222;
+  border-radius: 50px;
+  outline: none;
+  transition: background 0.3s;
+  border: 1px solid rgba(137, 251, 251, 0.3); /* Neon border */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 5px #ffffff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #89fbfb;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border: 2px solid #9bffff;
+  box-shadow: 0 0 5px #9bffff;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2) rotate(45deg);
+  box-shadow: 0 0 10px rgba(137, 251, 251, 0.8);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2) rotate(45deg);
+  box-shadow: 0 0 10px rgba(137, 251, 251, 0.8);
+}
+.value{
+  font-family: "Iceland", sans-serif;
+  margin-left: 20px;
+  color: #c0fbff;
 }

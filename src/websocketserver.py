@@ -25,7 +25,7 @@ class NLPController(WebSocket):
 
         if self.data.startswith('PASSAGE:'):
             print(f"PASSAGE DETECTED: {self.data}")
-            self.broadcast(f"{self.data}")  # <-- broadcast umjesto sendMessage
+            self.BUFFER.append(self.data)  # koristi isti mehanizam kao chatbot odgovori
             return
 
 

@@ -558,86 +558,60 @@ Vaš preglednik ne podržava HTML5 audio element.
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 &lt;script&gt;
-class PassageNavigator {
-    constructor() {
-        this.setupWebSocket();
+class UnifiedPassageHandler {
+    constructor(passageToSend = &quot;010101&quot;) {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
     }
 
-    setupWebSocket() {
+    connectWebSocket() {
         this.ws = new WebSocket(&#39;ws://localhost:8009&#39;);
-        
+
+        this.ws.onopen = () =&gt; {
+            console.log(&quot;WebSocket veza uspostavljena&quot;);
+            this.sendPassageName();
+        };
+
         this.ws.onmessage = (event) =&gt; {
             if (event.data.startsWith(&#39;DO_TRANSITION:&#39;)) {
                 const passage = event.data.split(&#39;:&#39;)[1];
                 this.transitionToPassage(passage);
             }
         };
-        
+
         this.ws.onerror = (error) =&gt; {
-            console.error(&quot;WebSocket error:&quot;, error);
-            setTimeout(() =&gt; this.setupWebSocket(), 1000);
+            console.error(&quot;WebSocket greška:&quot;, error);
+            setTimeout(() =&gt; this.connectWebSocket(), 1000);
         };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log(&quot;Šaljem naziv passaga:&quot;, this.passageToSend);
+            this.ws.send(`PASSAGE:${this.passageToSend}`);
+        } else {
+            console.log(&quot;WebSocket nije spreman, status:&quot;, this.ws.readyState);
+            setTimeout(() =&gt; this.sendPassageName(), 500);
+        }
     }
 
     transitionToPassage(passageName) {
         console.log(`Transitioning to passage: ${passageName}`);
 
-        // Method: Click the known button
         const nextButton = document.getElementById(&#39;btnNextPassage&#39;);
         if (nextButton) {
             nextButton.click();
-            return;
-        }
-
-        // Optional fallback if button not found
-        console.warn(&quot;Fallback: btnNextPassage not found.&quot;);
-    }
-}
-
-// Initialize
-new PassageNavigator();
-
-function sendPassageName() {
-    try {
-        // Provjeri da li postoji WebSocket objekt
-        if (!window.ws) {
-            console.log(&quot;WebSocket objekt ne postoji&quot;);
-            initializeWebSocket();
-            return;
-        }
-        
-        if (window.ws.readyState === WebSocket.OPEN) {
-            console.log(&quot;Šaljem naziv passaga: 010101&quot;);
-            window.ws.send(&quot;PASSAGE:010101&quot;);
         } else {
-            console.log(&quot;WebSocket nije spreman, status:&quot;, window.ws.readyState);
-            setTimeout(sendPassageName, 500);
-        }
-    } catch (e) {
-        console.error(&quot;Greška pri slanju:&quot;, e);
-    }
-}
-
-function initializeWebSocket() {
-    if (!window.ws &amp;&amp; window.WebSocket) {
-        try {
-            window.ws = new WebSocket(&#39;ws://localhost:8009&#39;);
-            
-            window.ws.onopen = function() {
-                console.log(&quot;WebSocket veza uspostavljena&quot;);
-                sendPassageName(); // Pokušaj ponovno poslati
-            };
-            
-            window.ws.onerror = function(error) {
-                console.error(&quot;WebSocket greška:&quot;, error);
-            };
-        } catch (e) {
-            console.error(&quot;Greška pri inicijalizaciji WebSocketa:&quot;, e);
+            console.warn(&quot;Fallback: btnNextPassage not found.&quot;);
         }
     }
 }
 
-// Iframe
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler(&quot;010101&quot;);
+
+// Učitaj iframe agenta
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
     const iframe = document.createElement(&#39;iframe&#39;);
@@ -646,15 +620,6 @@ if (agentContainer) {
     iframe.src = &#39;/agenti&#39;;
     agentContainer.appendChild(iframe);
 }
-
-(function init() {
-    
-    initializeWebSocket();
-    
-    sendPassageName();
-    
-})();
-
 &lt;/script&gt;
 
 &lt;div class=&quot;options&quot; id=&quot;op3&quot;&gt;
@@ -766,73 +731,68 @@ We are suspicious of you.
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 &lt;script&gt;
-// Poboljšana verzija vašeg koda
-function sendPassageName() {
-    try {
-        // Provjeri da li postoji WebSocket objekt
-        if (!window.ws) {
-            console.log(&quot;WebSocket objekt ne postoji&quot;);
-            initializeWebSocket();
-            return;
-        }
-        
-        if (window.ws.readyState === WebSocket.OPEN) {
-            console.log(&quot;Šaljem naziv passaga: Intro2&quot;);
-            window.ws.send(&quot;PASSAGE:010102&quot;);
+class UnifiedPassageHandler {
+    constructor(passageToSend = &quot;010102&quot;) {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket(&#39;ws://localhost:8009&#39;);
+
+        this.ws.onopen = () =&gt; {
+            console.log(&quot;WebSocket veza uspostavljena&quot;);
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) =&gt; {
+            if (event.data.startsWith(&#39;DO_TRANSITION:&#39;)) {
+                const passage = event.data.split(&#39;:&#39;)[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) =&gt; {
+            console.error(&quot;WebSocket greška:&quot;, error);
+            setTimeout(() =&gt; this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log(&quot;Šaljem naziv passaga:&quot;, this.passageToSend);
+            this.ws.send(`PASSAGE:${this.passageToSend}`);
         } else {
-            console.log(&quot;WebSocket nije spreman, status:&quot;, window.ws.readyState);
-            setTimeout(sendPassageName, 500);
+            console.log(&quot;WebSocket nije spreman, status:&quot;, this.ws.readyState);
+            setTimeout(() =&gt; this.sendPassageName(), 500);
         }
-    } catch (e) {
-        console.error(&quot;Greška pri slanju:&quot;, e);
     }
-}
 
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
 
-function initializeWebSocket() {
-    if (!window.ws &amp;&amp; window.WebSocket) {
-        try {
-            window.ws = new WebSocket(&#39;ws://localhost:8009&#39;);
-            
-            window.ws.onopen = function() {
-                console.log(&quot;WebSocket veza uspostavljena&quot;);
-                sendPassageName(); // Pokušaj ponovno poslati
-            };
-            
-            window.ws.onerror = function(error) {
-                console.error(&quot;WebSocket greška:&quot;, error);
-            };
-        } catch (e) {
-            console.error(&quot;Greška pri inicijalizaciji WebSocketa:&quot;, e);
+        const nextButton = document.getElementById(&#39;btnNextPassage&#39;);
+        if (nextButton) {
+            nextButton.click();
+        } else {
+            console.warn(&quot;Fallback: btnNextPassage not found.&quot;);
         }
     }
 }
 
-function addAgent(name) {
-    const container = document.getElementById(&#39;agent-container&#39;);
-    if (!container) {
-        console.error(&quot;Agent container nije pronađen!&quot;);
-        return;
-    }
-    
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler(&quot;010102&quot;);
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById(&#39;agent-container&#39;);
+if (agentContainer) {
     const iframe = document.createElement(&#39;iframe&#39;);
     iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;
-    iframe.src = `/${name}`;
-    container.appendChild(iframe);
-    console.log(&quot;Agent iframe dodan&quot;);
+    iframe.src = &#39;/agenti&#39;;
+    agentContainer.appendChild(iframe);
 }
-
-// Glavna inicijalizacija
-(function init() {
-    
-    addAgent(&#39;agenti&#39;);
-    
-    initializeWebSocket();
-    
-    sendPassageName();
-    
-})();
 &lt;/script&gt;
 
 &lt;div class=&quot;options&quot; id=&quot;op2&quot;&gt;

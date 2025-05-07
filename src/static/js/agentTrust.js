@@ -5,36 +5,36 @@ const TrustRanks = new Array
     { name: "Trusted", min : 5, max: 7}
 );
 
-class Agent
+export default class Agent
 {
     #TrustValue;
     #TrustRank;
 
     constructor()
     {
-        let middle = Math.trunc(TrustRanks.length / 2);
-        this.#TrustValue=TrustRanks[middle].min + (TrustRanks[middle].max - TrustRanks[middle].min) / 2;  //sredina Neutral ranka 
+        let temp=TrustRanks[TrustRanks.length - 1].max - TrustRanks[0].min; 
+        this.#TrustValue= TrustRanks[0].min + Math.round(temp/2); //uvijek srednja brojčana vrijednost i srednji trust rank
         this.#TrustRank=this.#EvaluateTrustRank();
     }
 
-    getTrustRank() {return this.#TrustRank}
+    getTrustRank() {return this.#TrustRank;}
 
-    IncreaseTrust()
+    IncreaseTrust(step=1)
     {
-        if(this.#TrustValue < TrustRanks[TrustRanks.length-1].max)
-        {
-            this.#TrustValue++;
-            this.#TrustRank=this.#EvaluateTrustRank();
-        }
+        if(this.#TrustValue + step < TrustRanks[TrustRanks.length-1].max)
+            this.#TrustValue+=step;
+        else
+            this.#TrustValue=TrustRanks[TrustRanks.length-1].max;
+        this.#TrustRank=this.#EvaluateTrustRank();
     }
 
-    DecreaseTrust()
+    DecreaseTrust(step=1)
     {
-        if(this.#TrustValue > TrustRanks[0].min)
-        {
-            this.#TrustValue--;
-            this.#TrustRank=this.#EvaluateTrustRank();
-        }
+        if(this.#TrustValue - step > TrustRanks[0].min)
+            this.#TrustValue-=step;
+        else
+            this.#TrustValue=TrustRanks[0].min;
+        this.#TrustRank=this.#EvaluateTrustRank();
     }
 
     #EvaluateTrustRank()

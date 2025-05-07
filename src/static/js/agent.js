@@ -2,7 +2,28 @@ var DONT = false;
 var FIRST = true;
 var STOP = false;
 
+// Na početak agent.js dodajte
+var RECONNECT_DELAY = 1000;
+var MAX_RETRIES = 5;
+var retryCount = 0;
+
+function safeStyleSet(id, property, value) {
+    const el = document.getElementById(id);
+    if (el) el.style[property] = value;
+}
+
+function safeGetElement(id) {
+    var el = document.getElementById(id);
+    if (!el) {
+        console.warn("Element not found:", id);
+    }
+    return el;
+}
+
 $(window).on('load', function () {
+	safeStyleSet('notSupported', 'display', 'none');
+    safeStyleSet('startupute', 'display', 'none');
+
 	counter = 0;
 
 	if (navigator.userAgent.indexOf('Firefox') > -1) {
@@ -20,7 +41,7 @@ $(window).on('load', function () {
 		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 		var init = function () {
-			recognition = new SpeechRecognition();
+			recognition = new SpeechRecognition(); 
 
 			window.recognition = recognition;
 
@@ -49,29 +70,6 @@ $(window).on('load', function () {
 			};
 		}
 		init();
-
-		button.onclick = () => {
-			/* Ovo je dio za fullscreen
-			if (document.documentElement.requestFullscreen) {
-				document.documentElement.requestFullscreen();
-			} else if (document.documentElement.mozRequestFullScreen) { // Firefox
-				document.documentElement.mozRequestFullScreen();
-			} else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
-				document.documentElement.webkitRequestFullscreen();
-			} else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-				document.documentElement.msRequestFullscreen();
-			}*/
-			document.querySelector('.video-container').style.display = 'block';
-			if (!isMobileBrowser())
-				recognition.start();
-			document.getElementById('startupute').style.display = 'none';
-			document.getElementById('questions').style.display = 'block';
-			play_part('tisina');
-			question('bok');
-			if (isMobileBrowser()) {
-				document.getElementById('record').style.display = 'block';
-			}
-		};
 	}
 
 	record.onclick = () => {
@@ -95,36 +93,72 @@ $(window).on('load', function () {
 		DONT = false;
 		play_part('tisina');
 	}
+	//AUTo PLAY
+
+	/* Ovo je dio za fullscreen
+	if (document.documentElement.requestFullscreen) {
+		document.documentElement.requestFullscreen();
+	} else if (document.documentElement.mozRequestFullScreen) { // Firefox
+		document.documentElement.mozRequestFullScreen();
+	} else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+		document.documentElement.webkitRequestFullscreen();
+	} else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+		document.documentElement.msRequestFullscreen();
+	}*/
+	document.querySelector('.video-container').style.display = 'block';
+	if (!isMobileBrowser())
+		recognition.start();
+	document.getElementById('startupute').style.display = 'none';
+	document.getElementById('questions').style.display = 'block';
+	play_part('tisina');
+	question('bok');
+	if (isMobileBrowser()) {
+		document.getElementById('record').style.display = 'block';
+	}
 });
 
 function connect() {
-	ws = new WebSocket('ws://localhost:8009');
-	window.ws = ws;
-	ws.onopen = function () {
-		ws.send('connect');
-		DONT = false;
-		play_part('tisina');
-	};
+    try {
+        ws = new WebSocket('ws://localhost:8009');
+        window.ws = ws;
+        
+        ws.onopen = function() {
+            console.log("WebSocket connected");
+            retryCount = 0;
+            ws.send('connect');
+            DONT = false;
+            play_part('tisina');
+        };
 
-	//Nisam siguran ako nam ovo treba?!
-	ws.onmessage = function (msg) {
-		console.log(msg.data);
-		console.log(msg.data.toString());
-		play_part(msg.data.toString());
-		//Tu je bilo ono sve dugo zakomentirano
-	};
+        ws.onmessage = function(msg) {
+			console.log('#Received:', msg.data);
+			console.log('$: ', msg.data.toString());
+		
+			if (msg.data.startsWith('PASSAGE:')) {
+				const passageName = msg.data.split(':')[1];
+				console.log("Trenutni passage:", passageName); // ← korisno za debug
+				return;
+			}
+		
+			play_part(msg.data.toString());
+		};
+		
 
-	ws.onclose = function (e) {
-		console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-		setTimeout(function () {
-			connect();
-		}, 1000);
-	};
+        ws.onclose = function(e) {
+            console.log('WebSocket closed:', e.reason);
+            if (retryCount < MAX_RETRIES) {
+                retryCount++;
+                setTimeout(connect, RECONNECT_DELAY);
+            }
+        };
 
-	ws.onerror = function (err) {
-		console.error('Socket encountered error: ', err.message, 'Closing socket');
-		ws.close();
-	};
+        ws.onerror = function(err) {
+            console.error('WebSocket error:', err.message);
+            ws.close();
+        };
+    } catch (e) {
+        console.error("Connection error:", e);
+    }
 }
 
 connect();
@@ -140,43 +174,48 @@ CUR_PART = 'tisina';
 END = 278;
 
 function play_part(part) {
-	LAST_PART = CUR_PART;
-	CUR_PART = part;
-	var agent = $('#agent')[0];
-	var end = 0;
+    LAST_PART = CUR_PART;
+    CUR_PART = part;
+    var agent = $('#agent')[0];
+    var end = 0;
 
-	agent.play()
+    agent.play()
 
-	DONT = (part !== 'tisina') ? true : false;
-	if (part === 'tisina') FIRST = !FIRST
+    DONT = (part !== 'tisina') ? true : false;
+    if (part === 'tisina') FIRST = !FIRST
 
-	recognition.stop();
+    recognition.stop();
 
-	switch (part) {
+    switch (part) {
+        // In play_part function, case '01':
 		case '01':
 			agent.currentTime = 0;
 			end = 1;
-			break;
-		case '02':
-			agent.currentTime = 1;
-			end = 4;
-			break;
-		case '03':
-			agent.currentTime = 4;
-			end = 6;
-			break;
-		default: // 'tisina'
-			agent.currentTime = 6;
-			end = 12;
-			try {
-				if (!isMobileBrowser())
-					window.recognition.start();
+			if (window.ws && window.ws.readyState === WebSocket.OPEN) {
+				window.ws.send("TWINE_COMMAND:DO_TRANSITION:Intro3");
 			}
-			catch (e) { }
 			break;
-	}
 
-	END = end;
+        case '02':
+            agent.currentTime = 1;
+            end = 4;
+            break;
+        case '03':
+            agent.currentTime = 4;
+            end = 6;
+            break;
+        default: // 'tisina'
+            agent.currentTime = 6;
+            end = 12;
+            try {
+                if (!isMobileBrowser())
+                    window.recognition.start();
+            }
+            catch (e) { }
+            break;
+    }
+
+    END = end;
 }
 
 

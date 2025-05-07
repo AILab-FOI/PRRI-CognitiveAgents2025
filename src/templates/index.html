@@ -374,6 +374,7 @@ const sliders = document.querySelectorAll('input[type="range"]:not([data-initial
     slider.addEventListener("input", () => updateSlider(slider));
     slider.dataset.initialized = "true";
   });
+  
  const btnNextPassage = document.getElementById("btnNextPassage");
 if (btnNextPassage && !btnNextPassage.dataset.shown) {
   btnNextPassage.style.display = "none";

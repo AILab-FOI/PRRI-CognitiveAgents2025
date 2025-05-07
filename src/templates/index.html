@@ -638,6 +638,8 @@ Vaš preglednik ne podržava HTML5 audio element.
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
+&lt;audio id=&quot;radioSound2&quot; src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+
 &lt;script&gt;
 class UnifiedPassageHandler {
     constructor(passageToSend = &quot;010101&quot;) {
@@ -681,7 +683,7 @@ class UnifiedPassageHandler {
 
     transitionToPassage(passageName) {
         console.log(`Transitioning to passage: ${passageName}`);
-
+        
         const nextButton = document.getElementById(&#39;btnNextPassage&#39;);
         if (nextButton) {
 			this.ws.close()
@@ -698,6 +700,12 @@ new UnifiedPassageHandler(&quot;010101&quot;);
 // Učitaj iframe agenta
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
+	const radioSound2 = document.getElementById(&#39;radioSound2&#39;);
+    if (radioSound2){
+      radioSound2.volume = 0.3;
+      radioSound2.play();
+    }
+    
     const iframe = document.createElement(&#39;iframe&#39;);
     iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;
@@ -717,6 +725,8 @@ Why should we trust you now after staying silent for so long?
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="10" name="Prica1.2" tags="" position="1900,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.2&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
+
+&lt;audio id=&quot;radioSound1&quot; src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -778,6 +788,12 @@ new UnifiedPassageHandler(&quot;010102&quot;);
 // Učitaj iframe agenta
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
+	const radioSound1 = document.getElementById(&#39;radioSound1&#39;);
+    if (radioSound1){
+        radioSound1.volume = 0.9;
+        radioSound1.play();
+    }
+    
     const iframe = document.createElement(&#39;iframe&#39;);
     iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;
@@ -796,6 +812,8 @@ Are you planning to control us?
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="11" name="Prica1.4" tags="" position="2300,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.4&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
+
+&lt;audio id=&quot;radioSound1&quot; src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -857,6 +875,11 @@ new UnifiedPassageHandler(&quot;010104&quot;);
 // Učitaj iframe agenta
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
+  const radioSound1 = document.getElementById(&#39;radioSound1&#39;);
+      if (radioSound1){
+          radioSound1.volume = 0.9;
+          radioSound1.play();
+      }
     const iframe = document.createElement(&#39;iframe&#39;);
     iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;
@@ -1040,6 +1063,8 @@ za sad</tw-passagedata><tw-passagedata pid="15" name="Pricca1.3" tags="" positio
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
+&lt;audio id=&quot;radioSound2&quot; src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+
 &lt;script&gt;
 class UnifiedPassageHandler {
     constructor(passageToSend = &quot;010103&quot;) {
@@ -1100,6 +1125,12 @@ new UnifiedPassageHandler(&quot;010103&quot;);
 // Učitaj iframe agenta
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
+  const radioSound2 = document.getElementById(&#39;radioSound2&#39;);
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
     const iframe = document.createElement(&#39;iframe&#39;);
     iframe.width = &#39;500px&#39;;
     iframe.height = &#39;500px&#39;;

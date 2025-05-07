@@ -132,6 +132,8 @@ Vaš preglednik ne podržava HTML5 audio element.
 
 <div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
 <script>
 class UnifiedPassageHandler {
     constructor(passageToSend = "010101") {
@@ -175,7 +177,7 @@ class UnifiedPassageHandler {
 
     transitionToPassage(passageName) {
         console.log(`Transitioning to passage: ${passageName}`);
-
+        
         const nextButton = document.getElementById('btnNextPassage');
         if (nextButton) {
 			this.ws.close()
@@ -192,6 +194,12 @@ new UnifiedPassageHandler("010101");
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');
 if (agentContainer) {
+	const radioSound2 = document.getElementById('radioSound2');
+    if (radioSound2){
+      radioSound2.volume = 0.3;
+      radioSound2.play();
+    }
+    
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';
@@ -215,6 +223,8 @@ Why should we trust you now after staying silent for so long?
 <tw-passage data-passage="Prica1.2" class="intro2-bg">
 
 <div id="agent-container"></div>
+
+<audio id="radioSound1" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq1.mp3" preload="auto"></audio>
 
 <script>
 class UnifiedPassageHandler {
@@ -276,6 +286,12 @@ new UnifiedPassageHandler("010102");
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');
 if (agentContainer) {
+	const radioSound1 = document.getElementById('radioSound1');
+    if (radioSound1){
+        radioSound1.volume = 0.9;
+        radioSound1.play();
+    }
+    
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';
@@ -298,6 +314,8 @@ Are you planning to control us?
 <tw-passage data-passage="Prica1.4" class="intro2-bg">
 
 <div id="agent-container"></div>
+
+<audio id="radioSound1" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq1.mp3" preload="auto"></audio>
 
 <script>
 class UnifiedPassageHandler {
@@ -359,6 +377,11 @@ new UnifiedPassageHandler("010104");
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');
 if (agentContainer) {
+  const radioSound1 = document.getElementById('radioSound1');
+      if (radioSound1){
+          radioSound1.volume = 0.9;
+          radioSound1.play();
+      }
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';
@@ -558,6 +581,8 @@ za sad
 
 <div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
 <script>
 class UnifiedPassageHandler {
     constructor(passageToSend = "010103") {
@@ -618,6 +643,12 @@ new UnifiedPassageHandler("010103");
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');
 if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';

@@ -597,6 +597,46 @@ class PassageNavigator {
 // Initialize
 new PassageNavigator();
 
+function sendPassageName() {
+    try {
+        // Provjeri da li postoji WebSocket objekt
+        if (!window.ws) {
+            console.log(&quot;WebSocket objekt ne postoji&quot;);
+            initializeWebSocket();
+            return;
+        }
+        
+        if (window.ws.readyState === WebSocket.OPEN) {
+            console.log(&quot;Šaljem naziv passaga: 010101&quot;);
+            window.ws.send(&quot;PASSAGE:010101&quot;);
+        } else {
+            console.log(&quot;WebSocket nije spreman, status:&quot;, window.ws.readyState);
+            setTimeout(sendPassageName, 500);
+        }
+    } catch (e) {
+        console.error(&quot;Greška pri slanju:&quot;, e);
+    }
+}
+
+function initializeWebSocket() {
+    if (!window.ws &amp;&amp; window.WebSocket) {
+        try {
+            window.ws = new WebSocket(&#39;ws://localhost:8009&#39;);
+            
+            window.ws.onopen = function() {
+                console.log(&quot;WebSocket veza uspostavljena&quot;);
+                sendPassageName(); // Pokušaj ponovno poslati
+            };
+            
+            window.ws.onerror = function(error) {
+                console.error(&quot;WebSocket greška:&quot;, error);
+            };
+        } catch (e) {
+            console.error(&quot;Greška pri inicijalizaciji WebSocketa:&quot;, e);
+        }
+    }
+}
+
 // Iframe
 const agentContainer = document.getElementById(&#39;agent-container&#39;);
 if (agentContainer) {
@@ -606,11 +646,20 @@ if (agentContainer) {
     iframe.src = &#39;/agenti&#39;;
     agentContainer.appendChild(iframe);
 }
+
+(function init() {
+    
+    initializeWebSocket();
+    
+    sendPassageName();
+    
+})();
+
 &lt;/script&gt;
 
 &lt;div class=&quot;options&quot; id=&quot;op3&quot;&gt;
-Who are you?&lt;br&gt;
-Where are you from?&lt;br&gt;
+Who are you?
+Where are you from?
 Why come here?
 &lt;/div&gt;
 
@@ -727,10 +776,9 @@ function sendPassageName() {
             return;
         }
         
-        // Provjeri status veze
         if (window.ws.readyState === WebSocket.OPEN) {
             console.log(&quot;Šaljem naziv passaga: Intro2&quot;);
-            window.ws.send(&quot;Intro2&quot;);
+            window.ws.send(&quot;PASSAGE:010102&quot;);
         } else {
             console.log(&quot;WebSocket nije spreman, status:&quot;, window.ws.readyState);
             setTimeout(sendPassageName, 500);
@@ -740,7 +788,7 @@ function sendPassageName() {
     }
 }
 
-// Funkcija za inicijalizaciju WebSocketa ako već nije inicijaliziran
+
 function initializeWebSocket() {
     if (!window.ws &amp;&amp; window.WebSocket) {
         try {
@@ -760,7 +808,6 @@ function initializeWebSocket() {
     }
 }
 
-// Funkcija za dodavanje agenta (ostaje ista kao u vašem kodu)
 function addAgent(name) {
     const container = document.getElementById(&#39;agent-container&#39;);
     if (!container) {
@@ -778,25 +825,13 @@ function addAgent(name) {
 
 // Glavna inicijalizacija
 (function init() {
-    console.log(&quot;Inicijalizacija passaga Intro2&quot;);
     
-    // 1. Dodaj agenta
     addAgent(&#39;agenti&#39;);
     
-    // 2. Inicijaliziraj WebSocket ako već nije
     initializeWebSocket();
     
-    // 3. Pokušaj poslati naziv passaga
     sendPassageName();
     
-    // 4. Postavi intervalnu provjeru kao backup
-    const backupCheck = setInterval(() =&gt; {
-        if (window.ws &amp;&amp; window.ws.readyState === WebSocket.OPEN) {
-            console.log(&quot;Backup provjera - šaljem Intro2&quot;);
-            window.ws.send(&quot;Intro2&quot;);
-            clearInterval(backupCheck);
-        }
-    }, 3000);
 })();
 &lt;/script&gt;
 

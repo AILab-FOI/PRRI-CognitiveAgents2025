@@ -8,7 +8,6 @@ from train import LOGIC_ADAPTER
 
 FOLDER = os.path.dirname(os.path.abspath(__file__))
 
-
 clients = []
 
 class NLPController(WebSocket):
@@ -24,9 +23,9 @@ class NLPController(WebSocket):
         global clients
         print(f"RECEIVED: {self.data}")
 
-        if self.data.startswith('Intro'):
+        if self.data.startswith('PASSAGE:'):
             print(f"PASSAGE DETECTED: {self.data}")
-            self.broadcast(f"PASSAGE:{self.data}")  # <-- broadcast umjesto sendMessage
+            self.broadcast(f"{self.data}")  # <-- broadcast umjesto sendMessage
             return
 
 

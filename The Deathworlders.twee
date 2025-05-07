@@ -112,7 +112,6 @@ Why come here?
 </tw-passage>
 
 
-
 :: \ Intro3 {"position":"1775,350","size":"100,100"}
 <tw-passage data-passage="Intro3" class="intro2-bg">
 
@@ -193,7 +192,6 @@ We are suspicious of you.
 
 [[<button id="btnNextPassage">➤</button> -> Intro4]]
 </tw-passage>
-
 
 
 :: \ Intro4 {"position":"1950,200","size":"100,100"}
@@ -425,7 +423,6 @@ We are suspicious of you.
 </tw-passage>
 
 
-
 :: Start [Start] {"position":"675,425","size":"100,100"}
 <tw-passage data-passage="Start" class="start-bg">
 [
@@ -480,7 +477,16 @@ function typeWriter(elementId, text, speed, callback) {
 }
 
 const mainObserver = new MutationObserver((mutationsList, observer) => {
- 
+
+ const btnNextPassage = document.getElementById("btnNextPassage");
+if (btnNextPassage && !btnNextPassage.dataset.shown) {
+  btnNextPassage.style.display = "none";
+
+  setTimeout(() => {
+    btnNextPassage.style.display = "inline-block";
+    btnNextPassage.dataset.shown = "true";
+  }, 1000);
+}
   const soundEarth = document.getElementById("soundEarth");
   if (soundEarth) {
     soundEarth.volume = 0.1; 
@@ -871,9 +877,10 @@ p{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
+  padding: 7px 10px;
   background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 5px;
+  display: none;
 }
 
 #prviOdabir {

@@ -589,10 +589,12 @@ class UnifiedPassageHandler {
     sendPassageName() {
         if (this.ws.readyState === WebSocket.OPEN) {
             console.log(&quot;Šaljem naziv passaga:&quot;, this.passageToSend);
-            this.ws.send(`PASSAGE:${this.passageToSend}`);
+            setTimeout(() =&gt; {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
         } else {
             console.log(&quot;WebSocket nije spreman, status:&quot;, this.ws.readyState);
-            setTimeout(() =&gt; this.sendPassageName(), 500);
+            setTimeout(() =&gt; this.sendPassageName(), 1500);
         }
     }
 
@@ -601,6 +603,7 @@ class UnifiedPassageHandler {
 
         const nextButton = document.getElementById(&#39;btnNextPassage&#39;);
         if (nextButton) {
+			this.ws.close()
             nextButton.click();
         } else {
             console.warn(&quot;Fallback: btnNextPassage not found.&quot;);
@@ -762,7 +765,9 @@ class UnifiedPassageHandler {
     sendPassageName() {
         if (this.ws.readyState === WebSocket.OPEN) {
             console.log(&quot;Šaljem naziv passaga:&quot;, this.passageToSend);
-            this.ws.send(`PASSAGE:${this.passageToSend}`);
+            setTimeout(() =&gt; {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
         } else {
             console.log(&quot;WebSocket nije spreman, status:&quot;, this.ws.readyState);
             setTimeout(() =&gt; this.sendPassageName(), 500);
@@ -774,6 +779,7 @@ class UnifiedPassageHandler {
 
         const nextButton = document.getElementById(&#39;btnNextPassage&#39;);
         if (nextButton) {
+        	this.ws.close()
             nextButton.click();
         } else {
             console.warn(&quot;Fallback: btnNextPassage not found.&quot;);

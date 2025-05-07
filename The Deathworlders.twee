@@ -34,17 +34,72 @@ The Deathworlders
 <div id="agent-container"></div>
 
 <script>
-function addAgent(name) {
+class UnifiedPassageHandler {
+    constructor(passageToSend = "010101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("010101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';
-    iframe.src = `/${name}`;
-    return iframe;
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
 }
-
-document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
-
 
 <div class="options" id="op3">
 Who are you?
@@ -52,38 +107,93 @@ Where are you from?
 Why come here?
 </div>
 
- [[<button id="btnNextPassage">➤</button> -> Intro3]]
+[[<button id="btnNextPassage">➤</button> -> Intro3]]
 
 </tw-passage>
 
 
-:: \ Intro3 {"position":"1725,225","size":"100,100"}
-<tw-passage data-passage="Intro3" class="intro2-bg">
 
+:: \ Intro3 {"position":"1775,350","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
 
 <div id="agent-container"></div>
 
 <script>
-function addAgent(name) {
+class UnifiedPassageHandler {
+    constructor(passageToSend = "010102") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+        	this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("010102");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
     const iframe = document.createElement('iframe');
     iframe.width = '500px';
     iframe.height = '500px';
-    iframe.src = `/${name}`;
-    return iframe;
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
 }
-
-document.getElementById('agent-container').appendChild( addAgent( 'agenti' ) );
 </script>
-
 
 <div class="options" id="op2">
 Let's work together.
 We are suspicious of you.
 </div>
 
- [[<button id="btnNextPassage">➤</button> -> Intro4]]
-
+[[<button id="btnNextPassage">➤</button> -> Intro4]]
 </tw-passage>
+
 
 
 :: \ Intro4 {"position":"1950,200","size":"100,100"}
@@ -215,6 +325,105 @@ Vaš preglednik ne podržava HTML5 audio element.
 
 
 </tw-passage>
+
+
+:: Intro3 {"position":"1725,200","size":"100,100"}
+<tw-passage data-passage="Intro3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<script>
+// Poboljšana verzija vašeg koda
+function sendPassageName() {
+    try {
+        // Provjeri da li postoji WebSocket objekt
+        if (!window.ws) {
+            console.log("WebSocket objekt ne postoji");
+            initializeWebSocket();
+            return;
+        }
+        
+        // Provjeri status veze
+        if (window.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga: Intro2");
+            window.ws.send("Intro2");
+        } else {
+            console.log("WebSocket nije spreman, status:", window.ws.readyState);
+            setTimeout(sendPassageName, 500);
+        }
+    } catch (e) {
+        console.error("Greška pri slanju:", e);
+    }
+}
+
+// Funkcija za inicijalizaciju WebSocketa ako već nije inicijaliziran
+function initializeWebSocket() {
+    if (!window.ws && window.WebSocket) {
+        try {
+            window.ws = new WebSocket('ws://localhost:8009');
+            
+            window.ws.onopen = function() {
+                console.log("WebSocket veza uspostavljena");
+                sendPassageName(); // Pokušaj ponovno poslati
+            };
+            
+            window.ws.onerror = function(error) {
+                console.error("WebSocket greška:", error);
+            };
+        } catch (e) {
+            console.error("Greška pri inicijalizaciji WebSocketa:", e);
+        }
+    }
+}
+
+// Funkcija za dodavanje agenta (ostaje ista kao u vašem kodu)
+function addAgent(name) {
+    const container = document.getElementById('agent-container');
+    if (!container) {
+        console.error("Agent container nije pronađen!");
+        return;
+    }
+    
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = `/${name}`;
+    container.appendChild(iframe);
+    console.log("Agent iframe dodan");
+}
+
+// Glavna inicijalizacija
+(function init() {
+    console.log("Inicijalizacija passaga Intro2");
+    
+    // 1. Dodaj agenta
+    addAgent('agenti');
+    
+    // 2. Inicijaliziraj WebSocket ako već nije
+    initializeWebSocket();
+    
+    // 3. Pokušaj poslati naziv passaga
+    sendPassageName();
+    
+    // 4. Postavi intervalnu provjeru kao backup
+    const backupCheck = setInterval(() => {
+        if (window.ws && window.ws.readyState === WebSocket.OPEN) {
+            console.log("Backup provjera - šaljem Intro2");
+            window.ws.send("Intro2");
+            clearInterval(backupCheck);
+        }
+    }, 3000);
+})();
+</script>
+
+<div class="options" id="op2">
+Let's work together.
+We are suspicious of you.
+</div>
+
+[[<button id="btnNextPassage">➤</button> -> Intro4]]
+</tw-passage>
+
 
 
 :: Start [Start] {"position":"675,425","size":"100,100"}

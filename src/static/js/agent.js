@@ -123,20 +123,22 @@ function connect() {
         window.ws = ws;
         
         ws.onopen = function() {
-            console.log("WebSocket connected");
+            console.log("Ajs WebSocket connected");
             retryCount = 0;
             ws.send('connect');
             DONT = false;
             play_part('tisina');
         };
 
-        ws.onmessage = function(msg) {
-			console.log('#Received:', msg.data);
-			console.log('$: ', msg.data.toString());
+        ws.onmessage = function(msg) 
+		{
+			console.log('Ajs #Received:', msg.data);
+			console.log('Ajs $: ', msg.data.toString());
 		
-			if (msg.data.startsWith('PASSAGE:')) {
+			if (msg.data.startsWith('PASSAGE:')) 
+			{
 				const passageName = msg.data.split(':')[1];
-				console.log("Trenutni passage:", passageName); // ← korisno za debug
+				console.log("Ajs Trenutni passage:", passageName); // ← korisno za debug
 				return;
 			}
 		
@@ -145,7 +147,7 @@ function connect() {
 		
 
         ws.onclose = function(e) {
-            console.log('WebSocket closed:', e.reason);
+            console.log('Ajs WebSocket closed:', e.reason);
             if (retryCount < MAX_RETRIES) {
                 retryCount++;
                 setTimeout(connect, RECONNECT_DELAY);
@@ -153,11 +155,11 @@ function connect() {
         };
 
         ws.onerror = function(err) {
-            console.error('WebSocket error:', err.message);
+            console.error('Ajs WebSocket error:', err.message);
             ws.close();
         };
     } catch (e) {
-        console.error("Connection error:", e);
+        console.error("Ajs Connection error:", e);
     }
 }
 
@@ -173,7 +175,8 @@ LAST_PART = ''
 CUR_PART = 'tisina';
 END = 278;
 
-function play_part(part) {
+function play_part(part) 
+{
     LAST_PART = CUR_PART;
     CUR_PART = part;
     var agent = $('#agent')[0];
@@ -187,27 +190,113 @@ function play_part(part) {
     recognition.stop();
 
     switch (part) {
-        // In play_part function, case '01':
+      //test prebaci na next passage
 		case '01':
-			agent.currentTime = 0;
-			end = 1;
-			if (window.ws && window.ws.readyState === WebSocket.OPEN) {
-				window.ws.send("TWINE_COMMAND:DO_TRANSITION:Intro3");
-			}
+			nextPassage("Intro3", 2000);
 			break;
 
-        case '02':
-            agent.currentTime = 1;
-            end = 4;
+		//passage Prica1.1
+        case '010101':
+            agent.currentTime = 0;
+            end = 13;
             break;
-        case '03':
-            agent.currentTime = 4;
-            end = 6;
+			
+		case '010201':   
+            agent.currentTime = 123;
+            end = 135;
             break;
-        default: // 'tisina'
-            agent.currentTime = 6;
-            end = 12;
-            try {
+
+		case '010301':   
+            agent.currentTime = 238;
+            end = 247;
+            break;
+
+		//passage Prica1.2
+		case '010102':
+            agent.currentTime = 21;
+            end = 33;
+            break;
+
+		case '010202': 
+			agent.currentTime = 143;
+			end = 153;
+			break;
+
+		case '010302':   
+			agent.currentTime = 255;
+			end = 265;
+			break;
+
+		//passage Prica1.3
+		case '010103':
+            agent.currentTime = 42;
+            end = 56;
+            break;
+
+		case '010203':
+            agent.currentTime = 161;
+            end = 172;
+            break;
+
+		case '010303':
+            agent.currentTime = 273;
+            end = 284;
+            break;
+
+		//passage Prica1.4
+		case '010104':
+			agent.currentTime = 64;
+			end = 76;
+			break;
+
+		case '010204':
+            agent.currentTime = 181;
+            end = 193;
+            break;
+
+		case '010304':
+            agent.currentTime = 292;
+            end = 303;
+            break;
+
+		//passage Prica1.5
+		case '010105':
+            agent.currentTime = 85;
+            end = 96;
+            break;
+
+		case '010205':
+            agent.currentTime = 202;
+            end = 213;
+            break;
+
+		case '010305':
+            agent.currentTime = 311;
+            end = 323;
+            break;
+
+		//passage Prica1.6	
+		case '010106':
+			agent.currentTime = 105;
+			end = 114;
+			break;
+
+		case '010206':
+			agent.currentTime = 221;
+			end = 229;
+			break;
+
+		case '010306':
+			agent.currentTime = 331;
+			end = 343;
+			break;
+
+		// 'tisina'
+        default: 
+            agent.currentTime = 14;
+            end = 19;
+            try 
+			{
                 if (!isMobileBrowser())
                     window.recognition.start();
             }
@@ -216,6 +305,19 @@ function play_part(part) {
     }
 
     END = end;
+
+	function nextPassage(passageName, delay)
+	{
+		setTimeout( ()=> 
+			{
+				if (window.ws && window.ws.readyState === WebSocket.OPEN) 
+					window.ws.send("TWINE_COMMAND:DO_TRANSITION:" + passageName);
+				else
+					console.log("error kod slanja passagea \"" + passageName + "\".");
+			}
+		, delay); 
+	}
+
 }
 
 

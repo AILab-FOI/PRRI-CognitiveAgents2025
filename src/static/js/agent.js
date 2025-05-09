@@ -1,6 +1,7 @@
 var DONT = false;
 var FIRST = true;
 var STOP = false;
+var trenutniPassage="";
 
 // Na početak agent.js dodajte
 var RECONNECT_DELAY = 1000;
@@ -139,6 +140,7 @@ function connect() {
 			{
 				const passageName = msg.data.split(':')[1];
 				console.log("Ajs Trenutni passage:", passageName); // ← korisno za debug
+				trenutniPassage=passageName;
 				return;
 			}
 		
@@ -192,101 +194,119 @@ function play_part(part)
     switch (part) {
       //test prebaci na next passage
 		case '01':
-			nextPassage("Intro3", 2000);
+			nextPassage("Intro3", 1000);
 			break;
 
 		//passage Prica1.1
         case '010101':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 0;
             end = 13;
             break;
 			
 		case '010201':   
+			if (isWrongPassage(part)) break;
             agent.currentTime = 123;
             end = 135;
             break;
 
 		case '010301':   
+			if (isWrongPassage(part)) break;
             agent.currentTime = 238;
             end = 247;
             break;
 
 		//passage Prica1.2
 		case '010102':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 21;
             end = 33;
             break;
 
 		case '010202': 
+			if (isWrongPassage(part)) break;
 			agent.currentTime = 143;
 			end = 153;
 			break;
 
-		case '010302':   
+		case '010302':
+			if (isWrongPassage(part)) break;   
 			agent.currentTime = 255;
 			end = 265;
 			break;
 
 		//passage Prica1.3
 		case '010103':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 42;
             end = 56;
             break;
 
 		case '010203':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 161;
             end = 172;
             break;
 
 		case '010303':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 273;
             end = 284;
             break;
 
 		//passage Prica1.4
 		case '010104':
+			if (isWrongPassage(part)) break;
 			agent.currentTime = 64;
 			end = 76;
 			break;
 
 		case '010204':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 181;
             end = 193;
             break;
 
 		case '010304':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 292;
             end = 303;
             break;
 
 		//passage Prica1.5
 		case '010105':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 85;
             end = 96;
             break;
 
 		case '010205':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 202;
             end = 213;
             break;
 
 		case '010305':
+			if (isWrongPassage(part)) break;
             agent.currentTime = 311;
             end = 323;
             break;
 
 		//passage Prica1.6	
 		case '010106':
+			if (isWrongPassage(part)) break;
 			agent.currentTime = 105;
 			end = 114;
 			break;
 
 		case '010206':
+			if (isWrongPassage(part)) break;
 			agent.currentTime = 221;
 			end = 229;
 			break;
 
 		case '010306':
+			if (isWrongPassage(part)) break;
 			agent.currentTime = 331;
 			end = 343;
 			break;
@@ -306,6 +326,7 @@ function play_part(part)
 
     END = end;
 
+	//pomocne funkcije
 	function nextPassage(passageName, delay)
 	{
 		setTimeout( ()=> 
@@ -316,6 +337,21 @@ function play_part(part)
 					console.log("error kod slanja passagea \"" + passageName + "\".");
 			}
 		, delay); 
+	}
+
+	function isWrongPassage(passage)
+	{
+		//example '010203' => 01 - agent, 02 - choice of answer, 03 - passage
+		//if agent == agent && passage == passage => passage is not wrong, otherwise it is
+		let startTrenutni = trenutniPassage.substring(0,2);
+		let endTrenutni = trenutniPassage.substring(4,6);
+		let startPassage = passage.substring(0,2);
+		let endPassage = passage.substring(4,6);
+
+		if(startTrenutni === startPassage && endTrenutni === endPassage)
+			return false;
+		else 
+			return true;
 	}
 
 }

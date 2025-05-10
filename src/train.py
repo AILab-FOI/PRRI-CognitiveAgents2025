@@ -24,8 +24,7 @@ def train(bot):
         ["What exactly do you want from us?",                            
         "010101"
     ])
-    chatbot.train
-    (
+    chatbot.train(
         ["Why come to Earth now?",   #stari kod breaka ovo
         "010101"
     ])
@@ -130,22 +129,4 @@ def train(bot):
     chatbot.train(
         ["Are you just here to observe our downfall?", 
         "010306"
-    ])
-
-    #old stuff for testing
-    chatbot.train([
-        'Who are you?',
-        '01'
-    ])
-
-
-    chatbot.train([
-        'Where are you from?',
-        '02'
-    ])
-
-
-    chatbot.train([
-        'Why come here?',
-        '03'
-    ])
+    ])  

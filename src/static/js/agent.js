@@ -192,129 +192,123 @@ function play_part(part)
     recognition.stop();
 
     switch (part) {
-      //test prebaci na next passage
-		case '01':
-			nextPassage("Intro3", 1000);
-			break;
-
 		//passage Prica1.1
         case '010101':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 0;
-            end = 13;
+			playVideoAtTimestamp(0,13);
+			switchToNextPassage("Prica1.2");
             break;
 			
 		case '010201':   
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 123;
-            end = 135;
+			playVideoAtTimestamp(123,135);
+			switchToNextPassage("Prica1.2");
             break;
 
 		case '010301':   
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 238;
-            end = 247;
+			playVideoAtTimestamp(238,247);
+			switchToNextPassage("Prica1.2");
             break;
 
 		//passage Prica1.2
 		case '010102':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 21;
-            end = 33;
+			playVideoAtTimestamp(21,33);
+			switchToNextPassage("Prica1.3");
             break;
 
 		case '010202': 
 			if (isWrongPassage(part)) break;
-			agent.currentTime = 143;
-			end = 153;
+			playVideoAtTimestamp(143,153);
+			switchToNextPassage("Prica1.3");
 			break;
 
 		case '010302':
 			if (isWrongPassage(part)) break;   
-			agent.currentTime = 255;
-			end = 265;
+			playVideoAtTimestamp(255,265);
+			switchToNextPassage("Prica1.3");
 			break;
 
 		//passage Prica1.3
 		case '010103':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 42;
-            end = 56;
+			playVideoAtTimestamp(42,56);
+			switchToNextPassage("Prica1.4");
             break;
 
 		case '010203':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 161;
-            end = 172;
+			playVideoAtTimestamp(161,172);
+			switchToNextPassage("Prica1.4");
             break;
 
 		case '010303':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 273;
-            end = 284;
+			playVideoAtTimestamp(273,284);
+			switchToNextPassage("Prica1.4");
             break;
 
 		//passage Prica1.4
 		case '010104':
 			if (isWrongPassage(part)) break;
-			agent.currentTime = 64;
-			end = 76;
+			playVideoAtTimestamp(64,76);
+			switchToNextPassage("Prica1.5");
 			break;
 
 		case '010204':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 181;
-            end = 193;
+			playVideoAtTimestamp(181,193);
+			switchToNextPassage("Prica1.5");
             break;
 
 		case '010304':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 292;
-            end = 303;
+			playVideoAtTimestamp(292,303);
+			switchToNextPassage("Prica1.5");
             break;
 
 		//passage Prica1.5
 		case '010105':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 85;
-            end = 96;
+			playVideoAtTimestamp(85,96);
+			switchToNextPassage("Prica1.6");
             break;
 
 		case '010205':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 202;
-            end = 213;
+			playVideoAtTimestamp(202,213);
+			switchToNextPassage("Prica1.6");
             break;
 
 		case '010305':
 			if (isWrongPassage(part)) break;
-            agent.currentTime = 311;
-            end = 323;
+			playVideoAtTimestamp(311,323);
+			switchToNextPassage("Prica1.6");
             break;
 
 		//passage Prica1.6	
 		case '010106':
 			if (isWrongPassage(part)) break;
-			agent.currentTime = 105;
-			end = 114;
+			playVideoAtTimestamp(105,114);
+			switchToNextPassage("Prica1.7");
 			break;
 
 		case '010206':
 			if (isWrongPassage(part)) break;
-			agent.currentTime = 221;
-			end = 229;
+			playVideoAtTimestamp(221,229);
+			switchToNextPassage("Prica1.7");
 			break;
 
 		case '010306':
 			if (isWrongPassage(part)) break;
-			agent.currentTime = 331;
-			end = 343;
+			playVideoAtTimestamp(331,343);
+			switchToNextPassage("Prica1.7");
 			break;
 
 		// 'tisina'
         default: 
-            agent.currentTime = 14;
-            end = 19;
+			playVideoAtTimestamp(14,19);
             try 
 			{
                 if (!isMobileBrowser())
@@ -327,8 +321,9 @@ function play_part(part)
     END = end;
 
 	//pomocne funkcije
-	function nextPassage(passageName, delay)
+	function switchToNextPassage(passageName)
 	{
+		let delay = (end - agent.currentTime) * 1000 + 1000;
 		setTimeout( ()=> 
 			{
 				if (window.ws && window.ws.readyState === WebSocket.OPEN) 
@@ -352,6 +347,12 @@ function play_part(part)
 			return false;
 		else 
 			return true;
+	}
+
+	function playVideoAtTimestamp(startPoint, endPoint)
+	{
+		agent.currentTime = startPoint;
+		end = endPoint;
 	}
 
 }

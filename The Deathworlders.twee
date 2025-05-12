@@ -99,6 +99,97 @@ Vaš preglednik ne podržava HTML5 audio element.
 </tw-passage>
 
 
+:: \ Prica2.1 {"position":"3300,400","size":"100,100"}
+<tw-passage data-passage="Prica2.1" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "020101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("020101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+<div class="options" id="op3">
+What do you want from us? 
+Is there any chance for peace?
+</div>
+
+[[<button id="btnNextPassage">➤</button> ->Prica2.2]]
+
+</tw-passage>
+
+
 :: Federacija2 {"position":"1250,525","size":"100,100"}
 <tw-passage data-passage="federacija2" class="federacija1-bg">
 
@@ -564,7 +655,7 @@ Do you have enemies?
 Are you just here to observe our downfall?
 </div>
 
-[[<button id="btnNextPassage">➤</button> ->Prica1.7]]
+[[<button id="btnNextPassage">➤</button> ->Prica2.0]]
 
 </tw-passage>
 
@@ -574,6 +665,399 @@ Kraj
 
 
 za sad
+
+
+:: Prica2.0 {"position":"3100,400","size":"100,100"}
+<tw-passage data-passage="Prica2.1" class="vraxil-brod-bg">
+
+
+  <p id="dolazakVraxila-brod"></p>
+  [[<button id="btnNextPassage">➤</button> -> Prica2.1]]
+</tw-passage>
+
+
+:: Prica2.2 {"position":"3500,400","size":"100,100"}
+<tw-passage data-passage="Prica2.2" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "020102") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("020102");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+<div class="options" id="op3">
+Have you done this to others?
+What makes you think you’re stronger than us?
+</div>
+
+[[<button id="btnNextPassage">➤</button> ->Prica2.3]]
+
+</tw-passage>
+
+
+:: Prica2.3 {"position":"3700,400","size":"100,100"}
+<tw-passage data-passage="Prica2.3" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "020103") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("020103");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+<div class="options" id="op3">
+Do you even care who we are?
+What do you fear?”
+</div>
+
+[[<button id="btnNextPassage">➤</button> ->Prica2.4]]
+
+</tw-passage>
+
+
+:: Prica2.4 {"position":"3900,400","size":"100,100"}
+<tw-passage data-passage="Prica2.4" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "020104") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("020104");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+<div class="options" id="op3">
+You want a fight? Then come down and face us.
+Why now? Why Earth?
+</div>
+
+[[<button id="btnNextPassage">➤</button> ->Prica2.5]]
+
+</tw-passage>
+
+
+:: Prica2.5 {"position":"4100,400","size":"100,100"}
+<tw-passage data-passage="Prica2.5" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "020105") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("020105");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+<div class="options" id="op3">
+If you destroy us, what do you gain?
+Are we just another trophy to you?
+</div>
+
+[[<button id="btnNextPassage">➤</button> ->Prica3.0]]
+
+</tw-passage>
+
+
+:: Prica3.0 {"position":"4300,600","size":"100,100"}
+<tw-passage data-passage="Prica3.0" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation30"></p>
+
+  treba dodati mogucnost odluke zvanja cortia ako imamo dobar trust
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica3.1]]
+</tw-passage>
+
+
+:: Prica3.1 {"position":"4500,600","size":"100,100"}
+
 
 
 :: Pricca1.3 {"position":"2100,200","size":"100,100"}
@@ -925,6 +1409,32 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
       newEuropeTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
     });
   }
+  
+  const typingdolazakVraxilabrod = document.getElementById("dolazakVraxila-brod");
+  if(typingdolazakVraxilabrod && !typingdolazakVraxilabrod.dataset.typed) {
+    const firstText = 'TECHNICIAN: “Unknown vessel entering Earth orbit. It is massive. And... it’s not the Corti.”';
+    const secondText = 'K’RAATH: “You waste your breath debating survival while the storm already consumes you. We are the Vraxil. And your world is now ours to claim.”';
+    
+    typeWriter("dolazakVraxila-brod", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("dolazakVraxila-brod", secondText, 70);
+      }, 1000);
+    });
+    typingdolazakVraxilabrod.dataset.typed = "true";
+  }
+  
+  const typingFederation30 = document.getElementById("typingFederation30");
+  if(typingFederation30 && !typingFederation30.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “We’ve seen what’s coming. This is no longer politics — it’s survival.”';
+    const secondText = 'GENERAL SMITH: “If the Corti are still willing to help... now’s the time.”';
+    
+    typeWriter("typingFederation30", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation30", secondText, 70);
+      }, 1000);
+    });
+    typingFederation30.dataset.typed = "true";
+  }
 
 });
 
@@ -1013,6 +1523,17 @@ mainObserver.observe(document.body, {
   top: 0;
   left: 0;
 }
+
+.federacija2-bg {
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/1702804294f200ce32093f2b853434ea7fc08f5e/src/static/media/Flux_Dev_In_a_futuristic_conference_hall_within_New_Europe_a_s_1.jpg')
+  no-repeat center center;
+  background-size: 100% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .gumbiOdabir1 {
   font-family: "Iceland", sans-serif;
   padding: 2%;
@@ -1020,6 +1541,16 @@ mainObserver.observe(document.body, {
   letter-spacing: 2px;
   display: flex;
   justify-content: center;
+}
+.vraxil-brod-bg {
+  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/f713c4075fcd7666f1aff9013dfc3ad545eeb1fc/src/static/media/2Q%3D%3D.jpeg')
+  no-repeat center center;
+  background-size: 90% 100%; 
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 

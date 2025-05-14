@@ -1241,6 +1241,8 @@ new UnifiedPassageHandler("050505");
    [[<button id="btnNextPassage1" class = "skriven" ></button> ->Prica3.1a]]
    [[<button id="btnNextPassage2" class = "skriven"></button> ->Prica3.1b]]
  
+ 
+   [[<button id="btnNextPassage">➤</button> ->Prica3.1a]]
 </tw-passage>
 
 
@@ -1254,7 +1256,7 @@ new UnifiedPassageHandler("050505");
 
   <p id="typingFederation31a"> </p>
   
-  [[<button id="btnNextPassage">➤</button> ->Prica4.1]]
+  [[<button id="btnNextPassage">➤</button> ->Prica4.2]]
 </tw-passage>
 
 
@@ -1272,7 +1274,7 @@ new UnifiedPassageHandler("050505");
 </tw-passage>
 
 
-:: Prica4.1 {"position":"4900,400","size":"100,100"}
+:: Prica4.1 {"position":"4900,450","size":"100,100"}
 <tw-passage data-passage="Prica4.1" class="federacija1-bg">
 
 <audio loop id="newEuropeTheme" >
@@ -1349,28 +1351,80 @@ new UnifiedPassageHandler("050505");
 
 
 :: Prica4.5 {"position":"6300,400","size":"100,100"}
-<tw-passage data-passage="Prica4.1" class="federacija1-bg">
+<tw-passage data-passage="Prica4.5" class="federacija1-bg">
 
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+  
 (if:$odluka > 1)[
- <p id="pobjeda45"> </p>
+(goto: "Prica4.5a")
 ]
- (else-if:$odluka > -1)[
-  <p id="teskaPobjeda45"> </p>
+ (else-if:$odluka > -2)[
+(goto: "Prica4.5b")
  ]
  (if:$odluka < -1)[
-   <p id="poraz45"> </p>
+(goto: "Prica4.5c")
  ]
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.6]]
+
 </tw-passage>
 
 
-:: Prica4.6 {"position":"6500,400","size":"100,100"}
+:: Prica4.5a {"position":"6500,300","size":"100,100"}
+<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
 
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  
+
+ <p class = "zadnjiP" id="pobjeda45"> </p>
+
+
+  [[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+</tw-passage>
+
+
+:: Prica4.5b {"position":"6500,400","size":"100,100"}
+<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  
+
+  <p class = "zadnjiP" id="teskaPobjeda45"> </p>
+
+
+  [[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+</tw-passage>
+
+
+:: Prica4.5c {"position":"6500,500","size":"100,100"}
+<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  
+
+   <p class = "zadnjiP" id="poraz45"> </p>
+
+
+  [[<button id="btnNextPassage">➤</button> ->Prica4.6b]]
+</tw-passage>
+
+
+:: Prica4.6a {"position":"6700,300","size":"100,100"}
+Congrats dobia si
+
+
+:: Prica4.6b {"position":"6700,500","size":"100,100"}
+loser
 
 
 :: Prica5.1 {"position":"4900,800","size":"100,100"}
@@ -2291,4 +2345,19 @@ input[type="range"]::-moz-range-thumb:hover {
 .gumb33a {
   display: flex;
   bottom: 5%;
+}
+
+.zadnjiP {
+  font-family: "Iceland", sans-serif;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.394);
+  letter-spacing: 2px;
+  margin-top: auto;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
 }

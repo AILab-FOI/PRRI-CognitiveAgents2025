@@ -263,6 +263,14 @@ p{
   border-radius: 5px;
   display: none;
 }
+#btnNextPassage2 {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 7px 10px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
+}
 
 .skriven{
   display: none;
@@ -772,6 +780,96 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     });
     poraz45.dataset.typed = "true";
   }
+  
+  const typingFederation51 = document.getElementById("typingFederation51");
+  if(typingFederation51 && !typingFederation51.dataset.typed) {
+    const firstText = 'GENERAL SMITH: “They are moving fast. No reinforcements. No second chances.”';
+    const secondText = 'PRESIDENT HALE: “We’re done waiting. Let’s make the end matter.”';
+
+    
+    typeWriter("typingFederation51", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation51", secondText, 70);
+      }, 1000);
+    });
+    typingFederation51.dataset.typed = "true";
+  }
+  
+  const typingFederation52 = document.getElementById("typingFederation52");
+  if(typingFederation52 && !typingFederation52.dataset.typed) {
+    const firstText = 'GENERAL SMITH: “Where do we draw the line?”';
+    
+    typeWriter("typingFederation52", firstText, 70, () => {
+    });
+    typingFederation52.dataset.typed = "true";
+  }
+  
+  const typingPrica52a = document.getElementById("typingPrica52a");
+  if(typingPrica52a && !typingPrica52a.dataset.typed) {
+    const firstText = "By choosing to protect the capital, the outer cities have fallen — and with them, the people.";
+    
+    typeWriter("typingPrica52a", firstText, 70, () => {
+    });
+    typingPrica52a.dataset.typed = "true";
+  }
+  
+  const typingPrica52b = document.getElementById("typingPrica52b");
+  if(typingPrica52b && !typingPrica52b.dataset.typed) {
+    const firstText = "By choosing to defend the cities without the Corti's help, the casualties were immense. Can Earth survive?";
+    
+    typeWriter("typingPrica52b", firstText, 70, () => {
+    });
+    typingPrica52b.dataset.typed = "true";
+  }
+  
+   const typingFederation53 = document.getElementById("typingFederation53");
+  if(typingFederation53 && !typingFederation53.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “If the walls break… what’s the plan?”';
+    
+    typeWriter("typingFederation53", firstText, 70, () => {
+    });
+    typingFederation53.dataset.typed = "true";
+  }
+  
+  const typingFederation53a = document.getElementById("typingFederation53a");
+  if(typingFederation53a && !typingFederation53a.dataset.typed) {
+    const firstText = "Evacuate key personnel. Someone has to survive.";
+    
+    typeWriter("typingFederation53a", firstText, 70, () => {
+    });
+    typingFederation53a.dataset.typed = "true";
+  }
+  
+  const typingFederation53b = document.getElementById("typingFederation53b");
+  if(typingFederation53b && !typingFederation53b.dataset.typed) {
+    const firstText = "We stay. We fight. To the last man.";
+    
+    typeWriter("typingFederation53b", firstText, 70, () => {
+    });
+    typingFederation53b.dataset.typed = "true";
+  }
+  
+   //tu
+  
+  const typingFederation54 = document.getElementById("typingFederation54");
+  if(typingFederation54 && !typingFederation54.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “There are thousands of civilians in shelters. Engineers, medics, even veterans. Do we mobilize them?”';
+    
+    typeWriter("typingFederation54", firstText, 70, () => {
+    });
+    typingFederation54.dataset.typed = "true";
+  }
+  
+  const typingFederation54a = document.getElementById("typingFederation54a");
+  if(typingFederation54a && !typingFederation54a.dataset.typed) {
+    const firstText = "They stood alone. And they fell alone. No help came. No miracle arrived. Only the Vraxil. And in the end... Earth was silent.";
+
+    
+    typeWriter("typingFederation54a", firstText, 70, () => {
+    });
+    typingFederation54a.dataset.typed = "true";
+  }
+
   
 });
 
@@ -1959,7 +2057,8 @@ new UnifiedPassageHandler(&quot;050505&quot;);
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica3.1b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica3.1a]]
+   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤a&lt;/button&gt; -&gt;Prica3.1a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt;Prica3.1b]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="27" name="Prica3.1b" tags="" position="4700,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica3.1b&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
@@ -1990,7 +2089,17 @@ new UnifiedPassageHandler(&quot;050505&quot;);
   &lt;p id=&quot;typingFederation32a&quot;&gt; &lt;/p&gt;
   
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.2]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="30" name="Prica5.1" tags="" position="4900,800" size="100,100"></tw-passagedata><tw-passagedata pid="31" name="Prica4.2" tags="" position="5100,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.2&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="30" name="Prica5.1" tags="" position="4900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.1&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation51&quot;&gt; &lt;/p&gt;
+  
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.2]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="31" name="Prica4.2" tags="" position="5100,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.2&quot; class=&quot;federacija1-bg&quot;&gt;
 
 (set:$odluka to 0)
 
@@ -2075,7 +2184,7 @@ new UnifiedPassageHandler(&quot;050505&quot;);
   &lt;p id=&quot;typingFederation43b&quot;&gt; &lt;/p&gt;
   
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.4]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="37" name="Prica4.4" tags="" position="5900,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.3&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="37" name="Prica4.4" tags="" position="5900,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.4&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
     &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
@@ -2087,11 +2196,11 @@ new UnifiedPassageHandler(&quot;050505&quot;);
   &lt;div&gt;
   	[[&lt;button class = &quot;gumb43a&quot;&gt; Let the Corti handle it. They’re better equipped. &lt;button&gt;  -&gt; Prica4.4a]]
     
-    [[&lt;button class = &quot;gumb43a&quot;&gt; TKeep it under human command. We lead this.&lt;/button&gt; -&gt; Prica4.4b]]
+    [[&lt;button class = &quot;gumb43a&quot;&gt; Keep it under human command. We lead this.&lt;/button&gt; -&gt; Prica4.4b]]
   &lt;/div&gt;
   
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="38" name=" Prica4.4a" tags="" position="6100,300" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.3a&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="38" name=" Prica4.4a" tags="" position="6100,300" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.4a&quot; class=&quot;federacija1-bg&quot;&gt;
 
 (set: $odluka to $odluka + 1)
 
@@ -2104,7 +2213,7 @@ new UnifiedPassageHandler(&quot;050505&quot;);
   &lt;p id=&quot;typingFederation44a&quot;&gt; &lt;/p&gt;
   
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.5]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="39" name=" Prica4.4b" tags="" position="6100,500" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.3a&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="39" name=" Prica4.4b" tags="" position="6100,500" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.4a&quot; class=&quot;federacija1-bg&quot;&gt;
 
 (set: $odluka to $odluka - 1)
 
@@ -2170,7 +2279,113 @@ new UnifiedPassageHandler(&quot;050505&quot;);
 
 
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.6b]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="45" name="Prica4.6b" tags="" position="6700,500" size="100,100">loser</tw-passagedata></tw-storydata>
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="45" name="Prica4.6b" tags="" position="6700,500" size="100,100">loser</tw-passagedata><tw-passagedata pid="46" name="Prica5.2" tags="" position="5100,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5..2&quot; class=&quot;federacija1-bg&quot;&gt;
+
+
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation52&quot; class = &quot;prica33a&quot;&gt; &lt;/p&gt;
+  
+  &lt;div&gt;
+  	[[&lt;button class = &quot;gumb33a&quot;&gt; Hold the capital. If we lose it, we lose everything.&lt;/button&gt;  -&gt; Prica5.2a]]
+    
+    [[&lt;button class = &quot;gumb33a&quot;&gt; Spread thin. Try to protect as many cities as possible.&lt;/button&gt; -&gt; Prica5.2b]]
+  &lt;/div&gt;
+  
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="47" name=" Prica5.2a" tags="" position="5300,700" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.2a&quot; class=&quot;prica42a-bg&quot;&gt;
+
+
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id = &quot;typingPrica52a&quot;&gt;&lt;/p&gt;
+  
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.3]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="48" name=" Prica5.2b" tags="" position="5300,900" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.2b&quot; class=&quot;prica42a-bg&quot;&gt;
+
+
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id = &quot;typingPrica52b&quot;&gt;&lt;/p&gt;
+  
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.3]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="49" name="Prica5.3" tags="" position="5500,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.3&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation53&quot; class = &quot;prica33a&quot;&gt; &lt;/p&gt;
+  
+  &lt;div&gt;
+  	[[&lt;button class = &quot;gumb43a&quot;&gt; Use everything we’ve got. Burn them down. &lt;button&gt;  -&gt; Prica5.3a]]
+    
+    [[&lt;button class = &quot;gumb43a&quot;&gt; Target only their leaders. Keep it clean.&lt;/button&gt; -&gt; Prica5.3b]]
+  &lt;/div&gt;
+  
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="50" name=" Prica5.3a" tags="" position="5700,700" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.3a&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation53a&quot;&gt; &lt;/p&gt;
+  
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.4]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="51" name=" Prica5.3b" tags="" position="5700,900" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.3b&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation53b&quot;&gt; &lt;/p&gt;
+  
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.4]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="52" name="Prica5.4" tags="" position="5900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.4&quot; class=&quot;federacija1-bg&quot;&gt;
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation54&quot; class = &quot;prica33a&quot;&gt; &lt;/p&gt;
+  
+  &lt;div&gt;
+  	[[&lt;button class = &quot;gumb43a&quot;&gt; Yes. Everyone contributes. This is total war. &lt;button&gt;  -&gt; Prica5.4a]]
+    
+    [[&lt;button class = &quot;gumb43a&quot;&gt; No. They stay in shelters. We can’t risk panic. &lt;/button&gt; -&gt; Prica5.4a]]
+  &lt;/div&gt;
+  
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="53" name=" Prica5.4a" tags="" position="6100,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.4a&quot; class=&quot;federacija1-bg&quot;&gt;
+
+
+&lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
+    &lt;source src=&quot;https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    Your browser does not support the audio element.
+  &lt;/audio&gt;
+
+  &lt;p id=&quot;typingFederation54a&quot;&gt; &lt;/p&gt;
+
+  [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.5]]
+
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="54" name="Prica5.5" tags="" position="6300,800" size="100,100">GGS u lose</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

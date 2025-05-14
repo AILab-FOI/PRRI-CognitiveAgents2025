@@ -258,7 +258,7 @@ Is there any chance for peace?
 
 
 :: \ Prica4.4a {"position":"6100,300","size":"100,100"}
-<tw-passage data-passage="Prica4.3a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.4a" class="federacija1-bg">
 
 (set: $odluka to $odluka + 1)
 
@@ -275,7 +275,7 @@ Is there any chance for peace?
 
 
 :: \ Prica4.4b {"position":"6100,500","size":"100,100"}
-<tw-passage data-passage="Prica4.3a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.4a" class="federacija1-bg">
 
 (set: $odluka to $odluka - 1)
 
@@ -288,6 +288,82 @@ Is there any chance for peace?
   <p id="typingFederation44b"> </p>
   
   [[<button id="btnNextPassage">➤</button> ->Prica4.5]]
+</tw-passage>
+
+
+:: \ Prica5.2a {"position":"5300,700","size":"100,100"}
+<tw-passage data-passage="Prica5.2a" class="prica42a-bg">
+
+
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id = "typingPrica52a"></p>
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+</tw-passage>
+
+
+:: \ Prica5.2b {"position":"5300,900","size":"100,100"}
+<tw-passage data-passage="Prica5.2b" class="prica42a-bg">
+
+
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id = "typingPrica52b"></p>
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+</tw-passage>
+
+
+:: \ Prica5.3a {"position":"5700,700","size":"100,100"}
+<tw-passage data-passage="Prica5.3a" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation53a"> </p>
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+</tw-passage>
+
+
+:: \ Prica5.3b {"position":"5700,900","size":"100,100"}
+<tw-passage data-passage="Prica5.3b" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation53b"> </p>
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+</tw-passage>
+
+
+:: \ Prica5.4a {"position":"6100,800","size":"100,100"}
+<tw-passage data-passage="Prica5.4a" class="federacija1-bg">
+
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation54a"> </p>
+
+  [[<button id="btnNextPassage">➤</button> ->Prica5.5]]
+
 </tw-passage>
 
 
@@ -1242,7 +1318,8 @@ new UnifiedPassageHandler("050505");
    [[<button id="btnNextPassage2" class = "skriven"></button> ->Prica3.1b]]
  
  
-   [[<button id="btnNextPassage">➤</button> ->Prica3.1a]]
+   [[<button id="btnNextPassage">➤a</button> ->Prica3.1a]]
+   [[<button id="btnNextPassage2">➤b</button> ->Prica3.1b]]
 </tw-passage>
 
 
@@ -1331,7 +1408,7 @@ new UnifiedPassageHandler("050505");
 
 
 :: Prica4.4 {"position":"5900,400","size":"100,100"}
-<tw-passage data-passage="Prica4.3" class="federacija1-bg">
+<tw-passage data-passage="Prica4.4" class="federacija1-bg">
 
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
@@ -1343,7 +1420,7 @@ new UnifiedPassageHandler("050505");
   <div>
   	[[<button class = "gumb43a"> Let the Corti handle it. They’re better equipped. <button>  -> Prica4.4a]]
     
-    [[<button class = "gumb43a"> TKeep it under human command. We lead this.</button> -> Prica4.4b]]
+    [[<button class = "gumb43a"> Keep it under human command. We lead this.</button> -> Prica4.4b]]
   </div>
   
 
@@ -1428,7 +1505,83 @@ loser
 
 
 :: Prica5.1 {"position":"4900,800","size":"100,100"}
+<tw-passage data-passage="Prica5.1" class="federacija1-bg">
 
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation51"> </p>
+  
+  [[<button id="btnNextPassage">➤</button> ->Prica5.2]]
+</tw-passage>
+
+
+:: Prica5.2 {"position":"5100,800","size":"100,100"}
+<tw-passage data-passage="Prica5..2" class="federacija1-bg">
+
+
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation52" class = "prica33a"> </p>
+  
+  <div>
+  	[[<button class = "gumb33a"> Hold the capital. If we lose it, we lose everything.</button>  -> Prica5.2a]]
+    
+    [[<button class = "gumb33a"> Spread thin. Try to protect as many cities as possible.</button> -> Prica5.2b]]
+  </div>
+  
+
+</tw-passage>
+
+
+:: Prica5.3 {"position":"5500,800","size":"100,100"}
+<tw-passage data-passage="Prica5.3" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation53" class = "prica33a"> </p>
+  
+  <div>
+  	[[<button class = "gumb43a"> Use everything we’ve got. Burn them down. <button>  -> Prica5.3a]]
+    
+    [[<button class = "gumb43a"> Target only their leaders. Keep it clean.</button> -> Prica5.3b]]
+  </div>
+  
+
+</tw-passage>
+
+
+:: Prica5.4 {"position":"5900,800","size":"100,100"}
+<tw-passage data-passage="Prica5.4" class="federacija1-bg">
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p id="typingFederation54" class = "prica33a"> </p>
+  
+  <div>
+  	[[<button class = "gumb43a"> Yes. Everyone contributes. This is total war. <button>  -> Prica5.4a]]
+    
+    [[<button class = "gumb43a"> No. They stay in shelters. We can’t risk panic. </button> -> Prica5.4a]]
+  </div>
+  
+
+</tw-passage>
+
+
+:: Prica5.5 {"position":"6300,800","size":"100,100"}
+GGS u lose
 
 
 :: Pricca1.3 {"position":"2100,200","size":"100,100"}
@@ -1946,6 +2099,96 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     poraz45.dataset.typed = "true";
   }
   
+  const typingFederation51 = document.getElementById("typingFederation51");
+  if(typingFederation51 && !typingFederation51.dataset.typed) {
+    const firstText = 'GENERAL SMITH: “They are moving fast. No reinforcements. No second chances.”';
+    const secondText = 'PRESIDENT HALE: “We’re done waiting. Let’s make the end matter.”';
+
+    
+    typeWriter("typingFederation51", firstText, 70, () => {
+      setTimeout(() => {
+        typeWriter("typingFederation51", secondText, 70);
+      }, 1000);
+    });
+    typingFederation51.dataset.typed = "true";
+  }
+  
+  const typingFederation52 = document.getElementById("typingFederation52");
+  if(typingFederation52 && !typingFederation52.dataset.typed) {
+    const firstText = 'GENERAL SMITH: “Where do we draw the line?”';
+    
+    typeWriter("typingFederation52", firstText, 70, () => {
+    });
+    typingFederation52.dataset.typed = "true";
+  }
+  
+  const typingPrica52a = document.getElementById("typingPrica52a");
+  if(typingPrica52a && !typingPrica52a.dataset.typed) {
+    const firstText = "By choosing to protect the capital, the outer cities have fallen — and with them, the people.";
+    
+    typeWriter("typingPrica52a", firstText, 70, () => {
+    });
+    typingPrica52a.dataset.typed = "true";
+  }
+  
+  const typingPrica52b = document.getElementById("typingPrica52b");
+  if(typingPrica52b && !typingPrica52b.dataset.typed) {
+    const firstText = "By choosing to defend the cities without the Corti's help, the casualties were immense. Can Earth survive?";
+    
+    typeWriter("typingPrica52b", firstText, 70, () => {
+    });
+    typingPrica52b.dataset.typed = "true";
+  }
+  
+   const typingFederation53 = document.getElementById("typingFederation53");
+  if(typingFederation53 && !typingFederation53.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “If the walls break… what’s the plan?”';
+    
+    typeWriter("typingFederation53", firstText, 70, () => {
+    });
+    typingFederation53.dataset.typed = "true";
+  }
+  
+  const typingFederation53a = document.getElementById("typingFederation53a");
+  if(typingFederation53a && !typingFederation53a.dataset.typed) {
+    const firstText = "Evacuate key personnel. Someone has to survive.";
+    
+    typeWriter("typingFederation53a", firstText, 70, () => {
+    });
+    typingFederation53a.dataset.typed = "true";
+  }
+  
+  const typingFederation53b = document.getElementById("typingFederation53b");
+  if(typingFederation53b && !typingFederation53b.dataset.typed) {
+    const firstText = "We stay. We fight. To the last man.";
+    
+    typeWriter("typingFederation53b", firstText, 70, () => {
+    });
+    typingFederation53b.dataset.typed = "true";
+  }
+  
+   //tu
+  
+  const typingFederation54 = document.getElementById("typingFederation54");
+  if(typingFederation54 && !typingFederation54.dataset.typed) {
+    const firstText = 'PRESIDENT HALE: “There are thousands of civilians in shelters. Engineers, medics, even veterans. Do we mobilize them?”';
+    
+    typeWriter("typingFederation54", firstText, 70, () => {
+    });
+    typingFederation54.dataset.typed = "true";
+  }
+  
+  const typingFederation54a = document.getElementById("typingFederation54a");
+  if(typingFederation54a && !typingFederation54a.dataset.typed) {
+    const firstText = "They stood alone. And they fell alone. No help came. No miracle arrived. Only the Vraxil. And in the end... Earth was silent.";
+
+    
+    typeWriter("typingFederation54a", firstText, 70, () => {
+    });
+    typingFederation54a.dataset.typed = "true";
+  }
+
+  
 });
 
 const initialElement = document.getElementById("typing");
@@ -2218,6 +2461,14 @@ p{
   background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 5px;
   display: none;
+}
+#btnNextPassage2 {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 7px 10px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
 }
 
 .skriven{

@@ -195,8 +195,8 @@ Is there any chance for peace?
 
 (set: $odluka to $odluka - 1)
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -212,8 +212,8 @@ Is there any chance for peace?
 (set: $odluka to $odluka + 1)
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -229,8 +229,8 @@ Is there any chance for peace?
 (set: $odluka to $odluka - 1)
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -246,8 +246,8 @@ Is there any chance for peace?
 (set: $odluka to $odluka + 1)
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -263,8 +263,8 @@ Is there any chance for peace?
 (set: $odluka to $odluka + 1)
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -280,8 +280,8 @@ Is there any chance for peace?
 (set: $odluka to $odluka - 1)
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -296,8 +296,8 @@ Is there any chance for peace?
 
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -312,8 +312,8 @@ Is there any chance for peace?
 
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -326,8 +326,8 @@ Is there any chance for peace?
 :: \ Prica5.3a {"position":"5700,700","size":"100,100"}
 <tw-passage data-passage="Prica5.3a" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -340,8 +340,8 @@ Is there any chance for peace?
 :: \ Prica5.3b {"position":"5700,900","size":"100,100"}
 <tw-passage data-passage="Prica5.3b" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1370,8 +1370,8 @@ new UnifiedPassageHandler("050505");
 
 (set:$odluka to 0)
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1390,8 +1390,8 @@ new UnifiedPassageHandler("050505");
 :: Prica4.3 {"position":"5500,400","size":"100,100"}
 <tw-passage data-passage="Prica4.3" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1410,8 +1410,8 @@ new UnifiedPassageHandler("050505");
 :: Prica4.4 {"position":"5900,400","size":"100,100"}
 <tw-passage data-passage="Prica4.4" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1523,8 +1523,8 @@ loser
 
 
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1543,8 +1543,8 @@ loser
 :: Prica5.3 {"position":"5500,800","size":"100,100"}
 <tw-passage data-passage="Prica5.3" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1563,8 +1563,8 @@ loser
 :: Prica5.4 {"position":"5900,800","size":"100,100"}
 <tw-passage data-passage="Prica5.4" class="federacija1-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
+<audio loop id="battleTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -1915,24 +1915,6 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     typingFederation4Element.dataset.typed = "true";
   }  
   
-   const newEuropeTheme = document.getElementById("newEuropeTheme");
-    if (newEuropeTheme) {
-      newEuropeTheme.volume = 0.7;
-
-      newEuropeTheme.addEventListener("loadedmetadata", () => {
-      if (typingFederation1Element) {
-        newEuropeTheme.currentTime = 0;
-      } else if (typingFederation2Element) {
-        newEuropeTheme.currentTime = 28;
-      } else if (typingFederation3Element) {
-        newEuropeTheme.currentTime = 50;
-      } else if (typingFederation4Element) {
-        newEuropeTheme.currentTime = 70;
-      }
-
-      newEuropeTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
-    });
-  }
   
   const typingdolazakVraxilabrod = document.getElementById("dolazakVraxila-brod");
   if(typingdolazakVraxilabrod && !typingdolazakVraxilabrod.dataset.typed) {
@@ -1969,6 +1951,7 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     typingFederation31a.dataset.typed = "true";
   }
   
+  
   const typingFederation31b = document.getElementById("typingFederation31b");
   if(typingFederation31b && !typingFederation31b.dataset.typed) {
     const firstText = 'TECHNICIAN: "The Corti do not respond. The channel is silent."';
@@ -1980,6 +1963,31 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
       }, 1500);
     });
     typingFederation31b.dataset.typed = "true";
+  }
+  
+  const newEuropeTheme = document.getElementById("newEuropeTheme");
+    if (newEuropeTheme) {
+      newEuropeTheme.volume = 0.7;
+
+      newEuropeTheme.addEventListener("loadedmetadata", () => {
+      if (typingFederation1Element) {
+        newEuropeTheme.currentTime = 0;
+      } else if (typingFederation2Element) {
+        newEuropeTheme.currentTime = 28;
+      } else if (typingFederation3Element) {
+        newEuropeTheme.currentTime = 50;
+      } else if (typingFederation4Element) {
+        newEuropeTheme.currentTime = 70;
+      } else if (typingFederation30) {
+        newEuropeTheme.currentTime = 15;
+      } else if (typingFederation31a) {
+        newEuropeTheme.currentTime = 45;
+      } else if (typingFederation31b) {
+        newEuropeTheme.currentTime = 63;
+      }
+
+      newEuropeTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
+    });
   }
   
     const typingFederation33a = document.getElementById("typingFederation33a");
@@ -2069,6 +2077,35 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     typeWriter("typingFederation44b", firstText, 70, () => {
     });
     typingFederation44b.dataset.typed = "true";
+  }
+  
+  const battleTheme = document.getElementById("battleTheme");
+    if (battleTheme) {
+      battleTheme.volume = 0.5;
+
+      battleTheme.addEventListener("loadedmetadata", () => {
+      if (typingFederation33a) {
+        battleTheme.currentTime = 0;
+      } else if (typingPrica42a) {
+        battleTheme.currentTime = 12;
+      } else if (typingFederation42b) {
+        battleTheme.currentTime = 24;
+      } else if (typingFederation43) {
+        battleTheme.currentTime = 30;
+      } else if (typingFederation43a) {
+        battleTheme.currentTime = 35;
+      } else if (typingFederation43b) {
+        battleTheme.currentTime = 42;
+      } else if (typingFederation44) {
+        battleTheme.currentTime = 48;
+      } else if (typingFederation44a) {
+        battleTheme.currentTime = 55;
+      } else if (typingFederation44b) {
+        battleTheme.currentTime = 60;
+      }
+
+      battleTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
+    });
   }
   
   
@@ -2176,6 +2213,32 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
     typeWriter("typingFederation54", firstText, 70, () => {
     });
     typingFederation54.dataset.typed = "true";
+  }
+  
+  if (battleTheme) {
+      battleTheme.volume = 0.5;
+
+      battleTheme.addEventListener("loadedmetadata", () => {
+      if (typingFederation51) {
+        battleTheme.currentTime = 0;
+      } else if (typingFederation52) {
+        battleTheme.currentTime = 15;
+      } else if (typingPrica52a) {
+        battleTheme.currentTime = 25;
+      } else if (typingPrica52b) {
+        battleTheme.currentTime = 30;
+      } else if (typingFederation53) {
+        battleTheme.currentTime = 35;
+      } else if (typingFederation53a) {
+        battleTheme.currentTime = 40;
+      } else if (typingFederation53b) {
+        battleTheme.currentTime = 47;
+      } else if (typingFederation54) {
+        battleTheme.currentTime = 54;
+      } 
+        
+      battleTheme.play().catch(e => console.log("Greška kod pokretanja glazbe:", e));
+    });
   }
   
   const typingFederation54a = document.getElementById("typingFederation54a");

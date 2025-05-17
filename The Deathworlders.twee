@@ -1310,6 +1310,25 @@ class UnifiedPassageHandler {
 
 // Pokretanje WebSocket handlera
 new UnifiedPassageHandler("050505");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
 </script>
 
  

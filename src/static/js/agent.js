@@ -111,9 +111,9 @@ $(window).on('load', function () {
 	if (!isMobileBrowser())
 		recognition.start();
 	document.getElementById('startupute').style.display = 'none';
-	document.getElementById('questions').style.display = 'block';
+	//document.getElementById('questions').style.display = 'block';
 	play_part('tisina');
-	question('bok');
+	//question('bok');
 	if (isMobileBrowser()) {
 		document.getElementById('record').style.display = 'block';
 	}
@@ -143,6 +143,8 @@ function connect() {
 				console.log("Ajs Trenutni passage:", passageName); // ← korisno za debug
 				trenutniPassage=passageName;
 				corti = new Agent(sessionStorage.getItem("corti"));		
+				
+				if(passageName === "050505") play_part(passageName);
 				return;
 			}
 		
@@ -323,6 +325,13 @@ function play_part(part)
 			switchToNextPassage("Prica1.7");
 			break;
 
+		case "050505":
+			playVideoAtTimestamp(15,18);
+			if(corti.getTrustRank()=="Trusted")
+				switchToNextPassage("Prica3.1a");
+			else 
+				switchToNextPassage("Prica3.1b");
+			break;
 		// 'tisina'
         default: 
 			playVideoAtTimestamp(14,19);

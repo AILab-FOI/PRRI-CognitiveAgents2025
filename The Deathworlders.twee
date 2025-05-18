@@ -1234,6 +1234,8 @@ Are we just another trophy to you?
 :: Prica3.1 {"position":"4500,600","size":"100,100"}
 <tw-passage data-passage="Prica3.1" class="federacija1-bg">
 
+<div id="agent-container" style="display:none" ></div>
+
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
@@ -1337,7 +1339,7 @@ if (agentContainer) {
    [[<button id="btnNextPassage2" class = "skriven"></button> ->Prica3.1b]]
  
  
-   [[<button id="btnNextPassage">➤a</button> ->Prica3.1a]]
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> ->Prica3.1a]]
    [[<button id="btnNextPassage2">➤b</button> ->Prica3.1b]]
 </tw-passage>
 

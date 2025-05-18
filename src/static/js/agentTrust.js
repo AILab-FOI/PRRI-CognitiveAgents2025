@@ -1,8 +1,7 @@
 const TrustRanks = new Array
 (
-    { name: "Untrusted", min : -1, max: 1},
-    { name: "Neutral", min : 2, max: 4},
-    { name: "Trusted", min : 5, max: 7}
+    { name: "Untrusted", min : -2, max: 0},
+    { name: "Trusted", min : 1, max: 3}
 );
 
 class Agent
@@ -15,7 +14,7 @@ class Agent
         if(initialValue == null)
         {
             let temp=TrustRanks[TrustRanks.length - 1].max - TrustRanks[0].min; 
-            initialValue = TrustRanks[0].min + Math.round(temp/2);  //uvijek srednja brojčana vrijednost i srednji trust rank
+            initialValue = TrustRanks[0].min + Math.floor(temp/2);  //uvijek srednja brojčana vrijednost i srednji trust rank
         }
         else
         {

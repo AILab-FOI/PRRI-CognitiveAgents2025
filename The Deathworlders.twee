@@ -191,178 +191,947 @@ Is there any chance for peace?
 
 
 :: \ Prica4.2a {"position":"5300,300","size":"100,100"}
-<tw-passage data-passage="Prica4.2a" class="prica42a-bg">
+<tw-passage data-passage="Prica4.2a" class="intro2-bg">
 
-(set: $odluka to $odluka - 1)
+<div id="agent-container"></div>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-  <p id = "typingPrica42a"></p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.3]]
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.3]]
+
 </tw-passage>
 
 
 :: \ Prica4.2b {"position":"5300,500","size":"100,100"}
-<tw-passage data-passage="Prica4.2b" class="federacija1-bg">
+<tw-passage data-passage="Prica4.2b" class="intro2-bg">
 
-(set: $odluka to $odluka + 1)
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040102") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation42b" class = ""> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.3]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("030101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.3]]
+
 </tw-passage>
 
 
 :: \ Prica4.3a {"position":"5700,300","size":"100,100"}
-<tw-passage data-passage="Prica4.3a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.3a" class="intro2-bg">
 
-(set: $odluka to $odluka - 1)
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040201") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation43a"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.4]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040201");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.4]]
+
 </tw-passage>
 
 
 :: \ Prica4.3b {"position":"5700,500","size":"100,100"}
-<tw-passage data-passage="Prica4.3b" class="federacija1-bg">
+<tw-passage data-passage="Prica4.3b" class="intro2-bg">
 
-(set: $odluka to $odluka + 1)
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040202") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation43b"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.4]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040202");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.4]]
+
 </tw-passage>
 
 
 :: \ Prica4.4a {"position":"6100,300","size":"100,100"}
-<tw-passage data-passage="Prica4.4a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.4a" class="intro2-bg">
 
-(set: $odluka to $odluka + 1)
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040301") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation44a"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.5]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040301");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.5]]
+
 </tw-passage>
 
 
 :: \ Prica4.4b {"position":"6100,500","size":"100,100"}
-<tw-passage data-passage="Prica4.4a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.4b" class="intro2-bg">
 
-(set: $odluka to $odluka - 1)
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040302") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation44b"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.5]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040302");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.5]]
+
 </tw-passage>
 
 
 :: \ Prica5.2a {"position":"5300,700","size":"100,100"}
-<tw-passage data-passage="Prica5.2a" class="prica42a-bg">
+<tw-passage data-passage="Prica5.2a" class="intro2-bg">
 
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id = "typingPrica52a"></p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+
 </tw-passage>
 
 
 :: \ Prica5.2b {"position":"5300,900","size":"100,100"}
-<tw-passage data-passage="Prica5.2b" class="prica42a-bg">
+<tw-passage data-passage="Prica5.2b" class="intro2-bg">
 
+<div id="agent-container"></div>
 
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050102") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id = "typingPrica52b"></p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050102");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.3]]
+
 </tw-passage>
 
 
 :: \ Prica5.3a {"position":"5700,700","size":"100,100"}
-<tw-passage data-passage="Prica5.3a" class="federacija1-bg">
+<tw-passage data-passage="Prica5.3a" class="intro2-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation53a"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050201") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050201");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+
 </tw-passage>
 
 
 :: \ Prica5.3b {"position":"5700,900","size":"100,100"}
-<tw-passage data-passage="Prica5.3b" class="federacija1-bg">
+<tw-passage data-passage="Prica5.3b" class="intro2-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation53b"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050202") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050202");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.4]]
+
 </tw-passage>
 
 
 :: \ Prica5.4a {"position":"6100,800","size":"100,100"}
-<tw-passage data-passage="Prica5.4a" class="federacija1-bg">
+<tw-passage data-passage="Prica5.4a" class="intro2-bg">
 
+<div id="agent-container"></div>
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
-  <p id="typingFederation54a"> </p>
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050400") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  [[<button id="btnNextPassage">➤</button> ->Prica5.5]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050400");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.5]]
 
 </tw-passage>
 
@@ -1218,31 +1987,100 @@ Are we just another trophy to you?
 
 
 :: Prica3.0 {"position":"4300,600","size":"100,100"}
-<tw-passage data-passage="Prica3.0" class="federacija1-bg">
+<tw-passage data-passage="Prica3.0" class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation30"></p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica3.1]]
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "030100") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("030100");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica3.1]]
+
 </tw-passage>
 
 
 :: Prica3.1 {"position":"4500,600","size":"100,100"}
 <tw-passage data-passage="Prica3.1" class="federacija1-bg">
 
-<div id="agent-container" style="display:none" ></div>
+<div id="agent-container"></div>
 
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
-
-  
-  <p>Call Nylar. Let's try to form the alliance. </p>
  
  <script>
 class UnifiedPassageHandler {
@@ -1345,175 +2183,875 @@ if (agentContainer) {
 
 
 :: Prica3.1a {"position":"4700,400","size":"100,100"}
-<tw-passage data-passage="Prica3.1a" class="federacija1-bg">
+<tw-passage data-passage="Prica3.1a." class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation31a"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.2]]
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "030101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("030101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.2]]
+
 </tw-passage>
 
 
 :: Prica3.1b {"position":"4700,800","size":"100,100"}
-<tw-passage data-passage="Prica3.1b" class="federacija1-bg">
+<tw-passage data-passage="Prica3.1b" class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation31b"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.1]]
-</tw-passage>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "030102") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-:: Prica4.1 {"position":"4900,450","size":"100,100"}
-<tw-passage data-passage="Prica4.1" class="federacija1-bg">
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
 
-  <p id="typingFederation32a"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica4.2]]
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("030102");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.1]]
+
 </tw-passage>
 
 
 :: Prica4.2 {"position":"5100,400","size":"100,100"}
 <tw-passage data-passage="Prica4.2" class="federacija1-bg">
 
-(set:$odluka to 0)
+<div id="agent-container"  ></div>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040100") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation33a" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb33a"> Defend the command center. We hold the core.</button>  -> Prica4.2a]]
-    
-    [[<button class = "gumb33a"> Distribute forces across civilian sectors.</button> -> Prica4.2b]]
-  </div>
-  
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
 
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica4.2a': 'btnNextPassage1',
+            'Prica4.2b': 'btnNextPassage2'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("040100");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
+</script>
+
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> -> Prica4.2a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> -> Prica4.2b]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> -> Prica4.2a]]
+   [[<button id="btnNextPassage2">➤b</button> -> Prica4.2b]]
 </tw-passage>
 
 
 :: Prica4.3 {"position":"5500,400","size":"100,100"}
 <tw-passage data-passage="Prica4.3" class="federacija1-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
+<div id="agent-container" ></div>
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040200") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation43" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb43a"> Use everything we’ve got. Burn them down. <button>  -> Prica4.3a]]
-    
-    [[<button class = "gumb43a"> Target only their leaders. Keep it clean.</button> -> Prica4.3b]]
-  </div>
-  
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
 
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica4.3a': 'btnNextPassage1',
+            'Prica4.3b': 'btnNextPassage2'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("040200");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
+</script>
+
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> -> Prica4.3a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> -> Prica4.3b]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> -> Prica4.3a]]
+   [[<button id="btnNextPassage2">➤b</button> -> Prica4.3b]]
 </tw-passage>
 
 
 :: Prica4.4 {"position":"5900,400","size":"100,100"}
 <tw-passage data-passage="Prica4.4" class="federacija1-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
+<div id="agent-container" ></div>
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040300") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation44" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb43a"> Let the Corti handle it. They’re better equipped. <button>  -> Prica4.4a]]
-    
-    [[<button class = "gumb43a"> Keep it under human command. We lead this.</button> -> Prica4.4b]]
-  </div>
-  
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
 
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica4.4a': 'btnNextPassage1',
+            'Prica4.4b': 'btnNextPassage2'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("040300");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
+</script>
+
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> -> Prica4.4a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> -> Prica4.4b]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> -> Prica4.4a]]
+   [[<button id="btnNextPassage2">➤b</button> -> Prica4.4b]]
 </tw-passage>
 
 
 :: Prica4.5 {"position":"6300,400","size":"100,100"}
 <tw-passage data-passage="Prica4.5" class="federacija1-bg">
 
+<div id="agent-container"  ></div>
+
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
-  
-(if:$odluka > 1)[
-(goto: "Prica4.5a")
-]
- (else-if:$odluka > -2)[
-(goto: "Prica4.5b")
- ]
- (if:$odluka < -1)[
-(goto: "Prica4.5c")
- ]
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040400") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica4.5a': 'btnNextPassage1',
+            'Prica4.5b': 'btnNextPassage2',
+             'Prica4.5c': 'btnNextPassage3'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("040400");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
+</script>
+
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> ->Prica4.5a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> ->Prica4.5b]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> ->Prica4.5c]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> ->Prica4.5a]]
+   [[<button id="btnNextPassage2">➤b</button> ->Prica4.5b]]
+   [[<button id="btnNextPassage3">➤c</button> ->Prica4.5c]]
 </tw-passage>
 
 
 :: Prica4.5a {"position":"6500,300","size":"100,100"}
-<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.5a" class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-  
+<div id="agent-container"></div>
 
- <p class = "zadnjiP" id="pobjeda45"> </p>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040401") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  [[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040401");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+
 </tw-passage>
 
 
 :: Prica4.5b {"position":"6500,400","size":"100,100"}
-<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.5b" class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-  
+<div id="agent-container"></div>
 
-  <p class = "zadnjiP" id="teskaPobjeda45"> </p>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040402") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  [[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040402");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.6a]]
+
 </tw-passage>
 
 
 :: Prica4.5c {"position":"6500,500","size":"100,100"}
-<tw-passage data-passage="Prica4.5a" class="federacija1-bg">
+<tw-passage data-passage="Prica4.5c" class="intro2-bg">
 
-<audio loop id="newEuropeTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-  
+<div id="agent-container"></div>
 
-   <p class = "zadnjiP" id="poraz45"> </p>
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
 
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "040403") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  [[<button id="btnNextPassage">➤</button> ->Prica4.6b]]
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("040403");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica4.6b]]
+
 </tw-passage>
 
 
@@ -1526,77 +3064,393 @@ loser
 
 
 :: Prica5.1 {"position":"4900,800","size":"100,100"}
-<tw-passage data-passage="Prica5.1" class="federacija1-bg">
+<tw-passage data-passage="Prica5.1" class="intro2-bg">
+
+<div id="agent-container"></div>
+
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050101") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050101");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> ->Prica5.2]]
+
+</tw-passage>
+
+
+:: Prica5.2 {"position":"5100,800","size":"100,100"}
+<tw-passage data-passage="Prica5.2" class="federacija1-bg">
+
+<div id="agent-container"  ></div>
 
 <audio loop id="newEuropeTheme" >
     <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050100") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation51"> </p>
-  
-  [[<button id="btnNextPassage">➤</button> ->Prica5.2]]
-</tw-passage>
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica5.2a': 'btnNextPassage1',
+            'Prica5.2b': 'btnNextPassage2'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("050100");
 
 
-:: Prica5.2 {"position":"5100,800","size":"100,100"}
-<tw-passage data-passage="Prica5..2" class="federacija1-bg">
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
 
 
+</script>
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <p id="typingFederation52" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb33a"> Hold the capital. If we lose it, we lose everything.</button>  -> Prica5.2a]]
-    
-    [[<button class = "gumb33a"> Spread thin. Try to protect as many cities as possible.</button> -> Prica5.2b]]
-  </div>
-  
-
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> -> Prica5.2a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> -> Prica5.2b]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> -> Prica5.2a]]
+   [[<button id="btnNextPassage2">➤b</button> -> Prica5.2b]]
 </tw-passage>
 
 
 :: Prica5.3 {"position":"5500,800","size":"100,100"}
 <tw-passage data-passage="Prica5.3" class="federacija1-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
+<div id="agent-container"  ></div>
+
+<audio loop id="newEuropeTheme" >
+    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/New_Europe_Theme.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+ 
+ <script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050200") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
 
-  <p id="typingFederation53" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb43a"> Use everything we’ve got. Burn them down. <button>  -> Prica5.3a]]
-    
-    [[<button class = "gumb43a"> Target only their leaders. Keep it clean.</button> -> Prica5.3b]]
-  </div>
-  
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
 
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1].trim();
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+                this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage via button: ${passageName}`);
+
+        // Mapiranje passage imena na odgovarajući gumb
+        const buttonMap = {
+            'Prica5.3a': 'btnNextPassage1',
+            'Prica5.3b': 'btnNextPassage2'
+        };
+
+        const buttonId = buttonMap[passageName];
+
+        if (buttonId) {
+            const targetButton = document.getElementById(buttonId);
+            if (targetButton) {
+                this.ws.close();
+                targetButton.click();
+            } else {
+                console.warn(`Gumb s ID-jem ${buttonId} nije pronađen.`);
+            }
+        } else {
+            console.warn(`Passage ${passageName} nije mapiran na nijedan gumb.`);
+        }
+    }
+}
+
+// Pokretanje WebSocket handlera
+new UnifiedPassageHandler("050200");
+
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+
+
+</script>
+
+ 
+ 
+   [[<button id="btnNextPassage1" class = "skriven" ></button> -> Prica5.3a]]
+   [[<button id="btnNextPassage2" class = "skriven"></button> -> Prica5.3b]]
+ 
+ 
+   [[<button id="btnNextPassage1" style="display:block">➤a</button> -> Prica5.3a]]
+   [[<button id="btnNextPassage2">➤b</button> -> Prica5.3b]]
 </tw-passage>
 
 
 :: Prica5.4 {"position":"5900,800","size":"100,100"}
-<tw-passage data-passage="Prica5.4" class="federacija1-bg">
+<tw-passage data-passage="Prica5.4" class="intro2-bg">
 
-<audio loop id="battleTheme" >
-    <source src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Battle_Theme.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<div id="agent-container"></div>
 
-  <p id="typingFederation54" class = "prica33a"> </p>
-  
-  <div>
-  	[[<button class = "gumb43a"> Yes. Everyone contributes. This is total war. <button>  -> Prica5.4a]]
-    
-    [[<button class = "gumb43a"> No. They stay in shelters. We can’t risk panic. </button> -> Prica5.4a]]
-  </div>
-  
+<audio id="radioSound2" src="https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/radio_freq2.mp3" preload="auto"></audio>
+
+<script>
+class UnifiedPassageHandler {
+    constructor(passageToSend = "050300") {
+        this.passageToSend = passageToSend;
+        this.ws = null;
+        this.connectWebSocket();
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8009');
+
+        this.ws.onopen = () => {
+            console.log("WebSocket veza uspostavljena");
+            this.sendPassageName();
+        };
+
+        this.ws.onmessage = (event) => {
+            if (event.data.startsWith('DO_TRANSITION:')) {
+                const passage = event.data.split(':')[1];
+                this.transitionToPassage(passage);
+            }
+        };
+
+        this.ws.onerror = (error) => {
+            console.error("WebSocket greška:", error);
+            setTimeout(() => this.connectWebSocket(), 1000);
+        };
+    }
+
+    sendPassageName() {
+        if (this.ws.readyState === WebSocket.OPEN) {
+            console.log("Šaljem naziv passaga:", this.passageToSend);
+            setTimeout(() => {
+              this.ws.send(`PASSAGE:${this.passageToSend}`);
+            }, 1000);
+        } else {
+            console.log("WebSocket nije spreman, status:", this.ws.readyState);
+            setTimeout(() => this.sendPassageName(), 1500);
+        }
+    }
+
+    transitionToPassage(passageName) {
+        console.log(`Transitioning to passage: ${passageName}`);
+
+        const nextButton = document.getElementById('btnNextPassage');
+        if (nextButton) {
+			this.ws.close()
+            nextButton.click();
+        } else {
+            console.warn("Fallback: btnNextPassage not found.");
+        }
+    }
+}
+
+// Inicijalizacija WebSocketa i slanje odmah po učitavanju
+new UnifiedPassageHandler("050300");
+
+// Učitaj iframe agenta
+const agentContainer = document.getElementById('agent-container');
+if (agentContainer) {
+  const radioSound2 = document.getElementById('radioSound2');
+      if (radioSound2){
+          radioSound2.volume = 0.3;
+          radioSound2.play();
+      }
+      
+    const iframe = document.createElement('iframe');
+    iframe.width = '500px';
+    iframe.height = '500px';
+    iframe.src = '/agenti';
+    agentContainer.appendChild(iframe);
+}
+</script>
+
+[[<button id="btnNextPassage">➤</button> -> Prica5.4a]]
 
 </tw-passage>
 

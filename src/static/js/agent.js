@@ -325,6 +325,72 @@ function play_part(part)
 			switchToNextPassage("Prica1.7");
 			break;
 
+		//passage Prica2.1
+		case '020101':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(368,379);
+			switchToNextPassage("Prica2.2");
+			break;
+
+		case '020201':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(387,395);
+			switchToNextPassage("Prica2.2");
+			break;
+
+		//passage Prica2.2
+		case '020102':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(404,412);
+			switchToNextPassage("Prica2.3");
+			break;
+
+		case '020202':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(421,430);
+			switchToNextPassage("Prica2.3");
+			break;
+
+		//passage Prica2.3
+		case '020103':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(438,445);
+			switchToNextPassage("Prica2.4");
+			break;
+
+		case '020203':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(453,459);
+			switchToNextPassage("Prica2.4");
+			break;
+
+		//passage Prica2.4
+		case '020104':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(467,473);
+			switchToNextPassage("Prica2.5");
+			break;
+
+		case '020204':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(481,489);
+			switchToNextPassage("Prica2.5");
+			break;
+
+		//passage Prica2.5
+		case '020105':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(498,505);
+			switchToNextPassage("Prica3.0");
+			break;
+		
+		case '020205':
+			if (isWrongPassage(part)) break;
+			playVideoAtTimestamp(513,519);
+			switchToNextPassage("Prica3.0");
+			break;
+
+		// grananje prema trust ranku
 		case "050505":
 			playVideoAtTimestamp(15,18);
 			if(corti.getTrustRank()=="Trusted")
@@ -332,9 +398,10 @@ function play_part(part)
 			else 
 				switchToNextPassage("Prica3.1b");
 			break;
-		// 'tisina'
+		
+			// 'tisina'
         default: 
-			playVideoAtTimestamp(14,19);
+			playVideoAtTimestamp(522,527);
             try 
 			{
                 if (!isMobileBrowser())

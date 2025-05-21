@@ -141,57 +141,57 @@ def train(bot):
 
     chatbot.train(
         ["Is there any chance for peace?", 
-        "020102"
+        "020201"
     ])
 
 
     #passage Prica2.2
     chatbot.train(
         ["Have you done this to others?", 
-        "020103"
+        "020102"
     ])
 
 
     chatbot.train(
         ["What makes you think you’re stronger than us?", 
-        "020104"
+        "020202"
     ])
 
 
     #passage Prica2.3
     chatbot.train(
         ["Do you even care who we are?", 
-        "020105"
+        "020103"
     ])
 
 
     chatbot.train(
         ["What do you fear?", 
-        "020106"
+        "020203"
     ])
 
 
     #passage Prica2.4
     chatbot.train(
         ["You want a fight? Then come down and face us, not from orbit.", 
-        "020107"
+        "020104"
     ])
 
 
     chatbot.train(
         ["Why now? Why Earth?", 
-        "020108"
+        "020204"
     ])
 
 
     #passage Prica2.5
     chatbot.train(
         ["If you destroy us, what do you gain?", 
-        "020109"
+        "020105"
     ])
 
 
     chatbot.train(
         ["Are we just another trophy to you?", 
-        "020110"
+        "020205"
     ])

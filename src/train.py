@@ -34,16 +34,41 @@ def train(bot):
         ["Why did you choose this moment to initate contact with us?", 
         "010201"
     ])
+    chatbot.train(
+        ["Why choose this moment to initiate contact?",
+        "010201"
+    ])
+    chatbot.train(
+        ["Why initiate contact at this moment?",
+        "010201"
+    ])
 
     
     chatbot.train(
         ["Why should we trust you now after staying silent for so long?", 
         "010301"
     ])
+    chatbot.train(
+        ["Why should we trust you after all this silence?",
+        "010301"
+    ])
+    chatbot.train(
+        ["Why should we trust you?",
+        "010301"
+    ])
+
     
     #passage Prica1.2
     chatbot.train(
         ["How long have you been observing humanity?", 
+        "010102"
+    ])
+    chatbot.train(
+        ["How long have you observed us?",
+        "010102"
+    ])
+    chatbot.train(
+        ["How long have you been watching us?", 
         "010102"
     ])
     
@@ -52,10 +77,25 @@ def train(bot):
         ["Is there a hidden agenda behind your offer?", 
         "010202"
     ])
-    
+    chatbot.train(
+        ["Is there more to your offer?", 
+        "010202"
+    ])
+    chatbot.train(
+        ["Any hidden motives?",
+        "010202"
+    ])
     
     chatbot.train(
         ["Are you planning to control us?", 
+        "010302"
+    ])
+    chatbot.train(
+        ["Do you want to control us?",
+        "010302"
+    ])
+    chatbot.train(
+        ["Are you going to control us?", 
         "010302"
     ])
 
@@ -64,10 +104,26 @@ def train(bot):
         ["How can we benefit from your technology?", 
         "010103"
     ])
+    chatbot.train(
+        ["How does your technology help us?", 
+        "010103"
+    ])
+    chatbot.train(
+        ["How is your tech useful to us?", 
+        "010103"
+    ])
 
 
     chatbot.train(
         ["What exacty is your mission here?", 
+        "010203"
+    ])
+    chatbot.train(
+        ["What is your mission here?", 
+        "010203"
+    ])
+    chatbot.train(
+        ["What’s your goal here?",
         "010203"
     ])
 
@@ -76,10 +132,27 @@ def train(bot):
         ["Are you using us for something?", 
         "010303"
     ])
+    chatbot.train(
+        ["Are you using us?", 
+        "010303"
+    ])
+    chatbot.train(
+        ["Are you taking advantage of us?", 
+        "010303"
+    ])
+
 
     #passage Prica1.4
     chatbot.train(
         ["Why didn't you contact us sooner?", 
+        "010104"
+    ])
+    chatbot.train(
+        ["Why didn’t you reach out before?", 
+        "010104"
+    ])
+    chatbot.train(
+        ["Why didn't you contact us earlier?", 
         "010104"
     ])
 
@@ -88,10 +161,26 @@ def train(bot):
         ["How do we know you are telling the truth?", 
         "010204"
     ])
+    chatbot.train(
+        ["How do we know you're honest?",
+        "010204"
+    ])
+    chatbot.train(
+        ["How do we know this is true?", 
+        "010204"
+    ])
 
 
     chatbot.train(
         ["How do we know you won't betray us in the future?", 
+        "010304"
+    ])
+    chatbot.train(
+        ["How do we know you won't betray us?",
+        "010304"
+    ])
+    chatbot.train(
+        ["You won't betray us later?",
         "010304"
     ])
 
@@ -100,10 +189,26 @@ def train(bot):
         ["Are there other species you have helped before?", 
         "010105"
     ])
+    chatbot.train(
+        ["Are there other species you have helped?",
+        "010105"
+    ])
+    chatbot.train(
+        ["Have you helped others before?",
+        "010105"
+    ])
 
 
     chatbot.train(
         ["Are there others out there besides you and us?", 
+        "010205"
+    ])
+    chatbot.train(
+        ["Are there others out there?", 
+        "010205"
+    ])
+    chatbot.train(
+        ["Are there more species out there?", 
         "010205"
     ])
 
@@ -112,10 +217,26 @@ def train(bot):
         ["How can we trust a species that's so fragile?", 
         "010305"
     ])
+    chatbot.train(
+        ["How do we trust a weak species?",
+        "010305"
+    ])
+    chatbot.train(
+        ["How do we trust something so fragile?",
+        "010305"
+    ])
 
     #passage Prica1.6
     chatbot.train(
         ["If we decline your offer now, will you ever return?", 
+        "010106"
+    ])
+    chatbot.train(
+        ["Will you come back if we say no?",
+        "010106"
+    ])
+    chatbot.train(
+        ["If we decline, will you return?",
         "010106"
     ])
 
@@ -124,10 +245,26 @@ def train(bot):
         ["Do you have enemies?", 
         "010206"
     ])
+    chatbot.train(
+        ["Have you made enemies?", 
+        "010206"
+    ])
+    chatbot.train(
+        ["Do you have any enemies?", 
+        "010206"
+    ])
 
 
     chatbot.train(
         ["Are you just here to observe our downfall?", 
+        "010306"
+    ])
+    chatbot.train(
+        ["Are you only here to see us fail?", 
+        "010306"
+    ])
+    chatbot.train(
+        ["Are you here to see our downfall?", 
         "010306"
     ])
     

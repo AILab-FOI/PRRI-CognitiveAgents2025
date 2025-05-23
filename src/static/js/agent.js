@@ -139,16 +139,14 @@ function connect() {
 		
 			if (msg.data.startsWith('PASSAGE:')) 
 			{
-				const passageName = msg.data.split(':')[1];
-				console.log("Ajs Trenutni passage:", passageName); // ← korisno za debug
-				trenutniPassage=passageName;
+				trenutniPassage = msg.data.split(':')[1];
+				console.log("Ajs Trenutni passage:", trenutniPassage); // ← korisno za debug
 				corti = new Agent(sessionStorage.getItem("corti"));		
-				
-				if(passageName === "050505") play_part(passageName);
+				playVideoOnPassageLoad();
 				return;
 			}
 		
-			play_part(msg.data.toString());
+			play_part(msg.data.toString());			
 		};
 		
 
@@ -167,6 +165,38 @@ function connect() {
     } catch (e) {
         console.error("Ajs Connection error:", e);
     }
+
+	function playVideoOnPassageLoad()
+	{
+		switch(trenutniPassage)
+		{
+			case '000101':	//passage Federacija 1
+			case '000103':	//passage Odabir1 => skeptical federacija
+			case '000203':	//passage Odabir2 => neutral federacija
+			case '000303':	//passage Odabir3 => optimistic federacija
+			case '030101':  //passage Prica3.0 => Vraxili dolaze
+			case '050505':	//passage Prica3.1 => grananje prema trustu
+			case '030102': 	//passage Prica3.1a => corti will help
+			case '030202':  //passage Prica3.1b => corti wont help
+			case '040107': 	//passage Prica4.5 => zavrsetak prema odlukama strategije
+			case '040108': 	//good ending, we won
+			case '050101': 	//passage Prica5.1 =>we are alone and they are coming 
+			case '050107': 	//bad ending
+			play_part(trenutniPassage);
+			break;
+
+			case '040101': //passage Prica4.2
+			case '040103': //passage Prica4.3
+			case '040105': //passage Prica4.5
+			case '050102': //passage Prica5.2
+			case '050104': //passage Prica5.3
+			case '050106': //passage Prica5.4
+			play_part(trenutniPassage.substring(0,2) + "00" + trenutniPassage.substring(4,6));
+			break;
+
+			default:;
+		}
+	}
 }
 
 connect();
@@ -195,7 +225,132 @@ function play_part(part)
 
     recognition.stop();
 
-    switch (part) {
+    switch (part) 
+	{
+		//ON_PASSAGE_LOAD
+
+		//passage Federacija1	
+		case '000101':
+			playVideoAtTimestamp(535,552);
+			switchToNextPassage("Federacija2");
+			break;
+
+		//passage Odabir1 => skeptical federacija
+		case '000103':
+			playVideoAtTimestamp(554,563);
+			switchToNextPassage("Prica1.1");
+			break;
+		
+		//passage Odabir2 => neutral federacija
+		case '000203':
+			playVideoAtTimestamp(565, 575);
+			switchToNextPassage("Prica1.1");
+			break;
+
+		//passage Odabir3 => optimistic federacija
+		case '000303':
+			playVideoAtTimestamp(578,586);
+			switchToNextPassage("Prica1.1");
+			break;
+			
+		//passage Prica3.0 => Vraxili dolaze
+		case '030101':
+			playVideoAtTimestamp(593,616);
+			switchToNextPassage("Prica3.1");
+			break;
+
+		//passage Prica3.1 => grananje prema trust ranku
+		case "050505":
+			playVideoAtTimestamp(624,635);
+			if(corti.getTrustRank()=="Trusted")
+				switchToNextPassage("Prica3.1a");
+			else 
+				switchToNextPassage("Prica3.1b");
+			break;
+		
+		//passage Prica3.1a => corti will help
+		case '030102':
+			playVideoAtTimestamp(642,655);
+			switchToNextPassage("Prica4.2");
+			break;	
+
+		//passage Prica3.1b => corti wont help
+		case '030202':
+			playVideoAtTimestamp(656, 665);
+			switchToNextPassage("Prica5.1");
+			break;
+
+		//passage Prica4.2
+		case '040001':
+			playVideoAtTimestamp(674,680);
+			break;
+				
+		//passage Prica4.3
+		case '040003':
+			playVideoAtTimestamp(683,691);
+			break;
+
+		//passage Prica4.4
+		case '040005':
+			playVideoAtTimestamp(693,700);
+			break;
+
+		//passage Prica4.5 => strategija bitke je win ili ne bas win
+		case '040107':
+			//if then switch to dobar passage
+			switchToNextPassage("Prica4.5a");
+			break;
+
+		//passage Prica4.5a
+		case '040108':
+			playVideoAtTimestamp(703,737);
+			switchToNextPassage("Prica4.6a");
+			break;
+
+		//passage Prica5.1
+		case '050101':
+			playVideoAtTimestamp(766,778);
+			switchToNextPassage("Prica5.2");
+			break;
+
+		//passage Prica5.2
+		case '050002':
+			playVideoAtTimestamp(778,784);
+			break;
+
+		//passage Prica5.3
+		case '050004':
+			playVideoAtTimestamp(785,791);
+			break;
+		
+		//passage Prica5.4
+		case '050006':
+			playVideoAtTimestamp(791,801);
+			break;
+
+		//passage Prica5.4a
+		case '050107':
+			playVideoAtTimestamp(803,827);
+			break;
+
+		//ON_QUESTION_ASKED
+		
+		//passage Federacija2
+		case '000102':
+			if (isWrongPassage(part)) break;
+			switchToNextPassage("Prica4.5a"); //krivo napisano u twine ali svejedno radi
+			break;
+
+		case '000202':
+			if (isWrongPassage(part)) break;
+			switchToNextPassage("Prica4.5b");  //krivo napisano u twine ali svejedno radi
+			break;
+
+		case '000302':
+			if (isWrongPassage(part)) break;
+			switchToNextPassage("Prica4.5c");  //krivo napisano u twine ali svejedno radi
+			break;
+
 		//passage Prica1.1
         case '010101':
 			if (isWrongPassage(part)) break;
@@ -390,16 +545,80 @@ function play_part(part)
 			switchToNextPassage("Prica3.0");
 			break;
 
-		// grananje prema trust ranku
-		case "050505":
-			playVideoAtTimestamp(15,18);
-			if(corti.getTrustRank()=="Trusted")
-				switchToNextPassage("Prica3.1a");
-			else 
-				switchToNextPassage("Prica3.1b");
+		
+		//passage Prica4.2
+			case '040101':
+				//promjena varijable tactics
+				switchToNextPassage("Prica4.2a");
+				switchToNextPassage("Prica4.3");
+				break;
+
+			case '040201':
+				//promjena varijable tactics
+				switchToNextPassage("Prica4.2a");
+				switchToNextPassage("Prica4.3");
+				break;
+
+		//passage Prica4.3
+			case '040103':
+				//promjena varijable tactics
+				switchToNextPassage("Prica4.3a");
+				switchToNextPassage("Prica4.4");
+				break;
+			
+			case '040203':
+				//promjena varijable tactics
+				switchToNextPassage("Prica4.3a");
+				switchToNextPassage("Prica4.4");
+				break;
+			
+		//passage Prica4.4
+		case '040105':
+			//promjena varijable tactics
+			switchToNextPassage("Prica4.4a");
+			switchToNextPassage("Prica4.5");
+			break;
+
+		case '040205':
+			//promjena varijable tactics
+			switchToNextPassage("Prica4.4a");
+			switchToNextPassage("Prica4.5");
+			break;
+
+		//passage Prica5.2
+			case '050102':
+			//nema varijable tactics
+			switchToNextPassage("Prica5.2a");
+			switchToNextPassage(("Prica5.3"));
+			break;
+
+		case '050202':
+			//nema varijable tactics
+			switchToNextPassage("Prica5.2b");
+			switchToNextPassage(("Prica5.3"));
+			break;
+
+		//passage Prica5.3
+		case '050104':
+			//nema varijable tactics
+			switchToNextPassage("Prica5.3a");
+			switchToNextPassage(("Prica5.4"));
+			break;
+
+		case '050204':
+			//nema varijable tactics
+			switchToNextPassage("Prica5.3b");
+			switchToNextPassage("Prica5.4");
 			break;
 		
-			// 'tisina'
+		//passage Prica5.4
+		case '050106':
+		case '050206':
+			//nema varijable tactics
+			switchToNextPassage("Prica5.4a");
+			break;
+
+		// 'tisina'
         default: 
 			playVideoAtTimestamp(522,527);
             try 

@@ -1412,7 +1412,7 @@ class UnifiedPassageHandler {
 }
 
 // Inicijalizacija WebSocketa i slanje odmah po učitavanju
-new UnifiedPassageHandler("050400");
+new UnifiedPassageHandler();
 
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');
@@ -1545,7 +1545,7 @@ if (agentContainer) {
  
    [[<button id="btnNextPassage1" class = "skriven" ></button> -> Odabir1]]
    [[<button id="btnNextPassage2" class = "skriven"></button> -> Odabir2]]
-   [[<button id="btnNextPassage2" class = "skriven"></button> -> Odabir3]]
+   [[<button id="btnNextPassage3" class = "skriven"></button> -> Odabir3]]
  
  
 </tw-passage>
@@ -3845,7 +3845,7 @@ class UnifiedPassageHandler {
 }
 
 // Inicijalizacija WebSocketa i slanje odmah po učitavanju
-new UnifiedPassageHandler("050300");
+new UnifiedPassageHandler("050106");
 
 // Učitaj iframe agenta
 const agentContainer = document.getElementById('agent-container');

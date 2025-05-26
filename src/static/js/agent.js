@@ -2,7 +2,7 @@ var DONT = false;
 var FIRST = true;
 var STOP = false;
 var trenutniPassage="";
-let corti;
+let corti, fightTactics;
 
 // Na početak agent.js dodajte
 var RECONNECT_DELAY = 1000;
@@ -142,6 +142,7 @@ function connect() {
 				trenutniPassage = msg.data.split(':')[1];
 				console.log("Ajs Trenutni passage:", trenutniPassage); // ← korisno za debug
 				corti = new Agent(sessionStorage.getItem("corti"));		
+				fightTactics = new Agent(sessionStorage.getItem("tactics"));	// reusam Agent klasu, radi istu stvar al semanticki nema smisla
 				playVideoOnPassageLoad();
 				return;
 			}
@@ -177,19 +178,25 @@ function connect() {
 			case '030101':  //passage Prica3.0 => Vraxili dolaze
 			case '050505':	//passage Prica3.1 => grananje prema trustu
 			case '030102': 	//passage Prica3.1a => corti will help
-			case '030202':  //passage Prica3.1b => corti wont help
+			case '030202':  //passage Prica3.1b => corti wont help 
 			case '040107': 	//passage Prica4.5 => zavrsetak prema odlukama strategije
 			case '040108': 	//good ending, we won
+			case '040308':  //meh ending, loseamo s cortima 
 			case '050101': 	//passage Prica5.1 =>we are alone and they are coming 
 			case '050107': 	//bad ending
 			play_part(trenutniPassage);
 			break;
 
 			case '040101': //passage Prica4.2
+			case '040102': //passage Prica4.2a
 			case '040103': //passage Prica4.3
+			case '040104': //passage Prica4.3a
 			case '040105': //passage Prica4.5
+			case '040106': //passage Prica4.4a
 			case '050102': //passage Prica5.2
+			case '050103': //passage Prica5.2a
 			case '050104': //passage Prica5.3
+			case '050105': //passage Prica5.3a
 			case '050106': //passage Prica5.4
 			play_part(trenutniPassage.substring(0,2) + "00" + trenutniPassage.substring(4,6));
 			break;
@@ -231,13 +238,13 @@ function play_part(part)
 
 		//passage Federacija1	
 		case '000101':
-			playVideoAtTimestamp(535,552);
+			playVideoAtTimestamp(536,552);
 			switchToNextPassage("Federacija2");
 			break;
 
 		//passage Odabir1 => skeptical federacija
 		case '000103':
-			playVideoAtTimestamp(554,563);
+			playVideoAtTimestamp(554,564);
 			switchToNextPassage("Prica1.1");
 			break;
 		
@@ -255,7 +262,7 @@ function play_part(part)
 			
 		//passage Prica3.0 => Vraxili dolaze
 		case '030101':
-			playVideoAtTimestamp(593,616);
+			//playVideoAtTimestamp(593,616);
 			switchToNextPassage("Prica3.1");
 			break;
 
@@ -270,6 +277,7 @@ function play_part(part)
 		
 		//passage Prica3.1a => corti will help
 		case '030102':
+			fightTactics = new Agent();
 			playVideoAtTimestamp(642,655);
 			switchToNextPassage("Prica4.2");
 			break;	
@@ -285,9 +293,19 @@ function play_part(part)
 			playVideoAtTimestamp(674,680);
 			break;
 				
+		//passage Prica4.2a
+		case '040002':
+			switchToNextPassage("Prica4.3");
+			break;
+
 		//passage Prica4.3
 		case '040003':
 			playVideoAtTimestamp(683,691);
+			break;
+
+		//passage Prica4.3a
+		case '040004':
+			switchToNextPassage("Prica4.4");
 			break;
 
 		//passage Prica4.4
@@ -295,16 +313,30 @@ function play_part(part)
 			playVideoAtTimestamp(693,700);
 			break;
 
+		//passage Prica4.4a
+		case '040006':
+			switchToNextPassage("Prica4.5");
+			break;
+
 		//passage Prica4.5 => strategija bitke je win ili ne bas win
 		case '040107':
 			//if then switch to dobar passage
-			switchToNextPassage("Prica4.5a");
+			if (fightTactics.getTrustRank()=="Trusted")
+				switchToNextPassage("Prica4.5a");
+			else
+				switchToNextPassage("Prica4.5c");
 			break;
 
 		//passage Prica4.5a
 		case '040108':
 			playVideoAtTimestamp(703,737);
 			switchToNextPassage("Prica4.6a");
+			break;
+
+		//passage Prica4.5c
+		case '040308':
+			playVideoAtTimestamp(738,763);
+			switchToNextPassage("Prica4.6b");
 			break;
 
 		//passage Prica5.1
@@ -318,11 +350,21 @@ function play_part(part)
 			playVideoAtTimestamp(778,784);
 			break;
 
+		//passage Prica5.2a
+		case '050003':
+			switchToNextPassage("Prica5.3");
+			break;
+
 		//passage Prica5.3
 		case '050004':
 			playVideoAtTimestamp(785,791);
 			break;
 		
+		//passage Prica5.3a
+		case '050005':
+			switchToNextPassage("Prica5.4");
+			break;
+
 		//passage Prica5.4
 		case '050006':
 			playVideoAtTimestamp(791,801);
@@ -330,7 +372,7 @@ function play_part(part)
 
 		//passage Prica5.4a
 		case '050107':
-			playVideoAtTimestamp(803,827);
+			playVideoAtTimestamp(804,827);
 			break;
 
 		//ON_QUESTION_ASKED
@@ -549,12 +591,14 @@ function play_part(part)
 		//passage Prica4.2
 			case '040101':
 				//promjena varijable tactics
+				fightTactics.DecreaseTrust();
 				switchToNextPassage("Prica4.2a");
 				switchToNextPassage("Prica4.3");
 				break;
 
 			case '040201':
 				//promjena varijable tactics
+				fightTactics.IncreaseTrust();
 				switchToNextPassage("Prica4.2a");
 				switchToNextPassage("Prica4.3");
 				break;
@@ -562,12 +606,14 @@ function play_part(part)
 		//passage Prica4.3
 			case '040103':
 				//promjena varijable tactics
+				fightTactics.DecreaseTrust();
 				switchToNextPassage("Prica4.3a");
 				switchToNextPassage("Prica4.4");
 				break;
 			
 			case '040203':
 				//promjena varijable tactics
+				fightTactics.IncreaseTrust();
 				switchToNextPassage("Prica4.3a");
 				switchToNextPassage("Prica4.4");
 				break;
@@ -575,12 +621,14 @@ function play_part(part)
 		//passage Prica4.4
 		case '040105':
 			//promjena varijable tactics
+			fightTactics.IncreaseTrust();
 			switchToNextPassage("Prica4.4a");
 			switchToNextPassage("Prica4.5");
 			break;
 
 		case '040205':
 			//promjena varijable tactics
+			fightTactics.DecreaseTrust();
 			switchToNextPassage("Prica4.4a");
 			switchToNextPassage("Prica4.5");
 			break;
@@ -594,7 +642,7 @@ function play_part(part)
 
 		case '050202':
 			//nema varijable tactics
-			switchToNextPassage("Prica5.2b");
+			switchToNextPassage("Prica5.2a");
 			switchToNextPassage(("Prica5.3"));
 			break;
 
@@ -607,7 +655,7 @@ function play_part(part)
 
 		case '050204':
 			//nema varijable tactics
-			switchToNextPassage("Prica5.3b");
+			switchToNextPassage("Prica5.3a");
 			switchToNextPassage("Prica5.4");
 			break;
 		
@@ -646,7 +694,10 @@ function play_part(part)
 		, delay); 
 		sessionStorage.setItem("corti", corti.exportForSessionStorage());
 		console.warn("trust: " + corti.getTrustRank() + "\nvalue: " + corti.exportForSessionStorage()); //debug info
-	}
+		sessionStorage.setItem("tactics", fightTactics.exportForSessionStorage());
+		console.warn("taktika: " + fightTactics.getTrustRank() + "\nvalue: " + fightTactics.exportForSessionStorage()); //debug info
+		 
+	}	 
 	
 	function isWrongPassage(passage)
 	{

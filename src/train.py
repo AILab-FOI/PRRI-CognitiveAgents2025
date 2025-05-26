@@ -332,3 +332,93 @@ def train(bot):
         ["Are we just another trophy to you?", 
         "020205"
     ])
+
+    
+    #passage Prica5.2
+    chatbot.train(
+        ["Hold the capital. If we lose it, we lose everything.", 
+        "050102"
+    ])
+    
+    chatbot.train(
+        ["Spread thin. Try to protect as many cities as possible.", 
+        "050202"
+    ])
+    
+    
+    #passage Prica5.3
+    chatbot.train(
+        ["Evacuate key personnel. Someone has to survive.", 
+        "050104"
+    ])
+    
+    chatbot.train(
+        ["We stay. We fight. To the last man.", 
+        "050204"
+    ])
+    
+    
+    #passage Prica5.4
+    chatbot.train(
+        ["Yes. Everyone contributes. This is total war.", 
+        "050106"
+    ])
+    
+    chatbot.train(
+        ["No. They stay in shelters. We can’t risk panic.", 
+        "050206"
+    ])
+    
+    
+    #passage Prica4.2
+    chatbot.train(
+        ["Defend the command center. We hold the core.", 
+        "040101"
+    ])
+    
+    chatbot.train(
+        ["Distribute forces across civilian sectors.", 
+        "040201"
+    ])
+    
+    
+    #passage Prica4.3
+    chatbot.train(
+        ["Use everything we’ve got. Burn them down.", 
+        "040103"
+    ])
+    
+    chatbot.train(
+        ["Target only their leaders. Keep it clean.", 
+        "040203"
+    ])
+    
+    
+    #passage Prica4.4
+    chatbot.train(
+        ["Let the Corti handle it. They’re better equipped.", 
+        "040105"
+    ])
+    
+    chatbot.train(
+        ["Keep it under human command. We lead this.", 
+        "040205"
+    ])
+    
+    
+    #passage Federacija2
+    chatbot.train(
+        [" I don’t trust their intentions. They’re hiding too much.", 
+        "000102"
+    ])
+    
+    chatbot.train(
+        ["They haven’t shown hostility, but they’re not being fully open either. We need to be cautious.", 
+        "000202"
+    ])
+    
+    chatbot.train(
+        ["Maybe they genuinely don’t seek domination. They could be allies.", 
+        "000302"
+    ])
+    

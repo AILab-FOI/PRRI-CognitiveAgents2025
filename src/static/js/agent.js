@@ -238,6 +238,7 @@ function play_part(part)
 
 		//passage Federacija1	
 		case '000101':
+			window.recognition.stop();
 			playVideoAtTimestamp(536,552);
 			switchToNextPassage("Federacija2");
 			break;
@@ -666,8 +667,13 @@ function play_part(part)
 			switchToNextPassage("Prica5.4a");
 			break;
 
-		// 'tisina'
+		case 'ponovi':
+			if(part == '000101')
+				break;
+
         default: 
+			if(part == '000101')
+				break;
 			playVideoAtTimestamp(522,527);
             try 
 			{

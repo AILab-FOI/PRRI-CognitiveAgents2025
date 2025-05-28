@@ -9,11 +9,11 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Deathworlders.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Deathworlders" startnode="49" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
+<tw-storydata name="The Deathworlders" startnode="47" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="7AA88246-E759-4671-8415-13C23FFA31FC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Iceland&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap');
 
 .start-bg {
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/refs/heads/main/src/static/media/probna_slika2.jpg") 
+  background: url("./static/media/probna_slika2.jpg") 
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -24,7 +24,7 @@
 }
 
 .intro-bg {
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/Flux_Dev_A_breathtaking_view_of_Earth_from_space_showcasing_ou_1.jpeg") 
+  background: url("./static/media/Flux_Dev_A_breathtaking_view_of_Earth_from_space_showcasing_ou_1.jpeg") 
   no-repeat center center;
   background-size: 100% 100%;
   width: 100vw;
@@ -38,7 +38,7 @@
 }
 
 .intro2-bg {
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/monitor3.png") no-repeat center center;
+  background: url("./static/media/monitor3.png") no-repeat center center;
   background-size: 100% 100%; 
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@
 }
 
 .introA-bg {
-  background: url("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/NewEurope.jpg") 
+  background: url("./static/media/NewEurope.jpg") 
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -58,7 +58,7 @@
   left: 0;
 }
 .introB-bg {
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/CortiShip.jpg')
+  background: url('./static/media/CortiShip.jpg')
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -68,7 +68,7 @@
   left: 0;
 }
 .federacija1-bg {
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/roundTableFederation.jpg')
+  background: url('./static/media/roundTableFederation.jpg')
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -79,7 +79,7 @@
 }
 
 .federacija2-bg {
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/1702804294f200ce32093f2b853434ea7fc08f5e/src/static/media/Flux_Dev_In_a_futuristic_conference_hall_within_New_Europe_a_s_1.jpg')
+  background: url('./static/media/Flux_Dev_In_a_futuristic_conference_hall_within_New_Europe_a_s_1.jpg')
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -89,7 +89,7 @@
   left: 0;
 }
 .prica42a-bg{
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/a26b2043ed21e832ae0dfc7bb24884bb987ac413/src/static/media/Z.jpeg')
+  background: url('./static/media/Z.jpeg')
   no-repeat center center;
   background-size: 100% 100%; 
   width: 100vw;
@@ -107,7 +107,7 @@
   justify-content: center;
 }
 .vraxil-brod-bg {
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/f713c4075fcd7666f1aff9013dfc3ad545eeb1fc/src/static/media/2Q%3D%3D.jpeg')
+  background: url('./static/media/2Q%3D%3D.jpeg')
   no-repeat center center;
   background-size: 90% 100%; 
   width: 100vw;
@@ -153,6 +153,7 @@ button {
   padding: 10px 60px;
   letter-spacing: 2px;
   transition: all 0.3s ease;
+  
 }
 
 #edgeOfExtinction {
@@ -270,6 +271,16 @@ p{
   padding: 7px 10px;
   background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 5px;
+  display: none;
+}
+#btnNextPassage3 {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 7px 10px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px;
+  display: none;
 }
 
 .skriven{
@@ -286,7 +297,7 @@ p{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/OptionsBackground.jpg') no-repeat center center/cover;
+  background: url('./static/media/OptionsBackground.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: left;
@@ -469,7 +480,7 @@ if (btnNextPassage && !btnNextPassage.dataset.shown) {
   }
 
   const button = document.querySelector("button");
-  const buttonSelect = new Audio("https://raw.githubusercontent.com/AILab-FOI/PRRI-CognitiveAgents2025/main/src/static/media/buttonSelect.wav");
+  const buttonSelect = new Audio("./static/media/buttonSelect.wav");
   
    if (button && button.id != "btnSound" && !button.dataset.listenerAttached) { 
      button.addEventListener("click", () => {
@@ -954,7 +965,7 @@ mainObserver.observe(document.body, {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1032,29 +1043,29 @@ if (agentContainer) {
 
 
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Federacija2]]
+[[&lt;button id=&quot;btnNextPassage&quot; class=&quot;skriven&quot; &gt;&lt;/button&gt; -&gt;Federacija2]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name=" IntroA" tags="" position="700,250" size="100,100">&lt;tw-passage data-passage=&quot;IntroA&quot; class=&quot;introA-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="2" name=" IntroA" tags="" position="750,250" size="100,100">&lt;tw-passage data-passage=&quot;IntroA&quot; class=&quot;introA-bg&quot;&gt;
 &lt;audio autoplay&gt;
-	&lt;source src=&quot;./src/static/media/Intro2Naration.mp3
+	&lt;source src=&quot;./static/media/Intro2Naration.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
 Vaš preglednik ne podržava HTML5 audio element.
 &lt;/audio&gt;
 
 &lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
-&lt;source src=&quot;./src/static/media/Intro2CitySounds.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;source src=&quot;./static/media/Intro2CitySounds.mp3&quot; type=&quot;audio/mp3&quot;&gt;
 &lt;/audio&gt;
   &lt;p id=&quot;typingIntro2&quot;&gt;&lt;/p&gt;
     [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; IntroB]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="3" name=" IntroB" tags="" position="975,250" size="100,100">&lt;tw-passage data-passage=&quot;IntroB&quot; class=&quot;introB-bg&quot;&gt;
 &lt;audio autoplay&gt;
-	&lt;source src=&quot;./src/static/media/Intro3.mp3
+	&lt;source src=&quot;./static/media/Intro3.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
 Vaš preglednik ne podržava HTML5 audio element.
 &lt;/audio&gt;
 
 &lt;audio loop autoplay id=&quot;soundCorti&quot;&gt;
-&lt;source src=&quot;./src/static/media/Intro3CortiShip.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;source src=&quot;./static/media/Intro3CortiShip.mp3&quot; type=&quot;audio/mp3&quot;&gt;
 &lt;/audio&gt;
   &lt;p id=&quot;typingIntro3&quot;&gt;&lt;/p&gt;
   [[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Federacija1]]
@@ -1062,7 +1073,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1140,13 +1151,13 @@ if (agentContainer) {
 
 
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.1]]
+[[&lt;button id=&quot;btnNextPassage&quot;&gt;&lt;/button&gt; -&gt;Prica1.1]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="5" name=" Odabir2" tags="" position="1450,500" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.3&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1224,13 +1235,13 @@ if (agentContainer) {
 
 
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.1]]
+[[&lt;button id=&quot;btnNextPassage&quot;&gt;&lt;/button&gt; -&gt;Prica1.1]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="6" name=" Odabir3" tags="" position="1450,650" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.3&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1308,13 +1319,13 @@ if (agentContainer) {
 
 
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.1]]
+[[&lt;button id=&quot;btnNextPassage&quot;&gt;&lt;/button&gt; -&gt;Prica1.1]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="7" name=" Prica2.1" tags="" position="3300,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica2.1&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1395,14 +1406,14 @@ What do you want from us?
 Is there any chance for peace?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica2.2]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica2.2]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="8" name=" Prica4.2a" tags="" position="5300,300" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.2a&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1485,7 +1496,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1568,7 +1579,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1651,7 +1662,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1734,7 +1745,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1817,7 +1828,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1899,7 +1910,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -1981,7 +1992,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2063,7 +2074,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2145,7 +2156,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2227,7 +2238,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2310,7 +2321,7 @@ if (agentContainer) {
 &lt;div id=&quot;agent-container&quot;  &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -2412,13 +2423,13 @@ if (agentContainer) {
  
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="20" name="Intro1" tags="" position="525,250" size="100,100">&lt;tw-passage data-passage=&quot;Intro1&quot; class=&quot;intro-bg&quot;&gt;
 &lt;audio autoplay&gt;
-	&lt;source src=&quot;./src/static/media/IntroNaration.mp3
+	&lt;source src=&quot;./static/media/IntroNaration.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
 Vaš preglednik ne podržava HTML5 audio element.
 &lt;/audio&gt;
 
 &lt;audio loop autoplay id=&quot;soundEarth&quot;&gt;
-&lt;source src=&quot;./src/static/media/IntroSoundOfEarth.mp3
+&lt;source src=&quot;./static/media/IntroSoundOfEarth.mp3
 &quot; type=&quot;audio/mp3&quot;&gt;
 &lt;/audio&gt;
   &lt;p id=&quot;typing&quot;&gt;&lt;/p&gt;
@@ -2429,7 +2440,7 @@ Vaš preglednik ne podržava HTML5 audio element.
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2511,13 +2522,13 @@ if (agentContainer) {
 (Skeptical) Why should we trust you now after staying silent for so long?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.2]]
+[[&lt;button id=&quot;btnNextPassage&quot; style = &quot;display: none;&quot;&gt;&lt;/button&gt; -&gt;Prica1.2]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="22" name="Prica1.2" tags="" position="1900,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.2&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2599,12 +2610,12 @@ if (agentContainer) {
 (Skeptical) Are you planning to control us?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Pricca1.3]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Pricca1.3]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="23" name="Prica1.4" tags="" position="2300,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.4&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2685,13 +2696,13 @@ if (agentContainer) {
 (Skeptical) How do we know you won&#39;t betray us in the future?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.5]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica1.5]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="24" name="Prica1.5" tags="" position="2500,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.5&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2772,13 +2783,13 @@ if (agentContainer) {
 (Skeptical) How can we trust a species that&#39;s so fragile?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.6]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica1.6]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="25" name="Prica1.6" tags="" position="2700,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.6&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2859,7 +2870,7 @@ if (agentContainer) {
 (Skeptical) Are you just here to observe our downfall?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica2.0]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica2.0]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="26" name="Prica2.0" tags="" position="3100,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica2.1&quot; class=&quot;vraxil-brod-bg&quot;&gt;
 
@@ -2870,7 +2881,7 @@ if (agentContainer) {
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -2951,13 +2962,13 @@ Have you done this to others?
 What makes you think you’re stronger than us?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica2.3]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica2.3]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="28" name="Prica2.3" tags="" position="3700,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica2.3&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3037,13 +3048,13 @@ Do you even care who we are?
 What do you fear?”
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica2.4]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica2.4]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="29" name="Prica2.4" tags="" position="3900,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica2.4&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3123,13 +3134,13 @@ You want a fight? Then come down and face us.
 Why now? Why Earth?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica2.5]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica2.5]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="30" name="Prica2.5" tags="" position="4100,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica2.5&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3210,13 +3221,13 @@ If you destroy us, what do you gain?
 Are we just another trophy to you?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica3.0]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica3.0]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="31" name="Prica3.0" tags="" position="4300,600" size="100,100">&lt;tw-passage data-passage=&quot;Prica3.0&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3291,14 +3302,14 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica3.1]]
+[[&lt;button id=&quot;btnNextPassage&quot;&gt;&lt;/button&gt; -&gt;Prica3.1]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="32" name="Prica3.1" tags="" position="4500,600" size="100,100">&lt;tw-passage data-passage=&quot;Prica3.1&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -3397,13 +3408,13 @@ if (agentContainer) {
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica3.1b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt;Prica3.1a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt;Prica3.1b]]
+   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;&lt;/button&gt; -&gt;Prica3.1a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;&lt;/button&gt; -&gt;Prica3.1b]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="33" name="Prica3.1a" tags="" position="4700,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica3.1a.&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3479,13 +3490,13 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.2]]
+[[&lt;button id=&quot;btnNextPassage&quot;&gt;&lt;/button&gt; -&gt;Prica4.2]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="34" name="Prica3.1b" tags="" position="4700,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica3.1b&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -3561,14 +3572,14 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.1]]
+[[&lt;button id=&quot;btnNextPassage&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica5.1]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="35" name="Prica4.2" tags="" position="5100,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.2&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;  &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;battleTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -3664,14 +3675,14 @@ Distribute forces across civilian sectors.
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica4.2b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt; Prica4.2a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt; Prica4.2b]]
+   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:none&quot;&gt;&lt;/button&gt; -&gt; Prica4.2a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica4.2b]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="36" name="Prica4.3" tags="" position="5500,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.3&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot; &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;battleTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -3773,14 +3784,14 @@ Target only their leaders. Keep it clean.
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica4.3b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt; Prica4.3a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt; Prica4.3b]]
+   [[&lt;button id=&quot;btnNextPassage1&quot;  class = &quot;skriven&quot;&gt;➤a&lt;/button&gt; -&gt; Prica4.3a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;  class = &quot;skriven&quot;&gt;➤b&lt;/button&gt; -&gt; Prica4.3b]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="37" name="Prica4.4" tags="" position="5900,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.4&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot; &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;battleTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -3882,14 +3893,14 @@ Keep it under human command. We lead this.
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica4.4b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt; Prica4.4a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt; Prica4.4b]]
+   [[&lt;button id=&quot;btnNextPassage1&quot;  class = &quot;skriven&quot;&gt;➤a&lt;/button&gt; -&gt; Prica4.4a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;  class = &quot;skriven&quot;&gt;➤b&lt;/button&gt; -&gt; Prica4.4b]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="38" name="Prica4.5" tags="" position="6300,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.5&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;  &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;newEuropeTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/New_Europe_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -3990,14 +4001,14 @@ if (agentContainer) {
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica4.5c]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt;Prica4.5a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt;Prica4.5b]]
-   [[&lt;button id=&quot;btnNextPassage3&quot;&gt;➤c&lt;/button&gt; -&gt;Prica4.5c]]
+   [[&lt;button id=&quot;btnNextPassage1&quot;  class = &quot;skriven&quot;&gt;➤a&lt;/button&gt; -&gt;Prica4.5a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;  class = &quot;skriven&quot;&gt;➤b&lt;/button&gt; -&gt;Prica4.5b]]
+   [[&lt;button id=&quot;btnNextPassage3&quot;  class = &quot;skriven&quot;&gt;➤c&lt;/button&gt; -&gt;Prica4.5c]]
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="39" name="Prica4.5a" tags="" position="6500,300" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.5a&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -4073,13 +4084,12 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.6a]]
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="40" name="Prica4.5b" tags="" position="6500,400" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.5b&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -4155,13 +4165,13 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.6a]]
+
 
 &lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="41" name="Prica4.5c" tags="" position="6500,500" size="100,100">&lt;tw-passage data-passage=&quot;Prica4.5c&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -4237,13 +4247,12 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica4.6b]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="42" name="Prica4.6a" tags="" position="6700,300" size="100,100">Congrats dobia si</tw-passagedata><tw-passagedata pid="43" name="Prica4.6b" tags="" position="6700,500" size="100,100">loser</tw-passagedata><tw-passagedata pid="44" name="Prica5.1" tags="" position="4900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.1&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="42" name="Prica5.1" tags="" position="4900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.1&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 
 &lt;script&gt;
@@ -4320,14 +4329,14 @@ if (agentContainer) {
 }
 &lt;/script&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica5.2]]
+[[&lt;button id=&quot;btnNextPassage&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica5.2]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="45" name="Prica5.2" tags="" position="5100,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.2&quot; class=&quot;federacija1-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="43" name="Prica5.2" tags="" position="5100,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.2&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;  &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;battleTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -4429,14 +4438,14 @@ Spread thin. Try to protect as many cities as possible.
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica5.2b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt; Prica5.2a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt; Prica5.2b]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="46" name="Prica5.3" tags="" position="5500,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.3&quot; class=&quot;federacija1-bg&quot;&gt;
+   [[&lt;button id=&quot;btnNextPassage1&quot; class = &quot;skriven&quot;&gt;➤a&lt;/button&gt; -&gt; Prica5.2a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;➤b&lt;/button&gt; -&gt; Prica5.2b]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="44" name="Prica5.3" tags="" position="5500,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.3&quot; class=&quot;federacija1-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;  &gt;&lt;/div&gt;
 
 &lt;audio loop id=&quot;battleTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Battle_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
  
@@ -4538,13 +4547,13 @@ We stay. We fight. To the last man.
    [[&lt;button id=&quot;btnNextPassage2&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica5.3b]]
  
  
-   [[&lt;button id=&quot;btnNextPassage1&quot; style=&quot;display:block&quot;&gt;➤a&lt;/button&gt; -&gt; Prica5.3a]]
-   [[&lt;button id=&quot;btnNextPassage2&quot;&gt;➤b&lt;/button&gt; -&gt; Prica5.3b]]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="47" name="Prica5.4" tags="" position="5900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.4&quot; class=&quot;intro2-bg&quot;&gt;
+   [[&lt;button id=&quot;btnNextPassage1&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica5.3a]]
+   [[&lt;button id=&quot;btnNextPassage2&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica5.3b]]
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="45" name="Prica5.4" tags="" position="5900,800" size="100,100">&lt;tw-passage data-passage=&quot;Prica5.4&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound1&quot; src=&quot;./src/static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound1&quot; src=&quot;./static/media/radio_freq1.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -4625,13 +4634,13 @@ Yes. Everyone contributes. This is total war.
 No. They stay in shelters. We can’t risk panic.
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt; Prica5.4a]]
+[[&lt;button id=&quot;btnNextPassage&quot;  class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt; Prica5.4a]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="48" name="Pricca1.3" tags="" position="2100,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.3&quot; class=&quot;intro2-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="46" name="Pricca1.3" tags="" position="2100,200" size="100,100">&lt;tw-passage data-passage=&quot;Prica1.3&quot; class=&quot;intro2-bg&quot;&gt;
 
 &lt;div id=&quot;agent-container&quot;&gt;&lt;/div&gt;
 
-&lt;audio id=&quot;radioSound2&quot; src=&quot;./src/static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+&lt;audio id=&quot;radioSound2&quot; src=&quot;./static/media/radio_freq2.mp3&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
 
 &lt;script&gt;
 class UnifiedPassageHandler {
@@ -4713,9 +4722,9 @@ if (agentContainer) {
 (Skeptical) Are you using us for something?
 &lt;/div&gt;
 
-[[&lt;button id=&quot;btnNextPassage&quot;&gt;➤&lt;/button&gt; -&gt;Prica1.4]]
+[[&lt;button id=&quot;btnNextPassage&quot; class = &quot;skriven&quot;&gt;&lt;/button&gt; -&gt;Prica1.4]]
 
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="49" name="Start" tags="Start" position="275,450" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="47" name="Start" tags="Start" position="275,450" size="100,100">&lt;tw-passage data-passage=&quot;Start&quot; class=&quot;start-bg&quot;&gt;
 [
   &lt;h1  id=&quot;edgeOfExtinction&quot;&gt;Edge of Extinction&lt;/h1&gt;
   &lt;div&gt;
@@ -4727,11 +4736,11 @@ if (agentContainer) {
   
 
   &lt;audio loop id=&quot;mainTheme&quot; &gt;
-    &lt;source src=&quot;./src/static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+    &lt;source src=&quot;./static/media/Main_Theme.mp3&quot; type=&quot;audio/mp3&quot;&gt;
     Your browser does not support the audio element.
   &lt;/audio&gt;
 ]
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="50" name="b" tags="" position="600,500" size="100,100">&lt;tw-passage data-passage=&quot;Opcije&quot; class=&quot;settings-bg&quot;&gt;
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="48" name="b" tags="" position="600,500" size="100,100">&lt;tw-passage data-passage=&quot;Opcije&quot; class=&quot;settings-bg&quot;&gt;
   &lt;div class=&quot;settings-panel&quot;&gt;
     &lt;h1 class=&quot;title&quot;&gt;Options&lt;/h1&gt;
 
@@ -4756,7 +4765,7 @@ if (agentContainer) {
 
     [[&lt;button class=&quot;btnBack&quot;&gt;⮌ BACK&lt;/button&gt; -&gt;Start]]
   &lt;/div&gt;
-&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="51" name="c" tags="" position="500,775" size="100,100">exit skripta</tw-passagedata></tw-storydata>
+&lt;/tw-passage&gt;</tw-passagedata><tw-passagedata pid="49" name="c" tags="" position="500,775" size="100,100">exit skripta</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
